@@ -1,0 +1,701 @@
+html,
+body {
+  height: 100%; /* Ensure full height */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Apply overflow-x to both html and body */
+}
+
+.body2 {
+  font-family: "Livvic", sans-serif;
+  /* background-image: url("./materials/wallpaper.png"); */
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  margin: 2vh;
+  width: 96.5vw;
+  height: 100vh;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.container2 h1 {
+  color: #545872;
+
+  margin-bottom: 0.2vh;
+  padding: 0 0.8vw;
+  font-size: 2vw;
+}
+
+.bookinghistory h1 {
+  text-align: left;
+  margin-top: 0;
+  padding-left: 0.8vw;
+}
+
+.bookingsummary-container2 {
+  max-width: 60vw;
+  width: 98%;
+  padding: 0.5vw;
+  background-color: white;
+  border-radius: 0.8vw;
+  box-shadow: 0 0.4vw 0.6vw rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.top-section2 {
+  display: flex;
+  align-items: start;
+  width: 100%;
+}
+
+.images-container {
+  display: flex;
+  width: 35%;
+}
+
+.main-image {
+  width: 75%;
+  margin-right: 0.8vw;
+}
+
+.main-image img {
+  border-radius: 0.8vw;
+  border: 1px solid #ccc;
+  width: 100%;
+  height: auto;
+  border-radius: 1vw;
+}
+
+.side-images {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  border-radius: 1vw;
+}
+
+.side-images .image2 {
+  flex: 1;
+  margin-bottom: 0.8vw;
+}
+
+.side-images .image2 img {
+  border-radius: 0.8vw;
+  border: 1px solid #ccc;
+  width: 100%;
+  height: auto;
+}
+
+.details-container {
+  flex: 1;
+  padding: 0 15px;
+  margin-left: 1.5vw;
+}
+
+.activity2 {
+  color: #545872;
+  padding: 0 0.8vw;
+  font-size: 1.2vw;
+}
+
+.activity2 h1 {
+  color: #545872;
+  margin: 0;
+  padding: 0;
+  font-size: 1.6vw;
+  margin-top: 1vh;
+}
+
+.activity2 .additional-details {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 0.8vw;
+}
+
+.activity2 .additional-details p {
+  padding: 0;
+  font-size: 1vw;
+  margin: 1vh;
+}
+
+.shortdetails2 p {
+  color: #545872;
+  font-size: 1vw;
+  text-align: left;
+}
+
+/* /////////dropdown/////// */
+
+.dropdown-container {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  border-radius: 2vw;
+}
+
+.dropdown-label {
+  margin-right: 10px;
+  color: #545872;
+}
+
+.dropdown-select {
+  width: 20%;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 2vw;
+  color: white;
+  background-color: #717699;
+}
+.dropdown-select option {
+  background-color: #717699;
+  color: white;
+  padding: 4px;
+  border-radius: 2vw;
+}
+
+/* add a review button */
+.addreview-btn {
+  padding: 0.7vh 1.5vw;
+  background-color: #9699b6;
+  border: 4px solid #9699b6;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1vh;
+}
+
+.addreview-btn h2 {
+  color: white;
+  margin: 0.3vh 0.3vw;
+  font-size: small;
+}
+
+.addreview-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addreview h2 {
+  margin-right: 1vw;
+}
+
+/* view details button */
+.viewdetails-btn {
+  padding: 0.7vh 1.5vw;
+  background-color: #717699;
+  border: 4px solid #717699;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1vh;
+}
+
+.viewdetails-btn h2 {
+  color: white;
+  margin: 0.3vh 0.3vw;
+  font-size: small;
+}
+
+.viewdetails-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewdetails h2 {
+  margin-right: 1vw;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5vw;
+  margin-left: 8vw;
+}
+
+/* mobile respo */
+
+@media (max-width: 1100px) {
+  .container2 h1 {
+    font-size: 2.5svw;
+  }
+
+  .bookingsummary-container2 {
+    max-width: 85vw;
+    padding: 1vw;
+  }
+
+  .images-container,
+  .details-container {
+    width: 100%;
+  }
+
+  .main-image img,
+  .side-images .image2 img {
+    max-width: none;
+    height: auto;
+  }
+
+  .dropdown-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .dropdown-label {
+    margin-right: 2vw;
+    white-space: nowrap;
+  }
+
+  .dropdown-select {
+    width: 30%;
+    height: auto;
+  }
+
+  .activity2 .additional-details {
+    font-size: 1.2vw;
+  }
+  .activity2 .additional-details p {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 1.5vw;
+    margin: 1vh;
+  }
+  .shortdetails2 p {
+    font-size: 1.8vw;
+  }
+
+  .addreview-btn,
+  .viewdetails-btn {
+    font-size: 1rem;
+    padding: 1px 2px;
+    width: auto;
+    min-width: 18vw;
+  }
+}
+
+@media (max-width: 750px) {
+  .container2 h1 {
+    font-size: 6vw;
+  }
+  .bookingsummary-container2 {
+    max-width: 95vw;
+    padding: 2vw;
+  }
+
+  .top-section2,
+  .images-container,
+  .details-container {
+    flex-direction: column;
+    padding: 0;
+    margin-bottom: 1vw;
+  }
+
+  .images-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .main-image img {
+    width: 95%;
+    height: auto;
+  }
+
+  .side-images {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .side-images .image2 img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1vw;
+  }
+
+  .activity2 .additional-details {
+    flex-direction: column;
+    gap: 1vw;
+    margin-top: 1vw;
+  }
+  .activity2 .additional-details p {
+    margin: 0vh;
+    padding: 0;
+    font-size: 2.7vw;
+  }
+
+  .activity2 h1,
+  .dropdown-select {
+    font-size: 1.2rem;
+  }
+  .activity2 h1 {
+    text-align: center;
+  }
+
+  .dropdown-label,
+  .dropdown-select {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+  }
+
+  .shortdetails2 p,
+  .activity2 p {
+    font-size: 0.8rem;
+    margin-top: 1vh;
+  }
+  .buttons {
+    margin-right: 10vw;
+  }
+  .dropdown-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 0;
+  }
+
+  .dropdown-select {
+    width: 40vw;
+  }
+}
+
+/* modallllll */
+.modal-backdrop1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content1 {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+}
+.close-btn {
+  float: right;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: red;
+}
+.popup-container h1 {
+  color: #545872;
+}
+.popup-container h2 {
+  color: #717699;
+  font-size: 1.8vw;
+}
+.star {
+  color: gold;
+  cursor: pointer;
+  margin: 0 2px;
+}
+
+.star:hover,
+.star:hover ~ .star {
+  color: darkgoldenrod;
+}
+.rating {
+  font-size: 2vw;
+  margin-bottom: 4vh;
+}
+.popup-container p {
+  color: #ccc;
+}
+.fixed-size-textarea {
+  width: 95%;
+  height: 10em;
+  resize: none;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 1em auto;
+  display: block;
+  color: #545872;
+  background-color: #ccc;
+}
+.addrreview2-btn {
+  padding: 0.5vh 2vw;
+  background-color: #717699;
+  border: 6px solid #717699;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2vh;
+}
+
+.addrreview2-btn h2 {
+  color: white;
+  margin: 0.5vh 0.5vw;
+  font-size: 1.3vw;
+}
+.addrreview2-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addrreview2 h2 {
+  margin-right: 1vw;
+}
+.addreview2-icon {
+  color: white;
+  font-size: 2vw;
+}
+
+@media (max-width: 1100px) {
+  .modal-content1 {
+    width: 80%;
+    padding: 15px;
+  }
+  .popup-container h2 {
+    color: #717699;
+    font-size: 2.6vw;
+  }
+
+  .rating {
+    font-size: 3.2vw;
+    margin-bottom: 4vh;
+  }
+  .addrreview2-btn h2 {
+    color: white;
+    margin: 0.5vh 0.5vw;
+  }
+  .addrreview2-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .addrreview2-btn h2 {
+    color: white;
+    margin: 0.5vh 0.5vw;
+    font-size: 1.7vw;
+  }
+  .addreview2-icon {
+    color: white;
+    font-size: 1.7vw;
+  }
+}
+
+/* Media query for screens up to 750px wide */
+@media (max-width: 750px) {
+  .modal-content1 {
+    width: 75%;
+    padding: 10px;
+  }
+  .popup-container h2 {
+    color: #717699;
+    font-size: 3.5vw;
+  }
+  .fixed-size-textarea {
+    width: 80%;
+    height: 10em;
+    resize: none;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 1em auto;
+    display: block;
+    color: #545872;
+    background-color: #ccc;
+  }
+  .rating {
+    font-size: 4.8vw;
+    margin-bottom: 4vh;
+  }
+  .addrreview2-btn h2 {
+    color: white;
+    margin: 0.5vh 0.5vw;
+  }
+  .addrreview2-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .addrreview2-btn h2 {
+    color: white;
+    margin: 0.5vh 0.5vw;
+    font-size: 3vw;
+  }
+  .addreview2-icon {
+    color: white;
+    font-size: 3vw;
+  }
+}
+
+/* editbutton */
+.edit-btn {
+  padding: 0.5vh 2vw;
+  background-color: #717699;
+  border: 6px solid #717699;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2vh;
+  margin-right: 1vw;
+}
+
+.edit-btn h2 {
+  color: white;
+  margin: 0.5vh 0.5vw;
+  font-size: 1.3vw;
+}
+.edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit h2 {
+  margin-right: 1vw;
+}
+.edit-icon {
+  color: white;
+  font-size: 2vw;
+}
+
+/* delete button */
+.delete-btn {
+  padding: 0.5vh 2vw;
+  background-color: red;
+  border: 6px solid red;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2vh;
+}
+
+.delete-btn h2 {
+  color: white;
+  margin: 0.5vh 0.5vw;
+  font-size: 1.3vw;
+}
+.delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete h2 {
+  margin-right: 1vw;
+}
+.delete-icon {
+  color: white;
+  font-size: 2vw;
+}
+.modifybut {
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 1100px) {
+  .edit-btn h2 {
+    color: white;
+    margin: 0.5vh 0.5vw;
+  }
+  .edit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .edit-btn h2 {
+    color: white;
+    margin: 0.5vh 0.5vw;
+    font-size: 1.7vw;
+  }
+  .edit-icon {
+    color: white;
+    font-size: 1.7vw;
+  }
+  .delete-btn h2 {
+    color: white;
+    margin: 0.5vh 0.5vw;
+  }
+  .delete-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .delete-btn h2 {
+    color: white;
+    margin: 0.5vh 0.5vw;
+    font-size: 1.7vw;
+  }
+  .delete-icon {
+    color: white;
+    font-size: 1.7vw;
+  }
+}
+@media (max-width: 750px) {
+  .edit-btn h2 {
+    color: white;
+    margin: 0.5vh 0.5vw;
+  }
+  .edit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .edit-btn h2 {
+    color: white;
+    margin: 0.5vh 0.5vw;
+    font-size: 3vw;
+  }
+  .edit-icon {
+    color: white;
+    font-size: 3vw;
+  }
+  .delete-btn h2 {
+    color: white;
+    margin: 0.5vh 0.5vw;
+  }
+  .delete-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .delete-btn h2 {
+    color: white;
+    margin: 0.5vh 0.5vw;
+    font-size: 3vw;
+  }
+  .delete-icon {
+    color: white;
+    font-size: 3vw;
+  }
+}

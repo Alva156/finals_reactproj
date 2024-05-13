@@ -1,0 +1,565 @@
+
+/* SEOULSEEKER.JS */
+.seoulseeker-main-text{
+  font-family: "Livvic", sans-serif;
+  font-weight: 800;
+  font-size: 90px;
+}
+
+.seoul-seeker-container{
+  height: 100vh;
+  overflow: hidden;
+}
+
+.seoulseeker-main-container{
+  height: 75vh;
+}
+
+.seoulseeker-text, .seoulseeker-explore-text{
+  font-size: 30px;
+}
+
+.seoulseeker-text{
+  font-style: italic;
+}
+
+.seoulseeker-explore-text{
+  background-color: #717699;
+  width: 250px;
+  margin-top: 70px;
+  border-radius: 30px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .seoulseeker-text, .seoulseeker-explore-text{
+    font-size: 25px;
+  }
+
+  .seoulseeker-main-text{
+    font-size: 60px;
+  }
+}
+
+
+/* LOGIN.JS */
+
+.login-container{
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+.login-main-container{
+    height: 80vh;
+}
+
+.login-main-text{
+  font-family: "Livvic", sans-serif;
+  font-weight: 600;
+  font-size: 50px;
+  margin-bottom: 60px;
+  color: #717699;
+}
+
+.login-label-text{
+  color: #717699;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btn-signin{
+  width: 400px;
+  background-color: #717699;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 70px;
+}
+
+.signup-text{
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.font-underline{
+  text-decoration: underline;
+}
+
+
+/* REGISTER.JS */
+.register-container{
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+.register-main-container{
+    height: 85vh;
+}
+
+.register-main-text{
+  font-family: "Livvic", sans-serif;
+  font-weight: 600;
+  font-size: 50px;
+  margin-bottom: 40px;
+  color: #717699;
+}
+
+.register-label-text{
+  color: #717699;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btn-signup{
+  width: 400px;
+  background-color: #717699;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 40px;
+}
+
+@media (max-width: 700px) {
+  .btn-signup{
+    width: 250px;
+    background-color: #717699;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 40px;
+  }
+
+  .register-label-text{
+    width: 300px;
+  }
+}
+
+.signin-text{
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.font-underline{
+  text-decoration: underline;
+}
+
+
+
+/* FOR HOTEL.JS */
+@media (max-width: 576px) {
+  .fs-smaller {
+      font-size: 0.6rem;
+  }
+}
+
+.hotel-search{
+  padding: 20px 90px;
+}
+
+.options{
+  background-color: #9295b0;
+  border-radius: 40px;
+  font-size: 12px;
+  padding: 3px 30px;
+}
+
+.inputs{
+  background-color: #e1e1e1;
+  border-radius: 13px;
+  font-size: 12px;
+  padding: 3px 10px;
+}
+
+.input-text{
+  font-size: 15px;
+}
+
+.list-head{
+  background-color: #9295b0;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.list-container{
+  height: auto;
+  background-color: white;
+}
+
+.list-lg-img{
+  background-color: #545872;
+  height: 180px;
+  width: 100%;
+}
+
+.list-sm-img{
+  background-color: #545872;
+  height: 85px;
+  width: 100%;
+  
+}
+
+.list-detail{
+  height: 85px;
+  width: 100%;
+}
+
+.tags {
+  background-color: #9295b0;
+  border-radius: 40px;
+  font-size: 15px;
+  padding: 3px 20px; /* Adjusted padding */
+  font-weight: 500;
+}
+
+.list-name {
+  font-size: 24px; /* Decreased font size */
+  font-weight: 700;
+}
+
+@media (max-width: 1400px) {
+  .list-name {
+      font-size: 20px; /* Further decreased font size for smaller screens */
+  }
+  .list-detail {
+      height: auto; /* Remove fixed height for smaller screens */
+  }
+
+  .tags{
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .list-sm-img{
+    margin-top: 5px;
+  }
+}
+
+.list-all-details{
+  color: #9295b0;
+}
+
+.list-loc{
+  font-weight: 600;
+}
+
+
+/* CARRENT.JS */  
+
+.list-car-detail{
+  height: 30px;
+}
+
+.car-detail{
+  height: 65px;
+  width: 100%;
+}
+
+.list-service{
+  height: 45px;
+  width: 100%;
+  font-weight: 600;
+}
+
+.car-list-name{
+  font-size: 24px; /* Decreased font size */
+  font-weight: 700;
+  height: 35px;
+}
+
+.btn-book{
+  background-color: #9295b0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.car-list-detail{
+  height: 80px;
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .car-list-detail{
+    height: 160px;
+    width: 100%;
+  }
+
+  .list-service{
+
+    font-size: 12px;
+    height: 40px;
+  }
+
+  .btn-book{
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .car-list-name{
+    font-size: 20px;
+    text-align: start ;
+  }
+}
+
+
+/* DESTINATIONS.JS */
+
+.destinations-container {
+  height: 100%;
+  background-size: cover;
+}
+
+.wrapper{
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  padding-bottom: 100px;
+  margin-bottom: 100px;
+}
+
+.accordion{
+  width: 100%;
+
+}
+
+.accord-item{
+  margin-bottom: 10px;
+
+}
+
+.accord-title{
+  padding: 10px 30px;
+  background-color: #b3afbc;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.rotate-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotate-icon.rotate{
+  transform: rotate(180deg);
+}
+
+.list-dest-name{
+  font-size: 24px; /* Decreased font size */
+  font-weight: 700;
+  height: 50px;
+
+}
+
+.list-dest-description{
+  font-size: 14px;
+  height: 80px;
+}
+
+.list-dest-detail{
+}
+
+.list-dest-details{
+  color: #9295b0;
+  height: 50px;
+}
+
+.list-detail {
+}
+
+
+@media (max-width: 1000px) {
+  .list-dest-description{
+    height: auto;
+  }
+}
+
+.gmaps{
+  height: 300px;
+}
+
+
+/* NAVBARNEW.JS */
+
+.navbar-fix{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.seoul-seeker-logo{
+  width: 400px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .seoul-seeker-logo{
+    width: 250px;
+    font-family: "Livvic", sans-serif;
+    font-weight: bold;
+  }
+
+  .nav-tab{
+    font-size: 16px;
+    font-weight: 800;
+    color: white !important;
+  }
+
+  .nav-all-tabs{
+    width: 50%;
+    color: white !important;
+  }
+}
+
+.nav-tab{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.btn-nav-login{
+  background-color: #8c8c8d;
+  font-weight: 600;
+}
+
+@media (max-width: 1000px) {
+  .btn-nav-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #717699;
+  }
+}
+
+/* HOME.JS */
+
+.home-content {
+  padding-left: 10%;
+}
+
+@media (min-width: 768px) {
+  .home-content {
+    padding-left: 90px;
+  }
+}
+
+.home-title1 {
+  font-size: 100px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: #545872;
+  letter-spacing: -4px;
+}
+
+.home-title2 {
+  font-size: 100px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: #545872;
+  letter-spacing: -4px;
+  margin-top: -50px;
+}
+
+.home-description {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  text-align: justify;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+@media (min-width: 768px) {
+  .home-description {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .home-description {
+    max-width: 65%;
+  }
+}
+
+.home-button {
+  background-color: #717699 !important;
+  width: 200px;
+  height: 40px;
+  color: white !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  border-radius: 20px !important;
+}
+
+.home-carousel .carousel-inner {
+  max-width: 400px;
+  margin: auto;
+}
+
+.home-carousel{
+  height: auto;
+}
+
+.home-container{
+  height: 100vh;
+}
+
+.home-main-container{
+  padding: 20px 90px;
+  height: 70vh;
+  margin-top: 70px;
+}
+
+@media (max-width: 768px) {
+  .home-main-container{
+    margin-top: 0;
+    padding-bottom: 100px;
+    height: 90vh;
+    margin-bottom: 20px;
+  }
+
+  .home-description{
+    font-size: 16px;
+    margin-top: -20px;
+    margin-bottom: 10px;
+  }
+
+  .home-title1, .home-title2{
+    font-size: 65px;
+  }
+
+  .home-carousel-caption{
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .home-carousel-col-container{
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1200px){
+  .home-carousel-col-container{
+    padding: 20px;
+  }
+
+  .home-description{
+    font-size: 16px;
+    margin-top: -20px;
+    margin-bottom: 10px;
+  }
+
+  .home-title1, .home-title2{
+    font-size: 65px;
+  }
+}
+
+.home-carousel-col-container{
+  padding-top: 80px;
+}
+
+

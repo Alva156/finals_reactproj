@@ -1,13 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+// import "./index.css";
+// import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
+import Checkoutedit from "./Checkoutedit";
+import BookHispage from "./BookHispage";
+import Checkoutpage from "./Checkoutpage";
+import Booking from "./Booking";
+import CarRent from "./CarRent";
+import Destinations from "./Destinations";
+import Home from "./Home";
+import Hotel from "./Hotel";
+import Login from "./Login";
+import NavBarNew from "./NavBarNew";
+import Register from "./Register";
+import SeoulSeeker from "./SeoulSeeker";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BookHispage />
   </React.StrictMode>
 );
 
