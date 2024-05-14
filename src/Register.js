@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "./styles.css";
+import { Link } from "react-router-dom";
 import NavbarNew from "./NavBarNew";
 import Form from "react-bootstrap/Form";
 
@@ -62,7 +63,9 @@ function RegisterContent() {
           <div className="d-flex justify-content-center col mt-3">
             <div className="signin-text text-white text-center py-2 rounded">
               Already have an account{" "}
-              <span className="font-underline">Login here.</span>
+              <Link to="/" className="font-underline text-white">
+                Login here.
+              </Link>
             </div>
           </div>
         </Form>

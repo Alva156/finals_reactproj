@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { PiAirplaneTiltFill } from "react-icons/pi";
+import "./styles.css";
 
 function NavbarNew({ isActive }) {
   const tabStyle = isActive
@@ -25,41 +27,53 @@ function NavbarNew({ isActive }) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="nav-all-tabs me-auto gap-1">
-            <Nav.Link href="#home">
-              <div className="nav-tab" style={tabStyle}>
-                Home
-              </div>
-            </Nav.Link>
-            <Nav.Link href="#booking">
-              <div className="nav-tab" style={tabStyle}>
-                Booking
-              </div>
-            </Nav.Link>
-            <Nav.Link href="#history">
-              <div className="nav-tab" style={tabStyle}>
-                History
-              </div>
-            </Nav.Link>
-            <Nav.Link href="#destinations">
-              <div className="nav-tab" style={tabStyle}>
-                Destinations
-              </div>
-            </Nav.Link>
-            <Nav.Link href="#support">
-              <div className="nav-tab" style={tabStyle}>
-                Support
-              </div>
-            </Nav.Link>
+            <Nav.Item>
+              <Link to="/home" style={{ textDecoration: "none" }}>
+                <div className="nav-tab nav-entry" style={tabStyle}>
+                  Home
+                </div>
+              </Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Link to="/booking" style={{ textDecoration: "none" }}>
+                <div className="nav-tab nav-entry" style={tabStyle}>
+                  Booking
+                </div>
+              </Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Link to="/history" style={{ textDecoration: "none" }}>
+                <div className="nav-tab nav-entry" style={tabStyle}>
+                  History
+                </div>
+              </Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Link to="/destinations" style={{ textDecoration: "none" }}>
+                <div className="nav-tab nav-entry" style={tabStyle}>
+                  Destinations
+                </div>
+              </Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Link to="/support" style={{ textDecoration: "none" }}>
+                <div className="nav-tab nav-entry" style={tabStyle}>
+                  Support
+                </div>
+              </Link>
+            </Nav.Item>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">
-              <div className="btn-nav-login rounded px-4 py-2 text-white d-flex align-items-center h6">
-                <IoPersonCircleSharp
-                  style={{ fontSize: "20px", marginRight: "5px" }}
-                />
-                Login
-              </div>
-            </Nav.Link>
+            <Nav.Item>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <div className="btn-nav-login rounded px-4 py-2 text-white d-flex align-items-center h6">
+                  <IoPersonCircleSharp
+                    style={{ fontSize: "20px", marginRight: "5px" }}
+                  />
+                  Login
+                </div>
+              </Link>
+            </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>
