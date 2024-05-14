@@ -16,10 +16,10 @@ function Checkoutpage() {
         <div className="left-side">
           <ContactDetailsForm />
           <Location />
-          <Summary />
+          <Summary car={car} />
         </div>
         <div className="right-side">
-          <BookingSummary />
+          <BookingSummary car={car} />
         </div>
       </div>
       <div className="payment-button-container">
@@ -122,37 +122,40 @@ function Location() {
     </div>
   );
 }
-function Summary() {
+function Summary({ car }) {
   return (
     <div className="summaryform">
       <h1>Summary</h1>
       <div className="summary-container">
         <div className="breakdown">
           <p>Breakdown: </p>
-          <h2>₩100,000 x 1</h2>
+          <h2>{car.price} x 1</h2>
         </div>
         <div className="totalprice">
           <p>Total Price: </p>
-          <h2>₩100,000 </h2>
+          <h2>{car.price} </h2>
         </div>
       </div>
     </div>
   );
 }
-function BookingSummary() {
+function BookingSummary({ car }) {
   return (
     <div className="bookingsummaryform">
       <div className="bookingsummary-container">
         <h1>Booking Summary</h1>
         <div className="activity">
-          <p>Activity Name/Event/Car, etc.</p>
+          <p>{car.model}</p>
         </div>
         <div className="top-section">
           <div className="image">
-            <img src={wallpaper} alt="Event" />
+            <img src={require(`./images/${car.images[0]}`)} alt="Event" />
           </div>
           <div className="shortdetails">
-            <p>This is the details of the transaction</p>
+            <p>{car.luggageCapacity}</p>
+            <p>{car.seats}</p>
+            <p>{car.service}</p>
+            <p>{car.withDriver ? "With Driver" : "Without Driver"}</p>
           </div>
         </div>
         <div className="date-and-details">
