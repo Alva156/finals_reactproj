@@ -30,41 +30,45 @@ function NavbarNew({ isActive, isLoggedIn, setIsLoggedIn }) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="nav-all-tabs me-auto gap-1">
-            <Nav.Item>
-              <Link to="/home" style={{ textDecoration: "none" }}>
-                <div className="nav-tab nav-entry" style={tabStyle}>
-                  Home
-                </div>
-              </Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Link to="/booking" style={{ textDecoration: "none" }}>
-                <div className="nav-tab nav-entry" style={tabStyle}>
-                  Booking
-                </div>
-              </Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Link to="/history" style={{ textDecoration: "none" }}>
-                <div className="nav-tab nav-entry" style={tabStyle}>
-                  History
-                </div>
-              </Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Link to="/destinations" style={{ textDecoration: "none" }}>
-                <div className="nav-tab nav-entry" style={tabStyle}>
-                  Destinations
-                </div>
-              </Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Link to="/support" style={{ textDecoration: "none" }}>
-                <div className="nav-tab nav-entry" style={tabStyle}>
-                  Support
-                </div>
-              </Link>
-            </Nav.Item>
+            {isLoggedIn && (
+              <>
+                <Nav.Item>
+                  <Link to="/home" style={{ textDecoration: "none" }}>
+                    <div className="nav-tab nav-entry" style={tabStyle}>
+                      Home
+                    </div>
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="/booking" style={{ textDecoration: "none" }}>
+                    <div className="nav-tab nav-entry" style={tabStyle}>
+                      Booking
+                    </div>
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="/history" style={{ textDecoration: "none" }}>
+                    <div className="nav-tab nav-entry" style={tabStyle}>
+                      History
+                    </div>
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="/destinations" style={{ textDecoration: "none" }}>
+                    <div className="nav-tab nav-entry" style={tabStyle}>
+                      Destinations
+                    </div>
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="/support" style={{ textDecoration: "none" }}>
+                    <div className="nav-tab nav-entry" style={tabStyle}>
+                      Support
+                    </div>
+                  </Link>
+                </Nav.Item>
+              </>
+            )}
           </Nav>
           <Nav>
             <Nav.Item>
