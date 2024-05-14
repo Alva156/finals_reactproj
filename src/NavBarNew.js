@@ -6,10 +6,13 @@ import { IoPersonCircleSharp } from "react-icons/io5";
 import { PiAirplaneTiltFill } from "react-icons/pi";
 import "./styles.css";
 
-function NavbarNew({ isActive }) {
+function NavbarNew({ isActive, isLoggedIn, setIsLoggedIn }) {
   const tabStyle = isActive
     ? { color: "white", fontWeight: "700" }
     : { color: "#717699", fontWeight: "700" };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
   return (
     <Navbar collapseOnSelect expand="lg" className="navbar-fix">
       <Container>
@@ -66,11 +69,14 @@ function NavbarNew({ isActive }) {
           <Nav>
             <Nav.Item>
               <Link to="/" style={{ textDecoration: "none" }}>
-                <div className="btn-nav-login rounded px-4 py-2 text-white d-flex align-items-center h6">
+                <div
+                  className="btn-nav-login rounded px-4 py-2 text-white d-flex align-items-center h6"
+                  onClick={isLoggedIn ? handleLogout : null}
+                >
                   <IoPersonCircleSharp
                     style={{ fontSize: "20px", marginRight: "5px" }}
                   />
-                  Login
+                  {isLoggedIn ? "Logout" : "Login"}
                 </div>
               </Link>
             </Nav.Item>

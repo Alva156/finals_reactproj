@@ -26,7 +26,6 @@ function BookHispage() {
 
   return (
     <div>
-      <NavbarNew />
       <div className="body2">
         <div className="container2">
           <h1>Booking History</h1>

@@ -93,7 +93,6 @@ function Booking() {
         backgroundAttachment: "fixed",
       }}
     >
-      <NavbarNew />
       <div className="booking-container">
         <div>
           <ExploreSeoul carouselImages={carouselImages} />

@@ -13,15 +13,18 @@ import { useState } from "react";
 
 export default function App() {
   const [registeredUsers, setRegisteredUsers] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <Router>
       <div>
+        <NavbarNew isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Switch>
           <Route path="/" exact>
             <Login
               registeredUsers={registeredUsers}
               setRegisteredUsers={setRegisteredUsers}
+              setIsLoggedIn={setIsLoggedIn}
             />
           </Route>
           <Route

@@ -14,7 +14,6 @@ function SeoulSeeker() {
         backgroundSize: "cover",
       }}
     >
-      <NavbarNew isActive={true} />
       <div className="seoulseeker-main-container d-flex justify-content-center align-items-center">
         <SeoulSeekerMain />
       </div>

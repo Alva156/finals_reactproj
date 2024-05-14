@@ -46,7 +46,6 @@ function Home() {
         backgroundAttachment: "fixed",
       }}
     >
-      <NavbarNew />
       <div className="home-main-container container-fluid ">
         <Row className="d-flex flex-wrap justify-content-center">
           {/* Left side (Col 7) */}

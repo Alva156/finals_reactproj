@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import NavbarNew from "./NavBarNew";
 import Form from "react-bootstrap/Form";
 
-function Login({ registeredUsers }) {
+function Login({ registeredUsers, isLoggedIn, setIsLoggedIn }) {
   const history = useHistory();
 
   const [email, setEmail] = useState("");
@@ -15,6 +15,7 @@ function Login({ registeredUsers }) {
 
     const user = registeredUsers.find((user) => user.email === email);
     if (user && user.password === password) {
+      setIsLoggedIn(true);
       history.push("/home");
     } else {
       setError("Invalid email or password.");
@@ -29,7 +30,6 @@ function Login({ registeredUsers }) {
         backgroundSize: "cover",
       }}
     >
-      <NavbarNew />
       <div className="login-main-container d-flex justify-content-center align-items-center">
         <div>
           <div className="d-flex row text-white justify-content-center">

@@ -8,7 +8,6 @@ import NavbarNew from "./NavBarNew";
 function Checkoutedit() {
   return (
     <div>
-      <NavbarNew />
       <div className="container">
         <div className="left-side">
           <ContactDetailsForm />

@@ -16,7 +16,6 @@ function CarRent() {
         backgroundAttachment: "fixed",
       }}
     >
-      <NavbarNew />
       <div className="hotel-search">
         <Search />
         <Filter />

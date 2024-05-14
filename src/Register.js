@@ -56,7 +56,6 @@ function Register({ registeredUsers, setRegisteredUsers }) {
         backgroundSize: "cover",
       }}
     >
-      <NavbarNew isActive={false} />
       <div className="register-main-container d-flex justify-content-center align-items-center">
         <div>
           <div className="d-flex row text-white justify-content-center">
