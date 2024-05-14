@@ -1,29 +1,29 @@
-
 /* SEOULSEEKER.JS */
-.seoulseeker-main-text{
+.seoulseeker-main-text {
   font-family: "Livvic", sans-serif;
   font-weight: 800;
   font-size: 90px;
 }
 
-.seoul-seeker-container{
+.seoul-seeker-container {
   height: 100vh;
   overflow: hidden;
 }
 
-.seoulseeker-main-container{
+.seoulseeker-main-container {
   height: 75vh;
 }
 
-.seoulseeker-text, .seoulseeker-explore-text{
+.seoulseeker-text,
+.seoulseeker-explore-text {
   font-size: 30px;
 }
 
-.seoulseeker-text{
+.seoulseeker-text {
   font-style: italic;
 }
 
-.seoulseeker-explore-text{
+.seoulseeker-explore-text {
   background-color: #717699;
   width: 250px;
   margin-top: 70px;
@@ -32,29 +32,28 @@
 }
 
 @media (max-width: 700px) {
-  .seoulseeker-text, .seoulseeker-explore-text{
+  .seoulseeker-text,
+  .seoulseeker-explore-text {
     font-size: 25px;
   }
 
-  .seoulseeker-main-text{
+  .seoulseeker-main-text {
     font-size: 60px;
   }
 }
 
-
 /* LOGIN.JS */
 
-.login-container{
+.login-container {
   height: 100vh;
   overflow: hidden;
 }
 
-
-.login-main-container{
-    height: 80vh;
+.login-main-container {
+  height: 80vh;
 }
 
-.login-main-text{
+.login-main-text {
   font-family: "Livvic", sans-serif;
   font-weight: 600;
   font-size: 50px;
@@ -62,13 +61,13 @@
   color: #717699;
 }
 
-.login-label-text{
+.login-label-text {
   color: #717699;
   font-size: 15px;
   font-weight: 500;
 }
 
-.btn-signin{
+.btn-signin {
   width: 400px;
   background-color: #717699;
   font-weight: 700;
@@ -76,28 +75,26 @@
   margin-top: 70px;
 }
 
-.signup-text{
+.signup-text {
   font-size: 17px;
   font-weight: 600;
 }
 
-.font-underline{
+.font-underline {
   text-decoration: underline;
 }
 
-
 /* REGISTER.JS */
-.register-container{
+.register-container {
   height: 100vh;
   overflow: hidden;
 }
 
-
-.register-main-container{
-    height: 85vh;
+.register-main-container {
+  height: 85vh;
 }
 
-.register-main-text{
+.register-main-text {
   font-family: "Livvic", sans-serif;
   font-weight: 600;
   font-size: 50px;
@@ -105,13 +102,13 @@
   color: #717699;
 }
 
-.register-label-text{
+.register-label-text {
   color: #717699;
   font-size: 15px;
   font-weight: 500;
 }
 
-.btn-signup{
+.btn-signup {
   width: 400px;
   background-color: #717699;
   font-weight: 700;
@@ -120,7 +117,7 @@
 }
 
 @media (max-width: 700px) {
-  .btn-signup{
+  .btn-signup {
     width: 250px;
     background-color: #717699;
     font-weight: 700;
@@ -128,77 +125,74 @@
     margin-top: 40px;
   }
 
-  .register-label-text{
+  .register-label-text {
     width: 300px;
   }
 }
 
-.signin-text{
+.signin-text {
   font-size: 17px;
   font-weight: 600;
 }
 
-.font-underline{
+.font-underline {
   text-decoration: underline;
 }
-
-
 
 /* FOR HOTEL.JS */
 @media (max-width: 576px) {
   .fs-smaller {
-      font-size: 0.6rem;
+    font-size: 0.6rem;
   }
 }
 
-.hotel-search{
+.hotel-search {
   padding: 20px 90px;
 }
 
-.options{
+.options {
   background-color: #9295b0;
   border-radius: 40px;
   font-size: 12px;
   padding: 3px 30px;
 }
 
-.inputs{
+.inputs {
   background-color: #e1e1e1;
   border-radius: 13px;
   font-size: 12px;
   padding: 3px 10px;
 }
 
-.input-text{
+.input-text {
   font-size: 15px;
 }
 
-.list-head{
+.list-head {
   background-color: #9295b0;
   border-radius: 10px;
   font-weight: 700;
   letter-spacing: 1.5px;
 }
 
-.list-container{
+.list-container {
   height: auto;
   background-color: white;
 }
 
-.list-lg-img{
+.list-lg-img {
   background-color: #545872;
   height: 180px;
   width: 100%;
 }
 
-.list-sm-img{
+.list-sm-img {
   background-color: #545872;
   height: 85px;
   width: 100%;
-  
 }
 
-.list-detail{
+.list-detail {
   height: 85px;
   width: 100%;
 }
@@ -218,89 +212,86 @@
 
 @media (max-width: 1400px) {
   .list-name {
-      font-size: 20px; /* Further decreased font size for smaller screens */
+    font-size: 20px; /* Further decreased font size for smaller screens */
   }
   .list-detail {
-      height: auto; /* Remove fixed height for smaller screens */
+    height: auto; /* Remove fixed height for smaller screens */
   }
 
-  .tags{
+  .tags {
     font-size: 10px;
   }
 }
 
 @media (max-width: 1200px) {
-  .list-sm-img{
+  .list-sm-img {
     margin-top: 5px;
   }
 }
 
-.list-all-details{
+.list-all-details {
   color: #9295b0;
 }
 
-.list-loc{
+.list-loc {
   font-weight: 600;
 }
 
+/* CARRENT.JS */
 
-/* CARRENT.JS */  
-
-.list-car-detail{
+.list-car-detail {
   height: 30px;
 }
 
-.car-detail{
+.car-detail {
   height: 65px;
   width: 100%;
 }
 
-.list-service{
+.list-service {
   height: 45px;
   width: 100%;
   font-weight: 600;
 }
 
-.car-list-name{
+.car-list-name {
   font-size: 24px; /* Decreased font size */
   font-weight: 700;
   height: 35px;
 }
 
-.btn-book{
+.btn-book {
   background-color: #9295b0;
   font-size: 16px;
   font-weight: 600;
 }
 
-.car-list-detail{
+.car-list-detail {
   height: 80px;
   width: 100%;
 }
 
 @media (max-width: 1000px) {
-  .car-list-detail{
+  .car-list-detail {
     height: 160px;
     width: 100%;
   }
 
-  .list-service{
-
+  .list-service {
     font-size: 12px;
     height: 40px;
   }
 
-  .btn-book{
+  .btn-book {
     font-size: 12px;
     font-weight: 600;
   }
 
-  .car-list-name{
+  .car-list-name {
     font-size: 20px;
-    text-align: start ;
+    text-align: start;
   }
 }
-
 
 /* DESTINATIONS.JS */
 
@@ -309,7 +300,7 @@
   background-size: cover;
 }
 
-.wrapper{
+.wrapper {
   display: flex;
   height: 100vh;
   width: 100%;
@@ -318,17 +309,15 @@
   margin-bottom: 100px;
 }
 
-.accordion{
+.accordion {
   width: 100%;
-
 }
 
-.accord-item{
+.accord-item {
   margin-bottom: 10px;
-
 }
 
-.accord-title{
+.accord-title {
   padding: 10px 30px;
   background-color: #b3afbc;
   color: white;
@@ -341,26 +330,25 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.rotate-icon.rotate{
+.rotate-icon.rotate {
   transform: rotate(180deg);
 }
 
-.list-dest-name{
+.list-dest-name {
   font-size: 24px; /* Decreased font size */
   font-weight: 700;
   height: 50px;
-
 }
 
-.list-dest-description{
+.list-dest-description {
   font-size: 14px;
   height: 80px;
 }
 
-.list-dest-detail{
+.list-dest-detail {
 }
 
-.list-dest-details{
+.list-dest-details {
   color: #9295b0;
   height: 50px;
 }
@@ -368,65 +356,63 @@
 .list-detail {
 }
 
-
 @media (max-width: 1000px) {
-  .list-dest-description{
+  .list-dest-description {
     height: auto;
   }
 }
 
-.gmaps{
+.gmaps {
   height: 300px;
 }
 
-
 /* NAVBARNEW.JS */
 
-.navbar-fix{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Ensure it appears above other content */
+.navbar-fix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-.seoul-seeker-logo{
+.seoul-seeker-logo {
   width: 400px;
   font-size: 30px;
   font-weight: 600;
 }
 
 @media (max-width: 1200px) {
-  .seoul-seeker-logo{
+  .seoul-seeker-logo {
     width: 250px;
     font-family: "Livvic", sans-serif;
     font-weight: bold;
   }
 
-  .nav-tab{
+  .nav-tab {
     font-size: 16px;
     font-weight: 800;
     color: white !important;
   }
 
-  .nav-all-tabs{
+  .nav-all-tabs {
     width: 50%;
     color: white !important;
   }
 }
 
-.nav-tab{
+.nav-tab {
   font-size: 20px;
   font-weight: 600;
 }
 
-.btn-nav-login{
+.btn-nav-login {
   background-color: #8c8c8d;
   font-weight: 600;
 }
 
 @media (max-width: 1000px) {
-  .btn-nav-login{
+  .btn-nav-login {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -500,66 +486,252 @@
   margin: auto;
 }
 
-.home-carousel{
+.home-carousel {
   height: auto;
 }
 
-.home-container{
+.home-container {
   height: 100vh;
 }
 
-.home-main-container{
+.home-main-container {
   padding: 20px 90px;
   height: 70vh;
   margin-top: 70px;
 }
 
 @media (max-width: 768px) {
-  .home-main-container{
+  .home-main-container {
     margin-top: 0;
     padding-bottom: 100px;
     height: 90vh;
     margin-bottom: 20px;
   }
 
-  .home-description{
+  .home-description {
     font-size: 16px;
     margin-top: -20px;
     margin-bottom: 10px;
   }
 
-  .home-title1, .home-title2{
+  .home-title1,
+  .home-title2 {
     font-size: 65px;
   }
 
-  .home-carousel-caption{
+  .home-carousel-caption {
     margin-top: 0;
     padding: 0;
   }
 
-  .home-carousel-col-container{
+  .home-carousel-col-container {
     padding: 20px;
   }
 }
 
-@media (max-width: 1200px){
-  .home-carousel-col-container{
+@media (max-width: 1200px) {
+  .home-carousel-col-container {
     padding: 20px;
   }
 
-  .home-description{
+  .home-description {
     font-size: 16px;
     margin-top: -20px;
     margin-bottom: 10px;
   }
 
-  .home-title1, .home-title2{
-    font-size: 65px;
+  .home-title1,
+  .home-title2 {
+    font-size: 80px;
   }
 }
 
-.home-carousel-col-container{
+.home-carousel-col-container {
   padding-top: 80px;
 }
 
+.carousel-btn {
+  background-color: #9699b6 !important;
+  color: #ffffffff !important;
+}
 
+/* BOOKING.JS */
+
+.booking-container {
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.booking-container2 {
+  display: flex;
+  padding-top: 40px;
+  width: 100%;
+  background-image: url(../public/images/SeoulHomePage.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  height: 600px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 10px;
+}
+
+.bookingoverlay-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #fff;
+  margin-left: 20px;
+}
+
+.bookingparagraph-overlap {
+  font-size: 20px;
+  max-width: 640px;
+  width: 100%;
+}
+
+.bookingtitle-overlap {
+  font-size: 70px;
+  font-weight: bold;
+  max-width: 600px;
+}
+
+.bookingoverlay-text button {
+  background-color: #fff;
+  padding: 10px 25px;
+  margin-top: 20px;
+}
+
+.booking-search-container {
+  position: relative;
+  top: -120px;
+  background-color: transparent;
+  padding: 20px;
+  z-index: 1;
+}
+
+.booking-carousel-div-container {
+  padding-top: 30px;
+}
+
+.booking-carousel-container {
+  width: 350px;
+  overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+  .booking-carousel-div-container {
+    margin-top: -30px;
+  }
+
+  .booking-carousel-container {
+    width: 300px;
+  }
+
+  .bookingoverlay-text button {
+    margin: 0;
+    margin-bottom: -120px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .booking-carousel-container {
+    padding-right: 0;
+  }
+
+  .bookingtitle-overlap {
+    font-size: 32px;
+  }
+
+  .bookingparagraph-overlap {
+    font-size: 14px;
+  }
+}
+
+.booking-photos-img-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.booking-photos-overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  text-align: left;
+  padding: 10px;
+}
+
+.bookingphotos-container {
+  position: relative;
+}
+
+.arrows-container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.prev-btn,
+.next-btn {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.prev-btn {
+  float: left;
+}
+
+.next-btn {
+  float: right;
+}
+
+.bookingrows-container {
+  padding-left: 210px;
+  padding-right: 210px;
+  margin-top: -100px;
+  padding-bottom: 140px;
+}
+
+.booking-title {
+  font-size: 23px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.specialdeal-container {
+  padding-left: 210px;
+  padding-right: 210px;
+  margin-top: -100px;
+  padding-bottom: 40px;
+}
+
+.specialdeal-content {
+  background-color: #545872;
+  opacity: 0.7;
+  color: white;
+  padding: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 20px;
+}
+
+@media (max-width: 1000px) {
+  .specialdeal-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .bookingrows-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

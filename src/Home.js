@@ -5,7 +5,6 @@ import "./styles.css";
 import { IoIosArrowDropright } from "react-icons/io";
 import NavbarNew from "./NavBarNew";
 
-
 function Home() {
   const contentProps = {
     title1: "EXPLORE",
@@ -39,7 +38,14 @@ function Home() {
   };
 
   return (
-    <div className="home-container" style={{backgroundImage: 'url(/images/Home2.png)', backgroundSize: 'cover', backgroundAttachment:'fixed'}}>
+    <div
+      className="home-container"
+      style={{
+        backgroundImage: "url(/images/Home2.png)",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+      }}
+    >
       <NavbarNew />
       <div className="home-main-container container-fluid ">
         <Row className="d-flex flex-wrap justify-content-center">
@@ -55,7 +61,6 @@ function Home() {
         </Row>
       </div>
     </div>
-
   );
 }
 
@@ -66,9 +71,8 @@ function HomeContent({ title1, title2, description, buttonText }) {
       <p className="home-title2">{title2}</p>
       <p className="home-description">{description}</p>
       <div className="btn home-button d-flex justify-content-center align-items-center px-2 gap-4">
-        {buttonText} <IoIosArrowDropright style={{fontSize:'25px'}}/>
+        {buttonText} <IoIosArrowDropright style={{ fontSize: "25px" }} />
       </div>
-      
     </div>
   );
 }
@@ -94,7 +98,5 @@ function HomeCarousel({ slides }) {
     </div>
   );
 }
-
-
 
 export default Home;
