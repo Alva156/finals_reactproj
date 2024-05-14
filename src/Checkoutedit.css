@@ -178,7 +178,7 @@ select:focus {
 }
 
 /* Media Queries for responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 990px) {
   select {
     padding: 1vh 0.2vw;
     font-size: 1.6vw;
@@ -332,6 +332,7 @@ select:focus {
 .date-and-details {
   margin-top: 20px;
   width: 100%;
+  font-family: "Livvic", sans-serif;
 }
 .selecteddate,
 .totalpax,
@@ -403,11 +404,6 @@ select:focus {
     padding: 0.2vh;
     font-size: 2vw;
     width: auto;
-  }
-  .selecteddate p,
-  .totalpax p,
-  .totalpayment p {
-    font-size: small;
   }
 }
 
@@ -583,7 +579,7 @@ select:focus {
   justify-content: center;
   align-items: center;
 }
-@media (max-width: 90px) {
+@media (max-width: 990px) {
   .editcontacts h2 {
     font-size: 2.8vw;
   }

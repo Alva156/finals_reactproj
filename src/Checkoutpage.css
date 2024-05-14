@@ -349,12 +349,21 @@ select:focus {
 .selecteddate,
 .totalpax,
 .totalpayment {
-  margin: 1vh; /* Removes default margin */
+  margin: 1vh;
   color: #545872;
   background-color: rgb(226, 226, 226);
   border: 1px solid rgb(226, 226, 226);
   border-radius: 5px;
 }
+.selecteddate input[name="date"],
+.totalpax input[name="totalpax"],
+.totalpayment input[name="totalpay"] {
+  font-size: medium;
+}
+.selecteddate input[name="date"] {
+  width: 90%;
+}
+
 .datefield {
   margin: 1vh;
   color: #545872;
