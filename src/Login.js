@@ -40,9 +40,9 @@ function LoginContent() {
             <Form.Control type="password" placeholder="Enter password" />
           </Form.Group>
           <div className="d-flex justify-content-center col">
-            <div className="btn-signin text-white text-center py-2 rounded">
+            <button className="btn-signin text-white text-center py-2 rounded">
               SIGN IN
-            </div>
+            </button>
           </div>
           <div className="d-flex justify-content-center col mt-3">
             <div className="signup-text text-white text-center py-2 rounded">
