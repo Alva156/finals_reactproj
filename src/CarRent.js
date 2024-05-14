@@ -6,6 +6,40 @@ import { FaLocationDot } from "react-icons/fa6";
 import React, { useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import NavbarNew from "./NavBarNew";
+import { Link } from "react-router-dom";
+
+const dummyCars = [
+  {
+    id: 1,
+    model: "Toyota Corolla",
+    price: "₩100,000",
+    luggageCapacity: "2 Baggages",
+    seats: "4 Seats",
+    service: "Basic Service",
+    withDriver: true,
+    images: ["corolla1.png", "corolla2.png", "corolla3.png"],
+  },
+  {
+    id: 2,
+    model: "Honda Civic",
+    price: "₩120,000",
+    luggageCapacity: "3 Baggages",
+    seats: "5 Seats",
+    service: "Premium Service",
+    withDriver: false,
+    images: ["civic1.png", "civic2.png", "civic3.png"],
+  },
+  {
+    id: 3,
+    model: "Hyundai Sonata",
+    price: "₩110,000",
+    luggageCapacity: "2 Baggages",
+    seats: "5 Seats",
+    service: "Standard Service",
+    withDriver: true,
+    images: ["sonata1.png", "sonata2.png", "sonata3.jpg"],
+  },
+];
 
 function CarRent() {
   return (
@@ -19,9 +53,9 @@ function CarRent() {
       <div className="hotel-search">
         <Search />
         <Filter />
-        <CarList />
-        <CarList />
-        <CarList />
+        {dummyCars.map((car) => (
+          <CarList key={car.id} car={car} />
+        ))}
       </div>
     </div>
   );
@@ -145,51 +179,78 @@ function Filter() {
   );
 }
 
-function CarList() {
+function CarList({ car }) {
   return (
     <div className="list-container container-fluid my-2 rounded">
       <div className="row p-2 rounded d-flex flex-wrap">
         <div className="col-md col-12">
           <div className="row px-2 d-flex flex-wrap">
             <div className="list-lg-img col-md-8 rounded">
-              {/* LARGE IMG */}
+              <img
+                src={require(`./images/${car.images[0]}`)}
+                alt={`Car ${car.model} Image 1`}
+                className="img-fluid rounded mb-2"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
             </div>
             <div className="col-md-4">
               <div
                 className="col-12 list-sm-img rounded mb-2"
                 style={{ marginBottom: "10px" }}
               >
-                {/* SMALL IMG */}
+                <img
+                  src={require(`./images/${car.images[1]}`)}
+                  alt={`Car ${car.model} Image 1`}
+                  className="img-fluid rounded mb-2"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                />
               </div>
               <div className="col-12 list-sm-img rounded">
-                {/* SMALL IMG */}
+                <img
+                  src={require(`./images/${car.images[2]}`)}
+                  alt={`Car ${car.model} Image 1`}
+                  className="img-fluid rounded mb-2"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                />
               </div>
             </div>
           </div>
         </div>
         <div className="col list-all-details">
           <div className="col-12 row car-detail d-flex justify-content-between align-items-center">
-            <div className="col-md-8 car-list-name">CAR MODEL</div>
+            <div className="col-md-8 car-list-name">{car.model}</div>
             <div className="col-md-4 car-list-name text-md-center">
-              ₩100,000
+              {car.price}
             </div>
           </div>
           <div className="col-12 row list-car-detail d-flex justify-content-start align-items-center gap-2">
-            <div className="col-md-5 col text-dark">2 Baggages</div>
-            <div className="col-md-5 col text-dark">4 Seats</div>
+            <div className="col-md-5 col text-dark">{car.luggageCapacity}</div>
+            <div className="col-md-5 col text-dark">{car.seats}</div>
           </div>
           <div className="col-12 car-list-detail row d-flex justify-content-between align-items-center">
             <div className="col-md-8 py-2">
-              <div className="col-md-12 list-service">
-                Basic Service............................
-                ........................................
+              <div className="col-md-12 list-service">{car.service}</div>
+              <div className=" col-md-12">
+                {car.withDriver ? "With Driver" : "Without Driver"}
               </div>
-              <div className=" col-md-12">With Driver</div>
             </div>
             <div className="col-md-4 col-12">
-              <div className="btn-book px-4 py-2 text-white text-center rounded">
-                BOOK NOW
-              </div>
+              <Link
+                to={{ pathname: "/checkout", state: { car: car } }}
+                style={{ textDecoration: "none" }}
+              >
+                <div className="btn-book px-4 py-2 text-white text-center rounded">
+                  BOOK NOW
+                </div>
+              </Link>
             </div>
           </div>
         </div>

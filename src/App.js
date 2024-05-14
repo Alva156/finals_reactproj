@@ -10,9 +10,17 @@ import Booking from "./Booking";
 import Destinations from "./Destinations";
 import BookHispage from "./BookHispage";
 import { useState } from "react";
+import CarRent from "./CarRent";
+import Checkoutpage from "./Checkoutpage";
 
 export default function App() {
-  const [registeredUsers, setRegisteredUsers] = useState([]);
+  const [registeredUsers, setRegisteredUsers] = useState([
+    {
+      email: "test@gmail.com",
+      name: "Test",
+      password: "1111",
+    },
+  ]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
@@ -41,6 +49,8 @@ export default function App() {
           <Route path="/booking" component={Booking} />
           <Route path="/history" component={BookHispage} />
           <Route path="/destinations" component={Destinations} />
+          <Route path="/carrent" component={CarRent} />
+          <Route path="/checkout" component={Checkoutpage} />
         </Switch>
       </div>
     </Router>

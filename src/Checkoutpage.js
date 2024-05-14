@@ -4,8 +4,12 @@ import wallpaper from "./materials/wallpaper.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import NavbarNew from "./NavBarNew";
+import { useLocation } from "react-router-dom";
 
 function Checkoutpage() {
+  const location = useLocation();
+  const car = location.state && location.state.car;
+
   return (
     <div>
       <div className="container">
