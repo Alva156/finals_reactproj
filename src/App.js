@@ -9,14 +9,31 @@ import "bootstrap/dist/css/bootstrap.css";
 import Booking from "./Booking";
 import Destinations from "./Destinations";
 import BookHispage from "./BookHispage";
+import { useState } from "react";
 
 export default function App() {
+  const [registeredUsers, setRegisteredUsers] = useState([]);
+
   return (
     <Router>
       <div>
         <Switch>
-          <Route path="/" exact component={Login} />
-          <Route path="/register" component={Register} />
+          <Route path="/" exact>
+            <Login
+              registeredUsers={registeredUsers}
+              setRegisteredUsers={setRegisteredUsers}
+            />
+          </Route>
+          <Route
+            path="/register"
+            render={(props) => (
+              <Register
+                {...props}
+                registeredUsers={registeredUsers}
+                setRegisteredUsers={setRegisteredUsers}
+              />
+            )}
+          />
           <Route path="/home" component={Home} />
           <Route path="/booking" component={Booking} />
           <Route path="/history" component={BookHispage} />

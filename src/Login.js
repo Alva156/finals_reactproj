@@ -3,22 +3,18 @@ import { Link, useHistory } from "react-router-dom";
 import NavbarNew from "./NavBarNew";
 import Form from "react-bootstrap/Form";
 
-function Login({ setIsLoggedIn }) {
+function Login({ registeredUsers }) {
   const history = useHistory();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      setError("Please enter email and password.");
-      return;
-    }
-
-    if (email === "user@example.com" && password === "password") {
+    const user = registeredUsers.find((user) => user.email === email);
+    if (user && user.password === password) {
       history.push("/home");
     } else {
       setError("Invalid email or password.");
