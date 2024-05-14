@@ -410,7 +410,8 @@ body {
 }
 .popup-container h2 {
   color: #717699;
-  font-size: 1.8vw;
+  font-size: large;
+  margin-left: 1.5vw;
 }
 .star {
   color: gold;
@@ -480,7 +481,7 @@ body {
   }
   .popup-container h2 {
     color: #717699;
-    font-size: 2.6vw;
+    font-size: larger;
   }
 
   .rating {
@@ -515,7 +516,7 @@ body {
   }
   .popup-container h2 {
     color: #717699;
-    font-size: 3.5vw;
+    font-size: medium;
   }
   .fixed-size-textarea {
     width: 80%;
