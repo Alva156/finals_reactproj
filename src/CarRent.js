@@ -244,7 +244,7 @@ function CarList({ car }) {
             </div>
             <div className="col-md-4 col-12">
               <Link
-                to={{ pathname: "/checkout", state: { car: car } }}
+                to={{ pathname: "/checkout", state: { booking: car } }}
                 style={{ textDecoration: "none" }}
               >
                 <div className="btn-book px-4 py-2 text-white text-center rounded">
