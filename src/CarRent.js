@@ -244,22 +244,11 @@ function CarList({ car }) {
       <div className="row p-2 rounded d-flex flex-wrap">
         <div className="col-md col-12">
           <div className="row px-2 d-flex flex-wrap">
-            <div className="list-lg-img col-md-8 rounded">
-              <img
-                src={require(`./images/${car.images[0]}`)}
-                alt={`Car ${car.model} Image 1`}
-                className="img-fluid rounded mb-2"
-                style={{ width: "100%", height: "100%", objectFit: "contain" }}
-              />
-            </div>
-            <div className="col-md-4">
-              <div
-                className="col-12 list-sm-img rounded mb-2"
-                style={{ marginBottom: "10px" }}
-              >
+            <div className="col-md-8 col-12">
+              <div className="list-lg-img rounded">
                 <img
-                  src={require(`./images/${car.images[1]}`)}
-                  alt={`Car ${car.model} Image 1`}
+                  src={require(`./images/${car.images[0]}`)}
+                  alt={`Hotel ${car.model} Image 1`}
                   className="img-fluid rounded mb-2"
                   style={{
                     width: "100%",
@@ -268,17 +257,33 @@ function CarList({ car }) {
                   }}
                 />
               </div>
-              <div className="col-12 list-sm-img rounded">
-                <img
-                  src={require(`./images/${car.images[2]}`)}
-                  alt={`Car ${car.model} Image 1`}
-                  className="img-fluid rounded mb-2"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "contain",
-                  }}
-                />
+            </div>
+            <div className="col-md-4 col-12">
+              <div className="row px-2">
+                <div className="col-12 list-sm-img rounded mb-2">
+                  <img
+                    src={require(`./images/${car.images[1]}`)}
+                    alt={`Hotel ${car.model} Image 2`}
+                    className="img-fluid rounded"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </div>
+                <div className="col-12 list-sm-img rounded">
+                  <img
+                    src={require(`./images/${car.images[2]}`)}
+                    alt={`Hotel ${car.model} Image 3`}
+                    className="img-fluid rounded"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
