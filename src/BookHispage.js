@@ -44,7 +44,6 @@ function BookHispage({ bookingDetails }) {
           ) : (
             filteredBookings.map((booking) => (
               <BookingHistory
-                key={booking.id}
                 onAddReviewClick={handleAddReviewClick}
                 onEditClick={handleEditClick}
                 booking={booking}
@@ -101,7 +100,9 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
             <div className="activity2">
               <h1>{booking.model}</h1>
               <div className="additional-details">
-                <p className="date">Date: {booking.date}</p>
+                <p className="date">
+                  Date: {booking.startDate} - {booking.endDate}
+                </p>
                 <p className="pax">Total Pax: {booking.seats}</p>
               </div>
             </div>
