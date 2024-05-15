@@ -17,11 +17,12 @@ import Register from "./Register";
 import SeoulSeeker from "./SeoulSeeker";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import HotelBookingPage from "./HotelBookingPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <HotelBookingPage />
   </React.StrictMode>
 );
 

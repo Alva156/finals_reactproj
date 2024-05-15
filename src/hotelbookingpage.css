@@ -1,0 +1,390 @@
+.hotel-booking-page {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-image: url("https://www.pixel4k.com/wp-content/uploads/2018/09/panorama-skyscraper-seoul-south-korea-4k_1538066265.jpg.webp");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.hotel-name {
+  font-size: 35px;
+  font-weight: bold;
+  color: #545872;
+}
+
+.hotel-location {
+  font-size: 1.2em;
+  color: #545872;
+}
+
+.price-and-book {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-weight: bold;
+  color: #545872;
+}
+
+.price {
+  font-size: 30px;
+}
+
+.book-now {
+  padding: 10px;
+  background-color: #545872;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.book-now:hover {
+  background-color: #717699;
+}
+
+.hotel-images-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+}
+
+.main-image {
+  flex: 1;
+  text-align: center;
+  height: 400px;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+/* Scale effect with a shadow on hover */
+.main-image img:hover,
+.thumbnail-images img:hover {
+  transform: scale(1.05); /* Slightly enlarge the image */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add a shadow */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+.thumbnail-images {
+  flex: 1.5;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 5px;
+  padding: 10px;
+  height: 400px;
+}
+
+.thumbnail-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.hotel-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.section {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  color: #545872;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  margin-bottom: 15px;
+}
+
+.section h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.section p {
+  font-size: 17px;
+}
+
+.reviews-section {
+  margin-top: 20px;
+  height: 200px; /* Fixed height for stability */
+  max-width: 500px; /* Fixed maximum width to keep the container consistent */
+  width: 100%; /* Allows full-width on smaller screens */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space out elements vertically */
+  align-items: center; /* Center the content horizontally */
+  overflow: hidden; /* Prevent overflow that might cause width changes */
+}
+
+.review-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Consistent width */
+}
+
+.average-rating {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.review-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the content within the carousel */
+  padding: 10px;
+  overflow: hidden; /* Prevents resizing when content changes */
+}
+
+.carousel-prev,
+.carousel-next {
+  background: none;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  color: #545872;
+}
+
+.review-content {
+  flex: 1; /* Ensures the content fills the available space */
+  text-align: center; /* Centers the text horizontally */
+  padding: 10px; /* Consistent padding */
+  overflow: hidden; /* Prevents overflow within the content area */
+}
+
+.review-text {
+  font-size: 1.2em; /* Consistent text size */
+}
+
+.review-rating {
+  font-size: 1em; /* Smaller font for rating */
+}
+
+.location-wrapper {
+  display: flex;
+  flex-direction: row; /* Side-by-side layout */
+  gap: 10px; /* Gap between map and other sections */
+  padding: 20px; /* Padding for inner content */
+  background: white; /* White background for container */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.map-container {
+  flex: 2; /* Occupy more space for the map */
+}
+
+.map-container h2 {
+  /* Update heading color */
+  font-family: "Roboto", sans-serif;
+  color: #545872; /* Change to desired color */
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.location-info {
+  flex: 1; /* Occupy less space for the right side */
+  display: flex; /* Flex layout for nested sections */
+  flex-direction: column; /* Vertical stack */
+  gap: 10px; /* Gap between inner sections */
+}
+
+@media (max-width: 768px) {
+  .flex-row {
+    flex-direction: column; /* Adapt to smaller screens */
+  }
+
+  .location-wrapper {
+    flex-direction: column; /* Stack content vertically */
+  }
+
+  .map-container {
+    flex: 1; /* Adjust to smaller space */
+  }
+
+  .location-info {
+    flex: 1; /* Maintain proportion */
+  }
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2em;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.prev-image {
+  position: absolute;
+  font-size: 3em;
+  left: 20px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.next-image {
+  position: absolute; /* Corrected semicolon */
+  font-size: 3em;
+  right: 20px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/*********************/
+.hotel-search {
+  padding: 20px 90px;
+}
+
+.options {
+  background-color: #9295b0;
+  border-radius: 40px;
+  font-size: 12px;
+  padding: 3px 30px;
+}
+
+.inputs {
+  background-color: #e1e1e1;
+  border-radius: 13px;
+  font-size: 12px;
+  padding: 3px 10px;
+}
+
+.input-text {
+  font-size: 15px;
+}
+
+.list-head {
+  background-color: #9295b0;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.list-container {
+  height: auto;
+  background-color: white;
+}
+
+.list-lg-img {
+  background-color: #545872;
+  height: 180px;
+  width: 100%;
+}
+
+.list-sm-img {
+  background-color: #545872;
+  height: 85px;
+  width: 100%;
+}
+
+.list-detail {
+  height: 85px;
+  width: 100%;
+}
+
+.tags {
+  background-color: #9295b0;
+  border-radius: 40px;
+  font-size: 15px;
+  padding: 3px 20px; /* Adjusted padding */
+  font-weight: 500;
+}
+
+.list-name {
+  font-size: 24px; /* Decreased font size */
+  font-weight: 700;
+}
+
+@media (max-width: 1400px) {
+  .list-name {
+    font-size: 20px; /* Further decreased font size for smaller screens */
+  }
+  .list-detail {
+    height: auto; /* Remove fixed height for smaller screens */
+  }
+
+  .tags {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .list-sm-img {
+    margin-top: 5px;
+  }
+}
+
+.list-all-details {
+  color: #9295b0;
+}
+
+.list-loc {
+  font-weight: 600;
+}
