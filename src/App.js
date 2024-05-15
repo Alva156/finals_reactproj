@@ -29,8 +29,6 @@ export default function App() {
     setBookingDetails((prev) => [...prev, booking]);
   };
 
-  console.log(bookingDetails);
-
   return (
     <Router>
       <div>
