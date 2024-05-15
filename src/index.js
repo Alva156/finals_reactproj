@@ -22,7 +22,7 @@ import HotelBookingPage from "./HotelBookingPage";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <HotelBookingPage />
+    <App />
   </React.StrictMode>
 );
 
