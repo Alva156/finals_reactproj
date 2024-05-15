@@ -346,6 +346,10 @@ select:focus {
   margin-top: 20px;
   width: 100%;
 }
+.date-and-details p {
+  font-size: small;
+  margin: 0%;
+}
 .selecteddate,
 .totalpax,
 .totalpayment {
@@ -354,6 +358,9 @@ select:focus {
   background-color: rgb(226, 226, 226);
   border: 1px solid rgb(226, 226, 226);
   border-radius: 5px;
+}
+.totalpax {
+  margin-top: 3vh;
 }
 .selecteddate input[name="date"],
 .totalpax input[name="totalpax"],
@@ -425,6 +432,10 @@ select:focus {
   .bookingsummary-container input[type="date"] {
     font-size: 2.8vw; /* Increase font size for smaller screens */
   }
+  .date-and-details p {
+    font-size: large;
+    margin: 0%;
+  }
 }
 
 /* button */
@@ -438,14 +449,13 @@ select:focus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 4vh;
-  margin-bottom: 8vh;
+  margin: 2vh;
 }
 
 .continue-to-payment-btn h2 {
   color: white;
   margin: 0.5vh 0.5vw;
-  font-size: large;
+  font-size: medium;
 }
 .continue-to-payment-btn {
   /* Existing styles */
@@ -460,7 +470,7 @@ select:focus {
 
 .payment-icon {
   color: white;
-  font-size: 2vw;
+  font-size: 1.8vw;
 }
 .payment-button-container {
   display: flex;
@@ -469,11 +479,11 @@ select:focus {
 }
 @media (max-width: 990px) {
   .continue-to-payment-btn h2 {
-    font-size: 2.8vw;
+    font-size: 1.8vw;
   }
 
   .payment-icon {
-    font-size: 2.8vw;
+    font-size: 1.8vw;
   }
   .custom-dropdown {
     height: 7vh;
@@ -482,17 +492,21 @@ select:focus {
 }
 
 @media (max-width: 510px) {
+  .date-and-details p {
+    font-size: small;
+    margin: 0%;
+  }
   .continue-to-payment-btn {
-    padding: 1vh 2vw;
+    padding: 0.5vh 1.5vw;
   }
 
   .continue-to-payment-btn h2 {
-    font-size: 3.8vw;
+    font-size: 2.8vw;
     margin-right: 0.8vw;
   }
 
   .payment-icon {
-    font-size: 3.8vw;
+    font-size: 2.8vw;
   }
   .bookingsummary-container input[type="number"],
   .bookingsummary-container input[type="date"] {
@@ -504,6 +518,84 @@ select:focus {
   }
   .custom-dropdown {
     height: 6vh;
+    font-size: small;
+  }
+}
+
+/* modallllll */
+.modal-backdrop2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content2 {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+}
+.close-btn1 {
+  float: right;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: red;
+}
+.popup-container1 h1 {
+  color: #545872;
+  font-size: x-large;
+}
+.popup-container1 h2 {
+  color: #717699;
+  font-size: xx-large;
+  margin: 2.8vw;
+}
+.popup-container1 p {
+  color: red;
+  font-size: larger;
+}
+@media (max-width: 990px) {
+  .modal-content2 {
+    width: 50%;
+    padding: 15px;
+  }
+  .popup-container1 h1 {
+    color: #545872;
+    font-size: large;
+  }
+  .popup-container1 h2 {
+    color: #717699;
+    font-size: x-large;
+  }
+  .popup-container1 p {
+    color: red;
+    font-size: medium;
+  }
+}
+@media (max-width: 510px) {
+  .modal-content2 {
+    width: 50%;
+    padding: 15px;
+  }
+  .popup-container1 h1 {
+    color: #545872;
+    font-size: large;
+  }
+  .popup-container1 h2 {
+    color: #717699;
+    font-size: x-large;
+  }
+  .popup-container1 p {
+    color: red;
     font-size: small;
   }
 }
