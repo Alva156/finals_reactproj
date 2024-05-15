@@ -134,6 +134,21 @@ const ReviewsSection = () => {
 };
 
 const AvailableDatesSection = () => {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleQuantityChange = (e) => {
+    setQuantity(parseInt(e.target.value));
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const incrementQuantity = () => {
+    setQuantity(quantity + 1);
+  };
   const dates = [
     { day: "Sun", date: "5 May" },
     { day: "Mon", date: "6 May" },
@@ -179,18 +194,25 @@ const AvailableDatesSection = () => {
               <div className="price">₱1,961</div>
             </div>
             <div className="quantity-adjuster">
-              <label htmlFor="quantity">Quantity:</label>
+              <button onClick={decrementQuantity}>-</button>
               <input
                 type="number"
                 id="quantity"
                 name="quantity"
+                value={quantity}
+                onChange={handleQuantityChange}
                 min="1"
-                defaultValue="1"
+                style={{ appearance: "textfield" }} // Hide arrows in Firefox
+                onWheel={(e) => e.preventDefault()} // Disable scrolling in Firefox
               />
+              <button onClick={incrementQuantity}>+</button>
             </div>
           </div>
           <div className="right-section">
-            <div className="total-price">Total Price: ₱1,961</div>
+            <div className="price-info">
+              <div className="price-heading">Total Price</div>
+              <div className="price">₱1,961</div>
+            </div>
             <button className="book-now">BOOK NOW</button>
           </div>
         </div>
@@ -275,8 +297,8 @@ const ActivityBookingPage = () => {
             <h2>Location</h2>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3162.919514482132!2d126.97725900000002!3d37.55696!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca25f93a51a53%3A0xbfd0440f0842fd34!2sK-POP%20HOTEL%20Seoul%20Tower!5e0!3m2!1sen!2sus!4v1684459468881!5m2!1sen!2sus"
-              width="600"
-              height="450"
+              width="1365"
+              height="300"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
