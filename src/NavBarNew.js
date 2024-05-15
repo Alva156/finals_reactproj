@@ -16,16 +16,18 @@ function NavbarNew({ isActive, isLoggedIn, setIsLoggedIn }) {
   return (
     <Navbar collapseOnSelect expand="lg" className="navbar-fix">
       <Container>
-        <Navbar.Brand href="#home">
-          <div
-            className="seoul-seeker-logo d-flex align-items-center text-white"
-            style={{ fontWeight: "800" }}
-          >
-            <PiAirplaneTiltFill
-              style={{ fontSize: "35px", marginRight: "5px", color: "white" }}
-            />
-            SeoulSeeker
-          </div>
+        <Navbar.Brand>
+          <Link to="/seoulseeker" style={{ textDecoration: "none" }}>
+            <div
+              className="seoul-seeker-logo d-flex align-items-center text-white"
+              style={{ fontWeight: "800" }}
+            >
+              <PiAirplaneTiltFill
+                style={{ fontSize: "35px", marginRight: "5px", color: "white" }}
+              />
+              SeoulSeeker
+            </div>
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

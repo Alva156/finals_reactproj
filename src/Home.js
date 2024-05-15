@@ -4,6 +4,7 @@ import { Row, Col, Carousel } from "react-bootstrap";
 import "./styles.css";
 import { IoIosArrowDropright } from "react-icons/io";
 import NavbarNew from "./NavBarNew";
+import { Link } from "react-router-dom";
 
 function Home() {
   const contentProps = {
@@ -69,9 +70,11 @@ function HomeContent({ title1, title2, description, buttonText }) {
       <p className="home-title1 text-white">{title1}</p>
       <p className="home-title2">{title2}</p>
       <p className="home-description">{description}</p>
-      <div className="btn home-button d-flex justify-content-center align-items-center px-2 gap-4">
-        {buttonText} <IoIosArrowDropright style={{ fontSize: "25px" }} />
-      </div>
+      <Link to="/booking" style={{ textDecoration: "none" }}>
+        <div className="btn home-button d-flex justify-content-center align-items-center px-2 gap-4">
+          {buttonText} <IoIosArrowDropright style={{ fontSize: "25px" }} />
+        </div>
+      </Link>
     </div>
   );
 }

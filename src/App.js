@@ -12,6 +12,7 @@ import BookHispage from "./BookHispage";
 import { useState } from "react";
 import CarRent from "./CarRent";
 import Checkoutpage from "./Checkoutpage";
+import Hotel from "./Hotel";
 
 export default function App() {
   const [registeredUsers, setRegisteredUsers] = useState([
@@ -22,6 +23,12 @@ export default function App() {
     },
   ]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [bookingDetails, setBookingDetails] = useState([]);
+
+  const handleBooking = (booking) => {
+    setBookingDetails((prev) => [...prev, booking]);
+    console.log(bookingDetails);
+  };
 
   return (
     <Router>
@@ -47,10 +54,21 @@ export default function App() {
           />
           <Route path="/home" component={Home} />
           <Route path="/booking" component={Booking} />
-          <Route path="/history" component={BookHispage} />
+          <Route
+            path="/history"
+            render={() => <BookHispage bookingDetails={bookingDetails} />}
+          />
+
           <Route path="/destinations" component={Destinations} />
           <Route path="/carrent" component={CarRent} />
-          <Route path="/checkout" component={Checkoutpage} />
+          <Route
+            path="/checkout"
+            render={(props) => (
+              <Checkoutpage {...props} handleBooking={handleBooking} />
+            )}
+          />
+          <Route path="/hotels" component={Hotel} />
+          <Route path="/seoulseeker" component={SeoulSeeker} />
         </Switch>
       </div>
     </Router>

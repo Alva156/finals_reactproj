@@ -7,6 +7,7 @@ import React, { useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import NavbarNew from "./NavBarNew";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const dummyCars = [
   {
@@ -14,7 +15,7 @@ const dummyCars = [
     model: "Toyota Corolla",
     price: "₩100,000",
     luggageCapacity: "2 Baggages",
-    seats: "4 Seats",
+    seats: "4",
     service: "Basic Service",
     withDriver: true,
     images: ["corolla1.png", "corolla2.png", "corolla3.png"],
@@ -24,7 +25,7 @@ const dummyCars = [
     model: "Honda Civic",
     price: "₩120,000",
     luggageCapacity: "3 Baggages",
-    seats: "5 Seats",
+    seats: "5",
     service: "Premium Service",
     withDriver: false,
     images: ["civic1.png", "civic2.png", "civic3.png"],
@@ -34,7 +35,7 @@ const dummyCars = [
     model: "Hyundai Sonata",
     price: "₩110,000",
     luggageCapacity: "2 Baggages",
-    seats: "5 Seats",
+    seats: "5",
     service: "Standard Service",
     withDriver: true,
     images: ["sonata1.png", "sonata2.png", "sonata3.jpg"],
@@ -42,6 +43,14 @@ const dummyCars = [
 ];
 
 function CarRent() {
+  const [passengerCapacity, setPassengerCapacity] = useState(null);
+  const handlePassengerCapacityChange = (capacity) => {
+    setPassengerCapacity(capacity);
+  };
+  const filteredCars = passengerCapacity
+    ? dummyCars.filter((car) => parseInt(car.seats) >= passengerCapacity)
+    : dummyCars;
+
   return (
     <div
       style={{
@@ -52,8 +61,11 @@ function CarRent() {
     >
       <div className="hotel-search">
         <Search />
-        <Filter />
-        {dummyCars.map((car) => (
+        <Filter
+          passengerCapacity={passengerCapacity}
+          handlePassengerCapacityChange={handlePassengerCapacityChange}
+        />
+        {filteredCars.map((car) => (
           <CarList key={car.id} car={car} />
         ))}
       </div>
@@ -140,7 +152,7 @@ function Search() {
   );
 }
 
-function Filter() {
+function Filter({ passengerCapacity, handlePassengerCapacityChange }) {
   return (
     <div>
       <div className="filter-head d-flex flex-wrap p-2 my-4 px-4 justify-content-start align-items-center gap-2">
@@ -152,12 +164,14 @@ function Filter() {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">1 pax</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">2 pax</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">3 pax</Dropdown.Item>
-              <Dropdown.Item href="#/action-1">4 pax</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">5 pax</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">6 pax</Dropdown.Item>
+              {[1, 2, 3, 4, 5, 6].map((capacity) => (
+                <Dropdown.Item
+                  key={capacity}
+                  onClick={() => handlePassengerCapacityChange(capacity)}
+                >
+                  {capacity} pax
+                </Dropdown.Item>
+              ))}
             </Dropdown.Menu>
           </Dropdown>
         </div>
@@ -168,9 +182,9 @@ function Filter() {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Type 1</Dropdown.Item>
-              <Dropdown.Item href="#/action-1">Type 2</Dropdown.Item>
-              <Dropdown.Item href="#/action-1">Type 3</Dropdown.Item>
+              <Dropdown.Item>Type 1</Dropdown.Item>
+              <Dropdown.Item>Type 2</Dropdown.Item>
+              <Dropdown.Item>Type 3</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>
@@ -233,7 +247,7 @@ function CarList({ car }) {
           </div>
           <div className="col-12 row list-car-detail d-flex justify-content-start align-items-center gap-2">
             <div className="col-md-5 col text-dark">{car.luggageCapacity}</div>
-            <div className="col-md-5 col text-dark">{car.seats}</div>
+            <div className="col-md-5 col text-dark">{car.seats} Seats</div>
           </div>
           <div className="col-12 car-list-detail row d-flex justify-content-between align-items-center">
             <div className="col-md-8 py-2">

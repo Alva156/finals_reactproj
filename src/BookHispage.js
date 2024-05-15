@@ -13,7 +13,7 @@ import NavbarNew from "./NavBarNew";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { PiAirplaneTiltFill } from "react-icons/pi";
 
-function BookHispage() {
+function BookHispage({ bookingDetails }) {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
 
@@ -42,7 +42,7 @@ function BookHispage() {
   );
 }
 
-function BookingHistory({ onAddReviewClick, onEditClick }) {
+function BookingHistory({ bookingDetails, onAddReviewClick, onEditClick }) {
   return (
     <div className="bookinghistory">
       <div className="bookingsummary-container2">

@@ -4,6 +4,7 @@ import "./styles.css";
 import NavbarNew from "./NavBarNew";
 import { IoIosArrowDropright } from "react-icons/io";
 import { BiColor } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 function SeoulSeeker() {
   return (
@@ -35,9 +36,11 @@ function SeoulSeekerMain() {
           Uncover Adventure
         </div>
         <div className="col d-flex justify-content-center text-center mt-4">
-          <div className="seoulseeker-explore-text d-flex justify-content-between align-items-center px-4 py-2 text-center">
-            EXPLORE <IoIosArrowDropright style={{ fontSize: "40px" }} />
-          </div>
+          <Link to="/home" style={{ textDecoration: "none", color: "white" }}>
+            <div className="seoulseeker-explore-text d-flex justify-content-between align-items-center px-4 py-2 text-center">
+              EXPLORE <IoIosArrowDropright style={{ fontSize: "40px" }} />
+            </div>
+          </Link>
         </div>
       </div>
     </div>

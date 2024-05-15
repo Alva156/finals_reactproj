@@ -4,11 +4,19 @@ import wallpaper from "./materials/wallpaper.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import NavbarNew from "./NavBarNew";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
+import { useState } from "react";
 
-function Checkoutpage() {
+function Checkoutpage({ handleBooking }) {
   const location = useLocation();
+  const history = useHistory();
   const booking = location.state && location.state.booking;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleBooking(booking);
+    history.push("/history");
+  };
 
   return (
     <div>
@@ -23,7 +31,7 @@ function Checkoutpage() {
         </div>
       </div>
       <div className="payment-button-container">
-        <ContinueToPaymentButton />
+        <ContinueToPaymentButton handleSubmit={handleSubmit} />
       </div>
     </div>
   );
@@ -144,7 +152,7 @@ function Summary({ booking }) {
 }
 
 function BookingSummary({ booking }) {
-  const details = `${booking.luggageCapacity}, ${booking.seats}, ${
+  const details = `${booking.luggageCapacity}, ${booking.seats} Seats, ${
     booking.service
   }, ${booking.withDriver ? "With Driver" : "Without Driver"}`;
   return (
@@ -187,13 +195,15 @@ function BookingSummary({ booking }) {
     </div>
   );
 }
-function ContinueToPaymentButton() {
+function ContinueToPaymentButton({ handleSubmit }) {
   return (
     <center>
-      <button className="continue-to-payment-btn">
-        <h2>Continue to Payment</h2>
-        <FontAwesomeIcon icon={faArrowCircleRight} className="payment-icon" />
-      </button>
+      <Link to="/history">
+        <button className="continue-to-payment-btn" onClick={handleSubmit}>
+          <h2>Submit</h2>
+          <FontAwesomeIcon icon={faArrowCircleRight} className="payment-icon" />
+        </button>
+      </Link>
     </center>
   );
 }

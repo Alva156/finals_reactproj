@@ -168,10 +168,15 @@ function Search() {
         <Card className="mb-2">
           <Card.Body>
             <Card.Title className="px-3">
-              <span style={{ marginRight: "28px" }}>
-                <BiSolidBuildingHouse style={{ fontSize: "25px" }} />
-                &nbsp;HOTELS
-              </span>
+              <Link
+                to="/hotels"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <span style={{ marginRight: "28px" }}>
+                  <BiSolidBuildingHouse style={{ fontSize: "25px" }} />
+                  &nbsp;HOTELS
+                </span>
+              </Link>
               <Link
                 to="/carrent"
                 style={{ textDecoration: "none", color: "black" }}
