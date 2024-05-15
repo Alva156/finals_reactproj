@@ -103,7 +103,7 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
                 <p className="date">
                   Date: {booking.startDate} - {booking.endDate}
                 </p>
-                {/* <p className="pax">Total Pax: {booking.seats}</p> */}
+                <p className="pax">Total Pax: {booking.seats}</p>
               </div>
             </div>
             <div className="shortdetails2">
