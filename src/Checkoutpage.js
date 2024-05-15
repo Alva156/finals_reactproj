@@ -261,7 +261,9 @@ function Checkoutpage({ handleBooking }) {
         <div className="bookingsummary-container">
           <h1>Booking Summary</h1>
           <div className="activity">
-            <p>{booking.model}</p>
+            <p>
+              {booking.model} ({booking.bookingType})
+            </p>
           </div>
           <div className="top-section">
             <div className="image">

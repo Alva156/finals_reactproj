@@ -17,6 +17,7 @@ import SupportFaqs from "./SupportFaqs";
 import HotelBookingPage from "./HotelBookingPage";
 import ActivityBookingPage from "./ActivityBookingPage";
 import Activities from "./Activities";
+import Airport from "./Airport";
 
 const dummyHotels = [
   {
@@ -389,6 +390,7 @@ export default function App() {
           <Route path="/bookingpage" component={HotelBookingPage} />
           <Route path="/activities" component={Activities} />
           <Route path="/activitybooking" component={ActivityBookingPage} />
+          <Route path="/airport" component={Airport} />
         </Switch>
       </div>
     </Router>
