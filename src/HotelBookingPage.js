@@ -136,20 +136,17 @@ const Lightbox = ({ isOpen, onClose, currentImageIndex, images }) => {
   );
 };
 
-const reviews = [
-  { rating: 5, text: "Fantastic hotel with great service!" },
-  { rating: 4, text: "Very comfortable, but could be cleaner." },
-  { rating: 3, text: "Average stay, nothing extraordinary." },
-  { rating: 5, text: "Absolutely loved it! Highly recommend." },
-  { rating: 2, text: "Not a great experience, needs improvement." },
-];
+// const reviews = [
+//   { rating: 5, text: "Fantastic hotel with great service!" },
+//   { rating: 4, text: "Very comfortable, but could be cleaner." },
+//   { rating: 3, text: "Average stay, nothing extraordinary." },
+//   { rating: 5, text: "Absolutely loved it! Highly recommend." },
+//   { rating: 2, text: "Not a great experience, needs improvement." },
+// ];
 
-const ReviewsSection = ({ onAddReviewClick }) => {
-  const averageRating = (
-    reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length
-  ).toFixed(1);
+const ReviewsSection = ({ reviews, booking }) => {
+  const filteredReviews = reviews.filter((review) => review.id === booking.id);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
-
   const handleNext = () => {
     setCurrentReviewIndex((currentReviewIndex + 1) % reviews.length);
   };
@@ -160,58 +157,73 @@ const ReviewsSection = ({ onAddReviewClick }) => {
     );
   };
 
-  const currentReview = reviews[currentReviewIndex];
-
   return (
     <div className="section reviews-section">
-      <div className="review-summary">
-        <div className="average-rating">⭐ {averageRating}</div>
-        <div className="review-count">{reviews.length} reviews</div>
-      </div>
+      {filteredReviews.length > 0 ? ( // Conditionally render review-content section
+        <div>
+          <div className="review-summary">
+            <div className="average-rating">
+              ⭐{" "}
+              {(
+                filteredReviews.reduce(
+                  (acc, review) => acc + review.rating,
+                  0
+                ) / filteredReviews.length
+              ).toFixed(1)}
+            </div>
+            <div className="review-count">
+              {reviews.length} {reviews.length === 1 ? "review" : "reviews"}
+            </div>
+          </div>
 
-      <div className="review-carousel">
-        <button className="carousel-prev" onClick={handlePrev}>
-          ‹
-        </button>
-
-        <div className="review-content">
-          <p className="review-text">"{currentReview.text}"</p>
-          <p className="review-rating">Rating: ⭐ {currentReview.rating}</p>
+          <div className="review-carousel">
+            <button className="carousel-prev" onClick={handlePrev}>
+              ‹
+            </button>
+            <div className="review-content">
+              <p className="review-text">
+                "{filteredReviews[currentReviewIndex].text}"
+              </p>
+              <p className="review-rating">
+                Rating: ⭐ {filteredReviews[currentReviewIndex].rating}
+              </p>
+            </div>
+            <button className="carousel-next" onClick={handleNext}>
+              ›
+            </button>
+          </div>
         </div>
-
-        <button className="carousel-next" onClick={handleNext}>
-          ›
-        </button>
-      </div>
-      <AddReview onAddReviewClick={onAddReviewClick} />
+      ) : null}
     </div>
   );
 };
 
-const HotelBookingPage = () => {
+const HotelBookingPage = ({ reviews, setReviews }) => {
   const location = useLocation();
   const booking = location.state && location.state.booking;
   const details = booking.accomodation;
   const images = booking.images;
   const [currentImageIndex, setCurrentImageIndex] = useState(null);
-  const [address, setAddress] = useState("");
   const [coordinates, setCoordinates] = useState(null);
   const [error, setError] = useState(null);
   const mapRef = useRef(null);
-  const [reviews, setReviews] = useState([]);
-  const [newReview, setNewReview] = useState({ rating: 0, text: "" });
+  const [newReview, setNewReview] = useState({ id: 0, rating: 0, text: "" });
   const [showModal, setShowModal] = useState(false);
 
   const onAddReviewClick = () => {
     setShowModal(true);
   };
 
-  const addReview = () => {
+  const addReview = (newReview) => {
     if (newReview.rating > 0 && newReview.text.trim() !== "") {
       setReviews([...reviews, newReview]);
       setNewReview({ rating: 0, text: "" });
+      setShowModal(false);
+      console.log("Hello");
     }
   };
+
+  console.log(reviews);
 
   const handleGeocode = async () => {
     try {
@@ -325,11 +337,17 @@ const HotelBookingPage = () => {
           </div>
           <div className="section">
             <h2>Reviews</h2>
-            <ReviewsSection onAddReviewClick={onAddReviewClick} />
+            <ReviewsSection
+              reviews={reviews}
+              booking={booking}
+              onAddReviewClick={onAddReviewClick}
+            />
+            <AddReview onAddReviewClick={onAddReviewClick} />
             <Modal
               showModal={showModal}
               setShowModal={setShowModal}
               booking={booking}
+              addReview={addReview}
             />
           </div>
         </div>
@@ -370,8 +388,24 @@ function AddReview({ onAddReviewClick }) {
   );
 }
 
-const Modal = ({ showModal, setShowModal, booking }) => {
+const Modal = ({ showModal, setShowModal, booking, addReview }) => {
   const [rating, setRating] = useState(0);
+  const [text, setText] = useState("");
+
+  const handleRatingChange = (index) => {
+    setRating(index);
+  };
+
+  const handleTextChange = (event) => {
+    setText(event.target.value);
+  };
+
+  const handleSubmitReview = () => {
+    addReview({ id: booking.id, rating, text });
+    setRating(0);
+    setText("");
+    setShowModal(false);
+  };
 
   if (!showModal) return null;
 
@@ -389,24 +423,29 @@ const Modal = ({ showModal, setShowModal, booking }) => {
               <FontAwesomeIcon
                 key={index}
                 icon={index <= rating ? fullStar : emptyStar}
-                onClick={() => setRating(index)}
+                onClick={() => handleRatingChange(index)}
                 className="star"
               />
             ))}
           </div>
           <p>Say something about your experience....</p>
-          <textarea placeholder="" className="fixed-size-textarea"></textarea>
-          <AddReview2 />
+          <textarea
+            placeholder=""
+            className="fixed-size-textarea"
+            value={text}
+            onChange={handleTextChange}
+          ></textarea>
+          <AddReview2 handleSubmitReview={handleSubmitReview} />
         </div>
       </div>
     </div>
   );
 };
 
-function AddReview2() {
+function AddReview2({ handleSubmitReview }) {
   return (
     <center>
-      <button className="addrreview2-btn">
+      <button className="addrreview2-btn" onClick={handleSubmitReview}>
         <h2>Add Review</h2>
         <FontAwesomeIcon
           icon={faArrowCircleRight}

@@ -258,7 +258,7 @@ function HotelList({ hotel }) {
         <div className="col list-all-details">
           <div className="col-12 row list-detail d-flex justify-content-center align-items-center">
             <div className="col-md-9 list-name">{hotel.model}</div>
-            <div className="col-md-3 h6">({hotel.rating} stars)</div>
+            <div className="col-md-3 h6"></div>
           </div>
           <div className="col-12 list-detail">
             <div className="col-12 py-3 list-loc">

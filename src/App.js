@@ -336,6 +336,7 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [bookingDetails, setBookingDetails] = useState([]);
   const [hotels, setHotels] = useState(dummyHotels);
+  const [reviews, setReviews] = useState([]);
 
   const handleBooking = (booking) => {
     setBookingDetails((prev) => [...prev, booking]);
@@ -399,7 +400,16 @@ export default function App() {
           />
           <Route path="/" exact component={SeoulSeeker} />
           <Route path="/support" component={SupportFaqs} />
-          <Route path="/bookingpage" component={HotelBookingPage} />
+          <Route
+            path="/bookingpage"
+            render={(props) => (
+              <HotelBookingPage
+                {...props}
+                reviews={reviews}
+                setReviews={setReviews}
+              />
+            )}
+          ></Route>
           <Route path="/activities" component={Activities} />
           <Route path="/activitybooking" component={ActivityBookingPage} />
           <Route path="/airport" component={Airport} />
