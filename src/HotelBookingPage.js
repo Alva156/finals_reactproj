@@ -7,6 +7,10 @@ import { IoPerson } from "react-icons/io5";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
+import { faStar as fullStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
 
 function Search() {
   return (
@@ -140,11 +144,10 @@ const reviews = [
   { rating: 2, text: "Not a great experience, needs improvement." },
 ];
 
-const averageRating = (
-  reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length
-).toFixed(1);
-
-const ReviewsSection = () => {
+const ReviewsSection = ({ onAddReviewClick }) => {
+  const averageRating = (
+    reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length
+  ).toFixed(1);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
 
   const handleNext = () => {
@@ -180,6 +183,7 @@ const ReviewsSection = () => {
           ›
         </button>
       </div>
+      <AddReview onAddReviewClick={onAddReviewClick} />
     </div>
   );
 };
@@ -194,6 +198,20 @@ const HotelBookingPage = () => {
   const [coordinates, setCoordinates] = useState(null);
   const [error, setError] = useState(null);
   const mapRef = useRef(null);
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState({ rating: 0, text: "" });
+  const [showModal, setShowModal] = useState(false);
+
+  const onAddReviewClick = () => {
+    setShowModal(true);
+  };
+
+  const addReview = () => {
+    if (newReview.rating > 0 && newReview.text.trim() !== "") {
+      setReviews([...reviews, newReview]);
+      setNewReview({ rating: 0, text: "" });
+    }
+  };
 
   const handleGeocode = async () => {
     try {
@@ -307,7 +325,12 @@ const HotelBookingPage = () => {
           </div>
           <div className="section">
             <h2>Reviews</h2>
-            <ReviewsSection />
+            <ReviewsSection onAddReviewClick={onAddReviewClick} />
+            <Modal
+              showModal={showModal}
+              setShowModal={setShowModal}
+              booking={booking}
+            />
           </div>
         </div>
 
@@ -336,5 +359,62 @@ const HotelBookingPage = () => {
     </div>
   );
 };
+
+function AddReview({ onAddReviewClick }) {
+  return (
+    <center>
+      <button className="addreview-btn" onClick={onAddReviewClick}>
+        <h2>Add Review</h2>
+      </button>
+    </center>
+  );
+}
+
+const Modal = ({ showModal, setShowModal, booking }) => {
+  const [rating, setRating] = useState(0);
+
+  if (!showModal) return null;
+
+  return (
+    <div className="modal-backdrop1" onClick={() => setShowModal(false)}>
+      <div className="modal-content1" onClick={(e) => e.stopPropagation()}>
+        <button onClick={() => setShowModal(false)} className="close-btn">
+          X
+        </button>
+        <div className="popup-container">
+          <h1>Write a Review</h1>
+          <h2>{booking.model}</h2>
+          <div className="rating">
+            {[1, 2, 3, 4, 5].map((index) => (
+              <FontAwesomeIcon
+                key={index}
+                icon={index <= rating ? fullStar : emptyStar}
+                onClick={() => setRating(index)}
+                className="star"
+              />
+            ))}
+          </div>
+          <p>Say something about your experience....</p>
+          <textarea placeholder="" className="fixed-size-textarea"></textarea>
+          <AddReview2 />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+function AddReview2() {
+  return (
+    <center>
+      <button className="addrreview2-btn">
+        <h2>Add Review</h2>
+        <FontAwesomeIcon
+          icon={faArrowCircleRight}
+          className="addreview2-icon"
+        />
+      </button>
+    </center>
+  );
+}
 
 export default HotelBookingPage;
