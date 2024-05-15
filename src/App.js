@@ -15,6 +15,7 @@ import Checkoutpage from "./Checkoutpage";
 import Hotel from "./Hotel";
 import SupportFaqs from "./SupportFaqs";
 import HotelBookingPage from "./HotelBookingPage";
+import ActivityBookingPage from "./ActivityBookingPage";
 
 export default function App() {
   const [registeredUsers, setRegisteredUsers] = useState([
@@ -74,6 +75,7 @@ export default function App() {
           <Route path="/" exact component={SeoulSeeker} />
           <Route path="/support" component={SupportFaqs} />
           <Route path="/bookingpage" component={HotelBookingPage} />
+          <Route path="/activities" component={ActivityBookingPage} />
         </Switch>
       </div>
     </Router>

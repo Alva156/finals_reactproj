@@ -190,10 +190,15 @@ function Search() {
                 <FaBus style={{ fontSize: "25px" }} />
                 &nbsp;AIRPORT TRANSFER
               </span>
-              <span style={{ marginRight: "28px" }}>
-                <TbChecklist style={{ fontSize: "25px" }} />
-                &nbsp;ACTIVITIES
-              </span>
+              <Link
+                to="/activities"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <span style={{ marginRight: "28px" }}>
+                  <TbChecklist style={{ fontSize: "25px" }} />
+                  &nbsp;ACTIVITIES
+                </span>
+              </Link>
             </Card.Title>
 
             <hr className="m-0 mx-3"></hr>

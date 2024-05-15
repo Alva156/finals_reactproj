@@ -327,6 +327,8 @@
 }
 
 .date-square {
+  flex-shrink: 0; /* Prevents shrinking of squares */
+  width: 100px; /* Adjust as needed */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -336,6 +338,7 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   cursor: pointer;
+  background-color: #e1e1e1; /* Added background color */
 }
 
 .day {
