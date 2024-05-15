@@ -48,7 +48,7 @@ const dummyCars = [
   },
 ];
 
-function CarRent() {
+function Activities() {
   const [passengerCapacity, setPassengerCapacity] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [carType, setCarType] = useState("");
@@ -304,8 +304,8 @@ function CarList({ car }) {
             <div className="col-md-4 col-12">
               <Link
                 to={{
-                  pathname: "/checkout",
-                  state: { booking: car, details: details },
+                  pathname: "/activitybooking",
+                  // state: { booking: car, details: details },
                 }}
                 style={{ textDecoration: "none" }}
               >
@@ -321,4 +321,4 @@ function CarList({ car }) {
   );
 }
 
-export default CarRent;
+export default Activities;

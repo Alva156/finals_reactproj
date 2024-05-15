@@ -31,6 +31,7 @@ const dummyHotels = [
       "lotte6.jpg",
       "lotte7.jpg",
     ],
+    seats: "5",
   },
   {
     bookingType: "Hotel",
@@ -54,6 +55,7 @@ const dummyHotels = [
       "lotte6.jpg",
       "lotte7.jpg",
     ],
+    seats: "5",
   },
   {
     bookingType: "Hotel",
@@ -77,6 +79,7 @@ const dummyHotels = [
       "lotte6.jpg",
       "lotte7.jpg",
     ],
+    seats: "5",
   },
   {
     bookingType: "Hotel",
@@ -100,6 +103,7 @@ const dummyHotels = [
       "lotte6.jpg",
       "lotte7.jpg",
     ],
+    seats: "5",
   },
   {
     bookingType: "Hotel",
@@ -123,12 +127,14 @@ const dummyHotels = [
       "lotte6.jpg",
       "lotte7.jpg",
     ],
+    seats: "5",
   },
 ];
 
 function Hotel() {
   const [hotels, setHotels] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [guests, setGuests] = useState("");
   // useEffect(() => {
   //   const fetchHotels = async () => {
   //     try {
@@ -186,9 +192,16 @@ function Hotel() {
   //   fetchHotels();
   // }, []); // Empty dependency array to run effect only once on mount
 
-  const filteredHotels = dummyHotels.filter((hotel) =>
-    hotel.model.toLowerCase().startsWith(searchQuery.toLowerCase())
+  const filteredHotels = dummyHotels.filter(
+    (hotel) =>
+      hotel.model.toLowerCase().startsWith(searchQuery.toLowerCase()) &&
+      (guests === "" || parseInt(guests) <= parseInt(hotel.seats))
   );
+
+  const handleGuestsChange = (event) => {
+    setGuests(event.target.value);
+  };
+
   return (
     <div
       style={{
@@ -198,7 +211,10 @@ function Hotel() {
       }}
     >
       <div className="hotel-search">
-        <Search setSearchQuery={setSearchQuery} />
+        <Search
+          setSearchQuery={setSearchQuery}
+          handleGuestsChange={handleGuestsChange}
+        />
         <HotelHead />
         {filteredHotels.map((hotel) => (
           <HotelList hotel={hotel} />
@@ -209,7 +225,7 @@ function Hotel() {
   );
 }
 
-function Search({ setSearchQuery }) {
+function Search({ setSearchQuery, handleGuestsChange }) {
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -225,15 +241,15 @@ function Search({ setSearchQuery }) {
           <hr className="m-0 mx-3"></hr>
           <Card.Body className="col">
             <div>
-              <div className="d-flex flex-col flex-wrap gap-2 h6 text-white">
+              {/* <div className="d-flex flex-col flex-wrap gap-2 h6 text-white">
                 <div className="options py-2 px-4">HOTEL</div>
                 <div className="options py-2 px-4">VILLA</div>
                 <div className="options py-2 px-4">APARTMENT</div>
-              </div>
+              </div> */}
               <div className="container-fluid m-0 ">
                 <div className="row gap-4 d-flex flex-wrap">
                   <div className="inputs px-4 py-1 col-md-3 ">
-                    <div>City, destination, or hotel name</div>
+                    <div>Hotel name</div>
                     <div>
                       <input
                         className="input-text form-control-plaintext"
@@ -243,7 +259,7 @@ function Search({ setSearchQuery }) {
                       />
                     </div>
                   </div>
-                  <div className="inputs px-4 py-1 d-flex flex-column flex-md-row gap-4 col-md-2">
+                  {/* <div className="inputs px-4 py-1 d-flex flex-column flex-md-row gap-4 col-md-2">
                     <div>
                       <div className=" border-bottom-2 border-dark">
                         Check in
@@ -270,9 +286,9 @@ function Search({ setSearchQuery }) {
                         />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="inputs px-4 py-1 col-md-3">
-                    <div>Guest and Rooms</div>
+                    <div>Max Guests</div>
                     <div class="row">
                       <div class="col-2 d-flex justify-content-center align-items-center">
                         <IoPerson style={{ fontSize: "20px" }} />
@@ -281,7 +297,8 @@ function Search({ setSearchQuery }) {
                         <input
                           className="input-text form-control-plaintext fs-smaller"
                           type="text"
-                          placeholder="1 Adult(s), 0 Child, 1 Room"
+                          placeholder="Enter number of guests"
+                          onChange={handleGuestsChange}
                         />
                       </div>
                     </div>
