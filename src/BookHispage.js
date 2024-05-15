@@ -12,6 +12,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavbarNew from "./NavBarNew";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { PiAirplaneTiltFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 function BookHispage({ bookingDetails, hotels }) {
   const [showModal, setShowModal] = useState(false);
@@ -129,7 +130,7 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
             </div>
             <div className="buttons">
               <AddReview onAddReviewClick={onAddReviewClick} />
-              <ViewDetails onEditClick={onEditClick} />
+              <ViewDetails onEditClick={onEditClick} booking={booking} />
             </div>
           </div>
         </div>
@@ -165,12 +166,14 @@ function AddReview({ onAddReviewClick }) {
     </center>
   );
 }
-function ViewDetails({ onEditClick }) {
+function ViewDetails({ onEditClick, booking }) {
   return (
     <center>
-      <button className="viewdetails-btn" onClick={onEditClick}>
-        <h2>Edit Transaction</h2>
-      </button>
+      <Link to={{ pathname: "/checkoutedit", state: { booking: booking } }}>
+        <button className="viewdetails-btn">
+          <h2>Edit Transaction</h2>
+        </button>
+      </Link>
     </center>
   );
 }

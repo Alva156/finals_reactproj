@@ -18,6 +18,7 @@ import HotelBookingPage from "./HotelBookingPage";
 import ActivityBookingPage from "./ActivityBookingPage";
 import Activities from "./Activities";
 import Airport from "./Airport";
+import Checkoutedit from "./Checkoutedit";
 
 const dummyHotels = [
   {
@@ -340,6 +341,17 @@ export default function App() {
     setBookingDetails((prev) => [...prev, booking]);
   };
 
+  const handleUpdateBooking = (updatedBooking) => {
+    const index = bookingDetails.findIndex(
+      (booking) => booking.model === updatedBooking.model
+    );
+    if (index !== -1) {
+      const updatedBookingDetails = [...bookingDetails];
+      updatedBookingDetails[index] = updatedBooking;
+      setBookingDetails(updatedBookingDetails);
+    }
+  };
+
   return (
     <Router>
       <div>
@@ -391,6 +403,15 @@ export default function App() {
           <Route path="/activities" component={Activities} />
           <Route path="/activitybooking" component={ActivityBookingPage} />
           <Route path="/airport" component={Airport} />
+          <Route
+            path="/checkoutedit"
+            render={(props) => (
+              <Checkoutedit
+                {...props}
+                handleUpdateBooking={handleUpdateBooking}
+              />
+            )}
+          />
         </Switch>
       </div>
     </Router>

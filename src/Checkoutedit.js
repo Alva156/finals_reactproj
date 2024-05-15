@@ -4,27 +4,134 @@ import wallpaper from "./materials/wallpaper.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import NavbarNew from "./NavBarNew";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
-function Checkoutedit() {
+function Checkoutedit({ handleUpdateBooking }) {
+  const location = useLocation();
+  const booking = location.state && location.state.booking;
+
+  const [selectedStartDate, setSelectedStartDate] = useState(booking.startDate);
+  const [selectedEndDate, setSelectedEndDate] = useState(booking.endDate);
+  const [error, setError] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  const handleStartDateChange = (e) => {
+    setSelectedStartDate(e.target.value);
+    setError("");
+  };
+
+  const handleEndDateChange = (e) => {
+    setSelectedEndDate(e.target.value);
+    setError("");
+  };
+
+  const handleSaveChanges = (e) => {
+    e.preventDefault();
+    const startDate = new Date(selectedStartDate);
+    const endDate = new Date(selectedEndDate);
+
+    if (!selectedStartDate || !selectedEndDate) {
+      setError("Please select a date.");
+      return;
+    }
+
+    if (startDate.getTime() > endDate.getTime()) {
+      setError("Start date cannot be greater than end date.");
+      return;
+    }
+
+    const updatedBooking = {
+      ...booking,
+      startDate: selectedStartDate,
+      endDate: selectedEndDate,
+    };
+    handleUpdateBooking(updatedBooking);
+    setShowModal(true);
+  };
   return (
     <div>
       <div className="container">
         <div className="left-side">
-          <ContactDetailsForm />
-          <Location />
+          <ContactDetailsForm booking={booking} />
           <Summary />
         </div>
         <div className="right-side">
-          <BookingSummary />
-          <EditBooking />
+          <div className="bookingsummaryform">
+            <div className="bookingsummary-container">
+              <h1>Booking Summary</h1>
+              <div className="activity">
+                <p>
+                  {booking.model} ({booking.bookingType})
+                </p>
+              </div>
+              <div className="top-section">
+                <div className="image">
+                  <img
+                    src={require(`./images/${booking.images[0]}`)}
+                    alt="Event"
+                  />
+                  ;
+                </div>
+              </div>
+              <div className="shortdetails">
+                <p>{booking.details}</p>
+              </div>
+              <div className="date-and-details">
+                <p>Start Date:</p>
+                <div className="selecteddate">
+                  <input
+                    type="date"
+                    id="date"
+                    name="date"
+                    className="datefield"
+                    placeholder="Date-in"
+                    value={selectedStartDate}
+                    onChange={handleStartDateChange}
+                  />
+                </div>
+                <p>End Date:</p>
+                <div className="selecteddate">
+                  <input
+                    type="date"
+                    id="date"
+                    name="date"
+                    className="datefield"
+                    placeholder="Date-out"
+                    value={selectedEndDate}
+                    onChange={handleEndDateChange}
+                  />
+                </div>
+                {/* <div className="totalpax">
+              <input
+                type="number"
+                id="totalpax"
+                name="totalpax"
+                placeholder="Total Pax"
+              />
+            </div>
+            <div className="totalpayment">
+              <input
+                type="number"
+                id="totalpay"
+                name="totalpay"
+                placeholder="Total Payment"
+              />
+            </div> */}
+              </div>
+            </div>
+          </div>
+          {error && <p className="error-container">{error}</p>}
+          <EditBooking handleSaveChanges={handleSaveChanges} />
           <CancelBooking />
         </div>
+        <Modal showModal={showModal} setShowModal={setShowModal} />
       </div>
     </div>
   );
 }
 
-function ContactDetailsForm() {
+function ContactDetailsForm({ booking }) {
   return (
     <div className="contactdetailsform">
       <h1>Contact Details</h1>
@@ -36,7 +143,7 @@ function ContactDetailsForm() {
               type="text"
               id="fullName"
               name="fullName"
-              value="Andrei Cimoune M. Alvarico"
+              value={booking.contactDetails.name}
               readOnly
             />
           </div>
@@ -47,7 +154,7 @@ function ContactDetailsForm() {
                 type="text"
                 id="email"
                 name="email"
-                value="andrei@gmail.com"
+                value={booking.contactDetails.email}
                 readOnly
               />
             </div>
@@ -59,6 +166,7 @@ function ContactDetailsForm() {
                   name="countryCode"
                   disabled
                   className="custom-dropdown"
+                  value={booking.contactDetails.countryCode}
                 >
                   <option value="+1">US +1</option>
                   <option value="+44">UK +44</option>
@@ -78,7 +186,7 @@ function ContactDetailsForm() {
                   type="number"
                   id="number"
                   name="number"
-                  value="9494787923"
+                  value={booking.contactDetails.contact}
                   readOnly
                 />
               </div>
@@ -139,49 +247,6 @@ function Summary() {
   );
 }
 
-function BookingSummary() {
-  return (
-    <div className="bookingsummaryform">
-      <div className="bookingsummary-container">
-        <h1>Booking Summary</h1>
-        <div className="activity">
-          <p>Activity Name/Event/Car, etc.</p>
-        </div>
-        <div className="top-section">
-          <div className="image">
-            <img src={wallpaper} alt="Event" />;
-          </div>
-          <div className="shortdetails">
-            <p>This is the details of the transaction</p>
-          </div>
-        </div>
-        <div className="date-and-details">
-          <div className="datein">
-            <p>
-              <strong>Date-In:</strong> May 10, 2024
-            </p>
-          </div>
-          <div className="dateout">
-            <p>
-              <strong>Date-Out:</strong> May 15, 2024
-            </p>
-          </div>
-          <div className="pax">
-            <p>
-              <strong>Total Pax:</strong> 4
-            </p>
-          </div>
-          <div className="payment">
-            <p>
-              <strong>Total Payment:</strong> $300.00
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // function EditContacts() {
 //   return (
 //     <center>
@@ -192,11 +257,11 @@ function BookingSummary() {
 //     </center>
 //   );
 // }
-function EditBooking() {
+function EditBooking({ handleSaveChanges }) {
   return (
     <center>
-      <button className="editbooking-btn">
-        <h2>Edit Booking Details</h2>
+      <button className="editbooking-btn" onClick={handleSaveChanges}>
+        <h2>Save Booking Details</h2>
         <FontAwesomeIcon icon={faArrowCircleRight} className="payment-icon" />
       </button>
     </center>
@@ -210,6 +275,26 @@ function CancelBooking() {
         <FontAwesomeIcon icon={faArrowCircleRight} className="payment-icon" />
       </button>
     </center>
+  );
+}
+
+function Modal({ showModal, setShowModal }) {
+  if (!showModal) return null;
+
+  return (
+    <div className="modal-backdrop2" onClick={() => setShowModal(false)}>
+      <div className="modal-content2" onClick={(e) => e.stopPropagation()}>
+        <button onClick={() => setShowModal(false)} className="close-btn1">
+          X
+        </button>
+        <div className="popup-container1">
+          <h1>Thank You for Booking with us</h1>
+          <center>
+            <p>Successfully saved your booking details.</p>
+          </center>
+        </div>
+      </div>
+    </div>
   );
 }
 

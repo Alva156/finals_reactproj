@@ -15,6 +15,7 @@ function Checkoutpage({ handleBooking }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
+  const [countryCode, setCountryCode] = useState("");
   const [selectedStartDate, setSelectedStartDate] = useState("");
   const [selectedEndDate, setSelectedEndDate] = useState("");
   const [error, setError] = useState("");
@@ -69,7 +70,12 @@ function Checkoutpage({ handleBooking }) {
       startDate: selectedStartDate,
       endDate: selectedEndDate,
       details: details,
-      contactDetails: { name: name, email: email, contact: contact },
+      contactDetails: {
+        name: name,
+        email: email,
+        contact: contact,
+        countryCode: countryCode,
+      },
     };
     handleBooking(bookingData);
     setReceiptNumber(generateReceiptNumber());
@@ -118,6 +124,8 @@ function Checkoutpage({ handleBooking }) {
                         id="countryCode"
                         name="countryCode"
                         className="custom-dropdown"
+                        value={countryCode}
+                        onChange={(e) => setCountryCode(e.target.value)}
                       >
                         <option value="+1">US +1</option>
                         <option value="+44">UK +44</option>

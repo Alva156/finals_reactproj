@@ -236,7 +236,6 @@ const ActivityBookingPage = () => {
         const { lat, lng } = results[0].geometry.location;
         setCoordinates({ lat, lng });
         setError(null);
-        console.log(results[0].geometry.location);
       } else {
         setError("No results found");
       }
