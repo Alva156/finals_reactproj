@@ -134,6 +134,42 @@ const dummyHotels = [
     seats: "5",
     rating: "5",
   },
+  {
+    bookingType: "Hotel",
+    address: "72 Digital-ro 32-gil, 구로제3동 Guro-gu, Seoul, South Korea",
+    model: "Four Points by Sheraton",
+    price: "₩10,000",
+    accomodation:
+      "Settled in the heart of Digital Venture Valley in Guro-gu, Southwest of Seoul; walking distance from Guro Digital Complex station, Seoul Subway Line 2 which links to major areas in Seoul with convenient accessibility. Representing as transportation hub with Airport Limousine station at the entrance of the hotel,public transportation, easy access to major Seoul Subway.",
+    facilities:
+      "✔ Concierge ✔ Currency exchange ✔ Newspaper ✔ Non-smoking hotel ✔ First aid kit ✔ Umbrella ✔ 24-hour check-in ✔ 24-hour front desk",
+    reviews: "",
+    location: "",
+    nearbyPlaces: [
+      "Wolhwa Gogi - Bolamae Jikyeongjeom",
+      "Street Ga Ne Fire Chickens' Feet",
+      "Embassy Of Sausage Stew In Guro",
+      "Two and Di",
+      "Re the Ra",
+    ],
+    popularInArea: [
+      "O du Mountain Buckwheat Ga",
+      "Han Ok House",
+      "Sikgaek Village",
+      "Pollack Soup 7Dae3",
+    ],
+    images: [
+      "lotte1.jpg",
+      "lotte2.jpg",
+      "lotte3.jpg",
+      "lotte4.jpg",
+      "lotte5.jpg",
+      "lotte6.jpg",
+      "lotte7.jpg",
+    ],
+    seats: "5",
+    rating: "5",
+  },
 ];
 
 function Hotel() {
