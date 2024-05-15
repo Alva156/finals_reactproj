@@ -21,14 +21,14 @@ function Booking() {
   ];
 
   const bookingPhotosSet1 = [
-    "museumtour1.jpg",
-    "bridge.jpg",
-    "gyeong1.jpg",
-    "bukchon1.jpg",
-    "suwon.jpg",
-    "gwangjang1.jpg",
-    "hanriver2.jpg",
-    "picnic.jpg",
+    "destinations/nst2.jpg",
+    "destinations/gbk2.jpg",
+    "destinations/bhv 1.jpg",
+    "destinations/sfw 2.jpg",
+    "destinations/nmk1.jpg",
+    "destinations/ddp 1.jpg",
+    "destinations/lotteworld.jpg",
+    "destinations/ndm.jpg",
   ];
 
   const overlayTextsSet1 = [
@@ -43,14 +43,14 @@ function Booking() {
   ];
 
   const bookingPhotosSet2 = [
-    "museumtour1.jpg",
-    "bridge.jpg",
-    "gyeong1.jpg",
-    "bukchon1.jpg",
-    "suwon.jpg",
-    "gwangjang1.jpg",
-    "hanriver2.jpg",
-    "picnic.jpg",
+    "fps1.jpg",
+    "skypark1.jpg",
+    "lotte1.jpg",
+    "fsh2.jpg",
+    "cph1.jpg",
+    "ntp1.jpg",
+    "h282.jpg",
+    "gsh1.jpg",
   ];
 
   const overlayTextsSet2 = [
