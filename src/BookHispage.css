@@ -135,11 +135,13 @@ body {
 
 .dropdown-container {
   display: flex;
+  justify-content: center;
   align-items: center;
   margin: 20px;
   border-radius: 2vw;
   width: 25vw;
-  margin-left: 14%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .dropdown-label {
@@ -239,12 +241,20 @@ body {
   .container2 h1 {
     font-size: 4.5vw;
   }
-  .dropdown-container {
-    width: 42vw;
-    margin-left: 18.5vw;
-  }
-  .dropdown-label {
-    font-size: large;
+  @media (max-width: 1100px) {
+    .dropdown-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+      border-radius: 2vw;
+      width: 42vw;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .dropdown-label {
+      font-size: large;
+    }
   }
 
   .bookingsummary-container2 {
@@ -261,13 +271,6 @@ body {
   .side-images .image2 img {
     max-width: none;
     height: auto;
-  }
-
-  .dropdown-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
   }
 
   .dropdown-label {
@@ -308,8 +311,14 @@ body {
     font-size: 6vw;
   }
   .dropdown-container {
-    margin-left: 9%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border-radius: 2vw;
     width: 30vw;
+    margin-left: auto;
+    margin-right: auto;
   }
   .dropdown-container h3 {
     font-size: x-large;
@@ -383,13 +392,6 @@ body {
   }
   .buttons {
     margin-right: 10vw;
-  }
-  .dropdown-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px 0;
   }
 
   .dropdown-select {
