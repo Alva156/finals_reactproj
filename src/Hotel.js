@@ -8,68 +8,132 @@ import NavbarNew from "./NavBarNew";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const dummyHotels = [
+  {
+    bookingType: "Hotel",
+    address: "30 Eulji-ro, Jung-gu",
+    model: "Lotte Hotel Seoul",
+    price: "₩10,000",
+    accomodation:
+      "LOTTE HOTEL SEOUL is one of Korea’s finest 5-star luxury hotels and is conveniently located in the heart of Seoul’s central business district near Myeongdong. The Main Tower and Executive Tower has a total of 1,015 guest rooms that were designed by four world-class interior design firms.",
+    facilities: "accomodation",
+    reviews: "",
+    location: "",
+    nearbyPlaces: "",
+    popularInArea: "",
+  },
+  {
+    bookingType: "Hotel",
+    address: "179 Itaewon-ro, Yongsan-gu",
+    model: "Hamilton Hotel",
+    price: "₩10,000",
+    accomodation: "",
+    facilities: "",
+    reviews: "",
+    location: "",
+    nearbyPlaces: "",
+    popularInArea: "",
+  },
+  {
+    bookingType: "Hotel",
+    address: "130 Toegye-ro, Jung-gu",
+    model: "Hotel Prince Seoul",
+    price: "₩10,000",
+    accomodation: "",
+    facilities: "",
+    reviews: "",
+    location: "",
+    nearbyPlaces: "",
+    popularInArea: "",
+  },
+  {
+    bookingType: "Hotel",
+    address: "26-10 Namdaemun-ro 1-gil, Jung-gu",
+    model: "Hotel Irene City",
+    price: "₩10,000",
+    accomodation: "",
+    facilities: "",
+    reviews: "",
+    location: "",
+    nearbyPlaces: "",
+    popularInArea: "",
+  },
+  {
+    bookingType: "Hotel",
+    address: "58 Sejong-daero, Jung-gu",
+    model: "Fraser Place Namdaemun Seoul",
+    price: "₩10,000",
+    accomodation: "",
+    facilities: "",
+    reviews: "",
+    location: "",
+    nearbyPlaces: "",
+    popularInArea: "",
+  },
+];
+
 function Hotel() {
   const [hotels, setHotels] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  useEffect(() => {
-    const fetchHotels = async () => {
-      try {
-        // Define the parameters for the Nearby Search request
-        const params = {
-          key: "AIzaSyA9bEl5wGZ3rTxi_4clyA4l1-724wpNmY4", // Replace with your actual API key
-          location: "37.5665,126.9780", // Coordinates of Seoul
-          radius: 5000, // Search radius in meters (adjust as needed)
-          type: "lodging", // Restrict results to lodging (hotels)
-        };
+  // useEffect(() => {
+  //   const fetchHotels = async () => {
+  //     try {
+  //       // Define the parameters for the Nearby Search request
+  //       const params = {
+  //         key: "AIzaSyA9bEl5wGZ3rTxi_4clyA4l1-724wpNmY4", // Replace with your actual API key
+  //         location: "37.5665,126.9780", // Coordinates of Seoul
+  //         radius: 5000, // Search radius in meters (adjust as needed)
+  //         type: "lodging", // Restrict results to lodging (hotels)
+  //       };
 
-        // Make the Nearby Search request to the Google Places API
-        const response = await axios.get(
-          "https://maps.googleapis.com/maps/api/place/nearbysearch/json",
-          { params }
-        );
+  //       // Make the Nearby Search request to the Google Places API
+  //       const response = await axios.get(
+  //         "https://maps.googleapis.com/maps/api/place/nearbysearch/json",
+  //         { params }
+  //       );
 
-        // Extract the list of hotels from the response
-        const { results } = response.data;
+  //       // Extract the list of hotels from the response
+  //       const { results } = response.data;
 
-        const hotelsWithPhotos = await Promise.all(
-          results.map(async (place) => {
-            console.log(place);
-            if (place.photos && place.photos.length > 0) {
-              const photoReferences = place.photos.map(
-                (photo) => photo.photo_reference
-              );
+  //       const hotelsWithPhotos = await Promise.all(
+  //         results.map(async (place) => {
+  //           console.log(place);
+  //           if (place.photos && place.photos.length > 0) {
+  //             const photoReferences = place.photos.map(
+  //               (photo) => photo.photo_reference
+  //             );
 
-              // Fetch the photos using the Place Photos API
-              const photoUrls = await Promise.all(
-                photoReferences.map(async (photoReference) => {
-                  const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=AIzaSyA9bEl5wGZ3rTxi_4clyA4l1-724wpNmY4`;
-                  return photoUrl;
-                })
-              );
+  //             // Fetch the photos using the Place Photos API
+  //             const photoUrls = await Promise.all(
+  //               photoReferences.map(async (photoReference) => {
+  //                 const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=AIzaSyA9bEl5wGZ3rTxi_4clyA4l1-724wpNmY4`;
+  //                 return photoUrl;
+  //               })
+  //             );
 
-              console.log(photoUrls);
-              // Add the photo URLs to the place object
-              const placeWithPhotos = { ...place, photoUrls };
-              return placeWithPhotos;
-            } else {
-              return place;
-            }
-          })
-        );
+  //             console.log(photoUrls);
+  //             // Add the photo URLs to the place object
+  //             const placeWithPhotos = { ...place, photoUrls };
+  //             return placeWithPhotos;
+  //           } else {
+  //             return place;
+  //           }
+  //         })
+  //       );
 
-        // Update the state with the list of hotels
-        setHotels(hotelsWithPhotos);
-      } catch (error) {
-        console.error("Error fetching hotels:", error);
-      }
-    };
+  //       // Update the state with the list of hotels
+  //       setHotels(hotelsWithPhotos);
+  //     } catch (error) {
+  //       console.error("Error fetching hotels:", error);
+  //     }
+  //   };
 
-    // Call the fetchHotels function
-    fetchHotels();
-  }, []); // Empty dependency array to run effect only once on mount
+  //   // Call the fetchHotels function
+  //   fetchHotels();
+  // }, []); // Empty dependency array to run effect only once on mount
 
-  const filteredHotels = hotels.filter((hotel) =>
-    hotel.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+  const filteredHotels = dummyHotels.filter((hotel) =>
+    hotel.model.toLowerCase().startsWith(searchQuery.toLowerCase())
   );
 
   return (
@@ -199,46 +263,47 @@ function HotelList({ hotels }) {
           <div className="col-md col-12">
             <div className="row px-2 d-flex flex-wrap">
               <div className="list-lg-img col-md-8 rounded">
-                <img
+                {/* <img
                   src={hotel.photoUrls[0]}
                   alt={`Hotel Photo 1`}
                   className="img-fluid"
                   style={{ maxHeight: "100%", maxWidth: "100%" }}
-                />
+                /> */}
               </div>
               <div className="col-md-4">
                 <div className="col-12 list-sm-img rounded mb-2">
-                  <img
+                  {/* <img
                     src={hotel.photoUrls[0]}
                     alt={`Hotel Photo 2`}
                     className="img-fluid"
                     style={{ maxHeight: "100%", maxWidth: "100%" }}
-                  />
+                  /> */}
                 </div>
                 <div className="col-12 list-sm-img rounded">
-                  <img
+                  {/* <img
                     src={hotel.photoUrls[0]}
                     alt={`Hotel Photo 3`}
                     className="img-fluid"
                     style={{ maxHeight: "100%", maxWidth: "100%" }}
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
           </div>
           <div className="col list-all-details">
             <div className="col-12 row list-detail d-flex justify-content-center align-items-center">
-              <div className="col-md-9 list-name">{hotel.name}</div>
+              <div className="col-md-9 list-name">{hotel.model}</div>
               <div className="col-md-3 h6">({hotel.rating} stars)</div>
             </div>
             <div className="col-12 list-detail">
               <div className="col-12 py-3 list-loc">
-                <FaLocationDot /> {hotel.vicinity}
+                <FaLocationDot /> {hotel.address}
               </div>
               <div className="col-12">
                 <Link
                   to={{
                     pathname: "/bookingpage",
+                    state: { booking: hotel },
                   }}
                   style={{ textDecoration: "none" }}
                 >
