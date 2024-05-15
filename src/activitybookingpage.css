@@ -202,9 +202,8 @@
 }
 
 .location-wrapper {
-  display: flex;
-  flex-direction: row; /* Side-by-side layout */
-  gap: 10px; /* Gap between map and other sections */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping of children */
   padding: 20px; /* Padding for inner content */
   background: white; /* White background for container */
   border-radius: 10px; /* Rounded corners */
@@ -212,7 +211,9 @@
 }
 
 .map-container {
-  flex: 2; /* Occupy more space for the map */
+  flex: none; /* Don't allow flex resizing */
+  width: auto; /* Allow map to expand horizontally */
+  display: inline-block; /* Display as inline block */
 }
 
 .map-container h2 {
@@ -327,6 +328,8 @@
 }
 
 .date-square {
+  flex-shrink: 0; /* Prevents shrinking of squares */
+  width: 100px; /* Adjust as needed */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -336,6 +339,7 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   cursor: pointer;
+  background-color: #e1e1e1; /* Added background color */
 }
 
 .day {

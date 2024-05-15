@@ -26,7 +26,7 @@ import SearchActivity from "./SearchActivity";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <ActivityBookingPage />
   </React.StrictMode>
 );
 
