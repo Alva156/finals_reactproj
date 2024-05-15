@@ -37,10 +37,15 @@ function BookHispage({ bookingDetails, hotels }) {
     <div>
       <div className="body2">
         <div className="container2">
-          <h1>Booking History</h1>
+          <center>
+            {" "}
+            <h1>Booking History</h1>
+          </center>
           <Dropdown onChange={handleTypeChange} />
           {filteredBookings.length === 0 ? (
-            <p>No bookings found.</p>
+            <center>
+              <p>No bookings found.</p>
+            </center>
           ) : (
             filteredBookings.map((booking) => (
               <div>
