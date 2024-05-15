@@ -5,17 +5,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import NavbarNew from "./NavBarNew";
 import { Link, useLocation, useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Checkoutpage({ handleBooking }) {
   const location = useLocation();
   const history = useHistory();
   const booking = location.state && location.state.booking;
+  const details = location.state && location.state.details;
+
+  const [selectedDate, setSelectedDate] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleBooking(booking);
+    if (!selectedDate) {
+      setError("Please select a date.");
+      return;
+    }
+
+    const bookingData = {
+      ...booking,
+      date: selectedDate,
+      details: details,
+    };
+    handleBooking(bookingData);
     history.push("/history");
+  };
+
+  const handleDateChange = (e) => {
+    setSelectedDate(e.target.value);
+    setError("");
   };
 
   return (
@@ -27,7 +46,14 @@ function Checkoutpage({ handleBooking }) {
           <Summary booking={booking} />
         </div>
         <div className="right-side">
-          <BookingSummary booking={booking} />
+          <BookingSummary
+            booking={booking}
+            details={details}
+            handleDateChange={handleDateChange}
+            selectedDate={selectedDate}
+            error={error}
+          />
+          {error && <div className="error-container">{error}</div>}
         </div>
       </div>
       <div className="payment-button-container">
@@ -50,6 +76,7 @@ function ContactDetailsForm() {
               id="fullName"
               name="fullName"
               placeholder="First Name MI. Last Name"
+              required
             />
           </div>
           <div className="contactfields">
@@ -60,6 +87,7 @@ function ContactDetailsForm() {
                 id="email"
                 name="email"
                 placeholder="example@gmail.com"
+                required
               />
             </div>
             <div className="numberfield">
@@ -89,6 +117,7 @@ function ContactDetailsForm() {
                   id="number"
                   name="number"
                   placeholder="e.g.(+62) 0812345678"
+                  required
                 />
               </div>
             </div>
@@ -100,6 +129,7 @@ function ContactDetailsForm() {
 }
 
 function Location({ booking }) {
+  const [mapKey, setMapKey] = useState(0);
   const containerStyle = {
     width: "100%",
     height: "400px",
@@ -112,22 +142,26 @@ function Location({ booking }) {
 
   const apiKey = "AIzaSyA9bEl5wGZ3rTxi_4clyA4l1-724wpNmY4";
 
+  const handleReloadMap = () => {
+    setMapKey((prevKey) => prevKey + 1);
+  };
+
+  useEffect(() => {
+    handleReloadMap();
+  }, []);
+
   return (
     <div className="location">
       <h1>Location Details</h1>
       <div className="location-container">
         <p>Location</p>
-        {booking && (
-          <LoadScript googleMapsApiKey={apiKey}>
-            <GoogleMap
-              mapContainerStyle={containerStyle}
-              center={center}
-              zoom={10}
-            >
-              {/* Map content */}
-            </GoogleMap>
-          </LoadScript>
-        )}
+        <LoadScript googleMapsApiKey={apiKey} key={mapKey}>
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={10}
+          />
+        </LoadScript>
       </div>
     </div>
   );
@@ -151,10 +185,7 @@ function Summary({ booking }) {
   );
 }
 
-function BookingSummary({ booking }) {
-  const details = `${booking.luggageCapacity}, ${booking.seats} Seats, ${
-    booking.service
-  }, ${booking.withDriver ? "With Driver" : "Without Driver"}`;
+function BookingSummary({ booking, details, selectedDate, handleDateChange }) {
   return (
     <div className="bookingsummaryform">
       <div className="bookingsummary-container">
@@ -172,7 +203,15 @@ function BookingSummary({ booking }) {
         </div>
         <div className="date-and-details">
           <div className="selecteddate">
-            <input type="date" id="date" name="date" className="datefield" />
+            <input
+              type="date"
+              id="date"
+              name="date"
+              className="datefield"
+              value={selectedDate}
+              onChange={handleDateChange}
+              required
+            />
           </div>
           <div className="totalpax">
             <input

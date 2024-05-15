@@ -16,6 +16,7 @@ import { PiAirplaneTiltFill } from "react-icons/pi";
 function BookHispage({ bookingDetails }) {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
+  const [selectedType, setSelectedType] = useState("");
 
   const handleAddReviewClick = () => {
     setShowModal(true);
@@ -24,16 +25,32 @@ function BookHispage({ bookingDetails }) {
     setShowModal2(true);
   };
 
+  const handleTypeChange = (event) => {
+    setSelectedType(event.target.value);
+  };
+
+  const filteredBookings = selectedType
+    ? bookingDetails.filter((booking) => booking.bookingType === selectedType)
+    : bookingDetails;
+
   return (
     <div>
       <div className="body2">
         <div className="container2">
           <h1>Booking History</h1>
-          <Dropdown />
-          <BookingHistory
-            onAddReviewClick={handleAddReviewClick}
-            onEditClick={handleEditClick}
-          />
+          <Dropdown onChange={handleTypeChange} />
+          {filteredBookings.length === 0 ? (
+            <p>No bookings found.</p>
+          ) : (
+            filteredBookings.map((booking) => (
+              <BookingHistory
+                key={booking.id}
+                onAddReviewClick={handleAddReviewClick}
+                onEditClick={handleEditClick}
+                booking={booking}
+              />
+            ))
+          )}
         </div>
         <Modal showModal={showModal} setShowModal={setShowModal} />
         <Modal2 showModal2={showModal2} setShowModal2={setShowModal2} />
@@ -42,37 +59,56 @@ function BookHispage({ bookingDetails }) {
   );
 }
 
-function BookingHistory({ bookingDetails, onAddReviewClick, onEditClick }) {
+function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
   return (
     <div className="bookinghistory">
       <div className="bookingsummary-container2">
         <div className="top-section2">
           <div className="images-container">
             <div className="main-image">
-              <img src={wallpaper} alt="Main Event" />
+              <img
+                src={require(`./images/${booking.images[0]}`)}
+                className="img-fluid rounded mb-2"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
             </div>
             <div className="side-images">
               <div className="image2">
-                <img src={wallpaper} alt="Event" />
+                <img
+                  src={require(`./images/${booking.images[1]}`)}
+                  className="img-fluid rounded mb-2"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                />
               </div>
               <div className="image2">
-                <img src={wallpaper} alt="Event" />
+                <img
+                  src={require(`./images/${booking.images[2]}`)}
+                  className="img-fluid rounded mb-2"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                />
               </div>
             </div>
           </div>
           <div className="details-container">
             <div className="activity2">
-              <h1>Activity Name/Event/Car, etc.</h1>
+              <h1>{booking.model}</h1>
               <div className="additional-details">
-                <p className="date">Date: May 10, 2024</p>
-                <p className="pax">Total Pax: 4</p>
+                <p className="date">Date: {booking.date}</p>
+                <p className="pax">Total Pax: {booking.seats}</p>
               </div>
             </div>
             <div className="shortdetails2">
               <p>
-                <strong>Details:</strong>This is the details of the transaction.
-                This is the details of the transaction. This is the details of
-                the transaction.This is the details of the transaction.
+                <strong>Details: </strong>
+                {booking.details}
               </p>
             </div>
             <div className="buttons">
@@ -86,14 +122,19 @@ function BookingHistory({ bookingDetails, onAddReviewClick, onEditClick }) {
   );
 }
 
-function Dropdown() {
+function Dropdown({ onChange, selectedType }) {
   return (
     <div className="dropdown-container">
       <h3 className="dropdown-label">Filter:</h3>
-      <select className="dropdown-select">
-        <option value="hotel">Hotel</option>
-        <option value="activity">Activity</option>
-        <option value="car">Car</option>
+      <select
+        className="dropdown-select"
+        onChange={onChange}
+        value={selectedType}
+      >
+        <option value="">All</option>
+        <option value="Hotel">Hotel</option>
+        <option value="Activity">Activity</option>
+        <option value="Car">Car</option>
       </select>
     </div>
   );
