@@ -304,7 +304,7 @@ const HotelBookingPage = () => {
         <div className="flex-row full-width">
           <div className="section">
             <h2>All Facilities</h2>
-            <p>{booking.facilities}</p>
+            <p>{booking.allFacilities}</p>
           </div>
           <div className="section">
             <h2>Reviews</h2>

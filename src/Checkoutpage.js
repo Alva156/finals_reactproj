@@ -260,9 +260,10 @@ function Checkoutpage({ handleBooking }) {
             <div className="image">
               <img src={require(`./images/${booking.images[0]}`)} alt="Event" />
             </div>
-            <div className="shortdetails">
-              <p>{details}</p>
-            </div>
+          </div>
+          <br />
+          <div className="shortdetails">
+            <p>{details}</p>
           </div>
 
           <div className="date-and-details">
