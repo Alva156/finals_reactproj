@@ -3,10 +3,69 @@ import { FaSearch } from "react-icons/fa";
 import { BiSolidBuildingHouse } from "react-icons/bi";
 import { IoPerson } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
-// import React, { useEffect } from "react";
+import { useState, useEffect } from "react";
 import NavbarNew from "./NavBarNew";
+import axios from "axios";
 
 function Hotel() {
+  const [hotels, setHotels] = useState([]);
+  useEffect(() => {
+    const fetchHotels = async () => {
+      try {
+        // Define the parameters for the Nearby Search request
+        const params = {
+          key: "AIzaSyA9bEl5wGZ3rTxi_4clyA4l1-724wpNmY4", // Replace with your actual API key
+          location: "37.5665,126.9780", // Coordinates of Seoul
+          radius: 5000, // Search radius in meters (adjust as needed)
+          type: "lodging", // Restrict results to lodging (hotels)
+        };
+
+        // Make the Nearby Search request to the Google Places API
+        const response = await axios.get(
+          "https://maps.googleapis.com/maps/api/place/nearbysearch/json",
+          { params }
+        );
+
+        // Extract the list of hotels from the response
+        const { results } = response.data;
+
+        const hotelsWithPhotos = await Promise.all(
+          results.map(async (place) => {
+            console.log(place);
+            if (place.photos && place.photos.length > 0) {
+              const photoReferences = place.photos.map(
+                (photo) => photo.photo_reference
+              );
+
+              // Fetch the photos using the Place Photos API
+              const photoUrls = await Promise.all(
+                photoReferences.map(async (photoReference) => {
+                  const photoUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=AIzaSyA9bEl5wGZ3rTxi_4clyA4l1-724wpNmY4`;
+                  return photoUrl;
+                })
+              );
+
+              console.log(photoUrls);
+              // Add the photo URLs to the place object
+              const placeWithPhotos = { ...place, photoUrls };
+              return placeWithPhotos;
+            } else {
+              return place;
+            }
+          })
+        );
+
+        // Update the state with the list of hotels
+        setHotels(hotelsWithPhotos);
+      } catch (error) {
+        console.error("Error fetching hotels:", error);
+      }
+    };
+
+    // Call the fetchHotels function
+    fetchHotels();
+  }, []); // Empty dependency array to run effect only once on mount
+
   return (
     <div
       style={{
@@ -18,9 +77,7 @@ function Hotel() {
       <div className="hotel-search">
         <Search />
         <HotelHead />
-        <HotelList />
-        <HotelList />
-        <HotelList />
+        <HotelList hotels={hotels} />
       </div>
     </div>
   );
@@ -123,49 +180,59 @@ function HotelHead() {
   );
 }
 
-function HotelList() {
+function HotelList({ hotels }) {
   return (
     <div className="list-container container-fluid my-2 rounded">
-      <div className="row p-2 rounded d-flex flex-wrap">
-        <div className="col-md col-12 ">
-          <div className="row px-2 d-flex flex-wrap">
-            <div className="list-lg-img col-md-8 rounded">
-              {/* LARGE IMG */}
-            </div>
-            <div className="col-md-4">
-              <div
-                className="col-12 list-sm-img rounded mb-2"
-                style={{ marginBottom: "10px" }}
-              >
-                {/* SMALL IMG */}
+      {hotels.map((hotel, index) => (
+        <div key={index} className="row p-2 rounded d-flex flex-wrap">
+          <div className="col-md col-12">
+            <div className="row px-2 d-flex flex-wrap">
+              <div className="list-lg-img col-md-8 rounded">
+                <img
+                  src={hotel.photoUrls[0]}
+                  alt={`Hotel Photo 1`}
+                  className="img-fluid"
+                  style={{ maxHeight: "100%", maxWidth: "100%" }}
+                />
               </div>
-              <div className="col-12 list-sm-img rounded">
-                {/* SMALL IMG */}
+              <div className="col-md-4">
+                <div className="col-12 list-sm-img rounded mb-2">
+                  <img
+                    src={hotel.photoUrls[0]}
+                    alt={`Hotel Photo 2`}
+                    className="img-fluid"
+                    style={{ maxHeight: "100%", maxWidth: "100%" }}
+                  />
+                </div>
+                <div className="col-12 list-sm-img rounded">
+                  <img
+                    src={hotel.photoUrls[0]}
+                    alt={`Hotel Photo 3`}
+                    className="img-fluid"
+                    style={{ maxHeight: "100%", maxWidth: "100%" }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col list-all-details">
+            <div className="col-12 row list-detail d-flex justify-content-center align-items-center">
+              <div className="col-md-9 list-name">{hotel.name}</div>
+              <div className="col-md-3 h6">({hotel.rating} stars)</div>
+            </div>
+            <div className="col-12 list-detail">
+              <div className="col-12 py-3 list-loc">
+                <FaLocationDot /> {hotel.vicinity}
+              </div>
+              <div className="col-12">
+                <div className="d-flex justify-content-start flex-wrap gap-2 text-white">
+                  {/* Render hotel amenities here */}
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="col list-all-details">
-          <div className="col-12 row list-detail d-flex justify-content-center align-items-center">
-            <div className="col-md-9 list-name">HOTEL NAME</div>
-            <div className="col-md-3 h6">(13 reviews)</div>
-          </div>
-          <div className="col-12 list-detail">
-            <div className="col-12 py-3 list-loc">
-              <FaLocationDot /> 5 Mapagbigay, Diliman, Lungsod Quezon, 1100
-              Kalakhang Maynila
-            </div>
-            <div className="col-12">
-              <div class="d-flex justify-content-start flex-wrap gap-2 text-white">
-                <div className="tags">Amenities</div>
-                <div className="tags">Amenities</div>
-                <div className="tags">Amenities</div>
-                <div className="tags">Amenities</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
   );
 }

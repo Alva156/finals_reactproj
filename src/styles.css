@@ -740,3 +740,11 @@
   margin-top: 10px;
   padding: 10px;
 }
+
+.error-container {
+  background-color: #ff4d4f; /* Red background color */
+  color: #ffffff; /* White text color */
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}

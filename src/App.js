@@ -27,7 +27,6 @@ export default function App() {
 
   const handleBooking = (booking) => {
     setBookingDetails((prev) => [...prev, booking]);
-    console.log(bookingDetails);
   };
 
   return (

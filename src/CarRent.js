@@ -12,6 +12,7 @@ import { useState } from "react";
 const dummyCars = [
   {
     id: 1,
+    bookingType: "Car",
     model: "Toyota Corolla",
     price: "₩100,000",
     luggageCapacity: "2 Baggages",
@@ -22,6 +23,7 @@ const dummyCars = [
   },
   {
     id: 2,
+    bookingType: "Car",
     model: "Honda Civic",
     price: "₩120,000",
     luggageCapacity: "3 Baggages",
@@ -32,6 +34,7 @@ const dummyCars = [
   },
   {
     id: 3,
+    bookingType: "Car",
     model: "Hyundai Sonata",
     price: "₩110,000",
     luggageCapacity: "2 Baggages",
@@ -194,6 +197,10 @@ function Filter({ passengerCapacity, handlePassengerCapacityChange }) {
 }
 
 function CarList({ car }) {
+  const details = `${car.luggageCapacity}, ${car.seats} Seats, ${
+    car.service
+  }, ${car.withDriver ? "With Driver" : "Without Driver"}`;
+
   return (
     <div className="list-container container-fluid my-2 rounded">
       <div className="row p-2 rounded d-flex flex-wrap">
@@ -258,7 +265,10 @@ function CarList({ car }) {
             </div>
             <div className="col-md-4 col-12">
               <Link
-                to={{ pathname: "/checkout", state: { booking: car } }}
+                to={{
+                  pathname: "/checkout",
+                  state: { booking: car, details: details },
+                }}
                 style={{ textDecoration: "none" }}
               >
                 <div className="btn-book px-4 py-2 text-white text-center rounded">
