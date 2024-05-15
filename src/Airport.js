@@ -12,7 +12,7 @@ import { useState } from "react";
 const dummyCars = [
   {
     id: 1,
-    bookingType: "Car Rental",
+    bookingType: "Airport Transfer",
     model: "Ford Everest 2024",
     price: "₩ 107,018.00",
     luggageCapacity: "5 Bagages",
@@ -28,7 +28,7 @@ const dummyCars = [
   },
   {
     id: 2,
-    bookingType: "Car Rental",
+    bookingType: "Airport Transfer",
     model: "Toyota Camry 2024",
     price: "₩75,000",
     luggageCapacity: " 3 medium suitcases",
@@ -40,7 +40,7 @@ const dummyCars = [
   },
   {
     id: 3,
-    bookingType: "Car Rental",
+    bookingType: "Airport Transfer",
     model: "Chevrolet Tahoe 2024",
     price: "₩120,000",
     luggageCapacity: "2 Baggages",
@@ -56,7 +56,7 @@ const dummyCars = [
   },
   {
     id: 4,
-    bookingType: "Car Rental",
+    bookingType: "Airport Transfer",
     model: "Yamaha MT-09 2024",
     price: "₩40,000",
     luggageCapacity: "1 Compartment",
@@ -68,7 +68,7 @@ const dummyCars = [
   },
   {
     id: 5,
-    bookingType: "Car Rental",
+    bookingType: "Airport Transfer",
     model: "Mercedes-Benz Sprinter 2024",
     price: "₩150,000",
     luggageCapacity: "9-10 Baggages",
@@ -80,7 +80,7 @@ const dummyCars = [
   },
 ];
 
-function CarRent() {
+function Airport() {
   const [passengerCapacity, setPassengerCapacity] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [carType, setCarType] = useState("");
@@ -139,7 +139,7 @@ function Search({ handleSearchChange, handleCarTypeChange }) {
         <Card.Body>
           <Card.Title className="px-3">
             <IoCarSport style={{ fontSize: "25px", marginRight: "5px" }} />
-            CAR RENTAL
+            AIRPORT TRANSFER
           </Card.Title>
           <hr className="m-0 mx-3"></hr>
           <Card.Body className="col">
@@ -361,4 +361,4 @@ function CarList({ car }) {
   );
 }
 
-export default CarRent;
+export default Airport;
