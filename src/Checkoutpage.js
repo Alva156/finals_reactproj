@@ -20,6 +20,7 @@ function Checkoutpage({ handleBooking }) {
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [receiptNumber, setReceiptNumber] = useState(null);
+  const [bookedModels, setBookedModels] = useState([]);
 
   const handleStartDateChange = (e) => {
     setSelectedStartDate(e.target.value);
@@ -55,6 +56,13 @@ function Checkoutpage({ handleBooking }) {
       setError("Start date cannot be greater than end date.");
       return;
     }
+
+    if (bookedModels.includes(booking.model)) {
+      setError("This model is already booked.");
+      return;
+    }
+
+    setBookedModels([...bookedModels, booking.model]);
 
     const bookingData = {
       ...booking,
