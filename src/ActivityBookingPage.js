@@ -134,6 +134,21 @@ const ReviewsSection = () => {
 };
 
 const AvailableDatesSection = () => {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleQuantityChange = (e) => {
+    setQuantity(parseInt(e.target.value));
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const incrementQuantity = () => {
+    setQuantity(quantity + 1);
+  };
   const dates = [
     { day: "Sun", date: "5 May" },
     { day: "Mon", date: "6 May" },
@@ -179,18 +194,25 @@ const AvailableDatesSection = () => {
               <div className="price">₱1,961</div>
             </div>
             <div className="quantity-adjuster">
-              <label htmlFor="quantity">Quantity:</label>
+              <button onClick={decrementQuantity}>-</button>
               <input
                 type="number"
                 id="quantity"
                 name="quantity"
+                value={quantity}
+                onChange={handleQuantityChange}
                 min="1"
-                defaultValue="1"
+                style={{ appearance: "textfield" }} // Hide arrows in Firefox
+                onWheel={(e) => e.preventDefault()} // Disable scrolling in Firefox
               />
+              <button onClick={incrementQuantity}>+</button>
             </div>
           </div>
           <div className="right-section">
-            <div className="total-price">Total Price: ₱1,961</div>
+            <div className="price-info">
+              <div className="price-heading">Total Price</div>
+              <div className="price">₱1,961</div>
+            </div>
             <button className="book-now">BOOK NOW</button>
           </div>
         </div>
