@@ -142,6 +142,23 @@ const AvailableDatesSection = () => {
     { day: "Thu", date: "9 May" },
     { day: "Fri", date: "10 May" },
     { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
+    { day: "Sat", date: "11 May" },
   ];
 
   return (
