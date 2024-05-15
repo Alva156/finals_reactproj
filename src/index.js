@@ -21,6 +21,7 @@ import HotelBookingPage from "./HotelBookingPage";
 import ActivityBookingPage from "./ActivityBookingPage";
 import ManageProfile from "./ManageProfile";
 import SupportFaqs from "./SupportFaqs";
+import SearchActivity from "./SearchActivity";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
