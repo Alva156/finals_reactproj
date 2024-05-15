@@ -1,6 +1,8 @@
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { useEffect, useState } from "react";
 
 function Location() {
+  const [mapKey, setMapKey] = useState(0);
   const containerStyle = {
     width: "100%",
     height: "400px",
@@ -13,19 +15,25 @@ function Location() {
 
   const apiKey = "AIzaSyA9bEl5wGZ3rTxi_4clyA4l1-724wpNmY4";
 
+  const handleReloadMap = () => {
+    setMapKey((prevKey) => prevKey + 1);
+  };
+
+  useEffect(() => {
+    handleReloadMap();
+  }, []);
+
   return (
     <div className="location">
       <h1>Location Details</h1>
       <div className="location-container">
         <p>Location</p>
-        <LoadScript googleMapsApiKey={apiKey}>
+        <LoadScript googleMapsApiKey={apiKey} key={mapKey}>
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={center}
             zoom={10}
-          >
-            {/* Map content */}
-          </GoogleMap>
+          />
         </LoadScript>
       </div>
     </div>

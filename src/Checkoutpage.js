@@ -5,6 +5,7 @@ import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import NavbarNew from "./NavBarNew";
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import Location from "./Location";
 
 function Checkoutpage({ handleBooking }) {
