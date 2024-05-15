@@ -286,6 +286,14 @@ const ActivityBookingPage = () => {
         </div>
         <div className="price-and-book">
           <span className="price">{booking.price}</span>
+          <Link
+            to={{
+              pathname: "/checkout",
+              state: { booking: booking, details: booking.wycs },
+            }}
+          >
+            <button className="book-now">BOOK NOW</button>
+          </Link>
         </div>
       </header>
 
