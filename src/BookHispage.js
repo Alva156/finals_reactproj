@@ -150,7 +150,8 @@ function Dropdown({ onChange, selectedType }) {
         <option value="">All</option>
         <option value="Hotel">Hotel</option>
         <option value="Activity">Activity</option>
-        <option value="Car">Car</option>
+        <option value="Car Rental">Car Rental</option>
+        <option value="Airport Transfer">Airport Transfer</option>
       </select>
     </div>
   );
