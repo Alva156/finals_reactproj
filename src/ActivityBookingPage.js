@@ -275,8 +275,8 @@ const ActivityBookingPage = () => {
             <h2>Location</h2>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3162.919514482132!2d126.97725900000002!3d37.55696!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca25f93a51a53%3A0xbfd0440f0842fd34!2sK-POP%20HOTEL%20Seoul%20Tower!5e0!3m2!1sen!2sus!4v1684459468881!5m2!1sen!2sus"
-              width="600"
-              height="450"
+              width="1365"
+              height="300"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
