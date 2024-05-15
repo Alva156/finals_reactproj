@@ -18,19 +18,19 @@ function Home({ isLoggedIn }) {
   const carouselProps = {
     slides: [
       {
-        imageUrl: "images/Home2.png",
+        imageUrl: "carousel 1.jpeg",
         captionTitle: "Place 1",
         captionDescription:
           "Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
       },
       {
-        imageUrl: "images/Home2.png",
+        imageUrl: "carousel 2.jpg",
         captionTitle: "Place 2",
         captionDescription:
           "Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
       },
       {
-        imageUrl: "images/Home2.png",
+        imageUrl: "carousel 3.jpeg",
         captionTitle: "Place 3",
         captionDescription:
           "Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
@@ -90,7 +90,7 @@ function HomeCarousel({ slides }) {
           <Carousel.Item key={index}>
             <img
               className="d-block w-100"
-              src={slide.imageUrl}
+              src={require(`./images/${slide.imageUrl}`)}
               alt={`Slide ${index}`}
             />
             <Carousel.Caption>

@@ -15,9 +15,9 @@ import { Link } from "react-router-dom";
 
 function Booking() {
   const carouselImages = [
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
+    "carousel 1.jpeg",
+    "carousel 2.jpg",
+    "carousel 3.jpeg",
   ];
 
   const bookingPhotosSet1 = [
@@ -151,7 +151,7 @@ function ExploreSeoul({ carouselImages }) {
             <Carousel.Item key={index} style={{ height: "100%" }}>
               <img
                 className="d-block w-100"
-                src={image}
+                src={require(`./images/${image}`)}
                 alt={`Slide ${index}`}
                 style={{ objectFit: "cover", height: "100%" }}
               />
