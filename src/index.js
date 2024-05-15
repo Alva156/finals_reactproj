@@ -18,11 +18,14 @@ import SeoulSeeker from "./SeoulSeeker";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import HotelBookingPage from "./HotelBookingPage";
+import ActivityBookingPage from "./ActivityBookingPage";
+import ManageProfile from "./ManageProfile";
+import SupportFaqs from "./SupportFaqs";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <SupportFaqs />
   </React.StrictMode>
 );
 
