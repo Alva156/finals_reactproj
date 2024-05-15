@@ -247,9 +247,6 @@ function Checkoutpage({ handleBooking }) {
     handleStartDateChange,
     handleEndDateChange,
   }) {
-    const details = `${booking.luggageCapacity}, ${booking.seats}, ${
-      booking.service
-    }, ${booking.withDriver ? "With Driver" : "Without Driver"}`;
     return (
       <div className="bookingsummaryform">
         <div className="bookingsummary-container">

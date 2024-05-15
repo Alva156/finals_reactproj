@@ -37,48 +37,92 @@ const dummyHotels = [
     address: "179 Itaewon-ro, Yongsan-gu",
     model: "Hamilton Hotel",
     price: "₩10,000",
-    accomodation: "",
-    facilities: "",
+    accomodation:
+      "Hamilton Hotel is a four-star modern hotel, built in 1973, a total of 162 rooms. Rooms comfortable and clean, decor is simple and practical. Hamilton Hotel is located in Seoul Itaewon shopping center. Itaewon Gardens, Railway Station No. 6 line on the entrance of the hotel, very convenient for transportation. All rooms are equipped with very high-speed Internet access, guest access to do business or shopping, you can stay at home, both comfortable and convenient.",
+    facilities:
+      "✔ Fitness Center ✔ Hotel Sauna ✔ Sulwhasoo Spa ✔ Swimming Pool ✔ Golf Driving Range ✔ Business Center ✔ Hotel Museum ✔ Shopping Arcade",
     reviews: "",
     location: "",
-    nearbyPlaces: "",
-    popularInArea: "",
+    nearbyPlaces: ["Citistar Mall", "Grevin Museum", "Seoul City Hall"],
+    popularInArea: ["Citistar Mall", "Grevin Museum", "Seoul City Hall"],
+    images: [
+      "lotte1.jpg",
+      "lotte2.jpg",
+      "lotte3.jpg",
+      "lotte4.jpg",
+      "lotte5.jpg",
+      "lotte6.jpg",
+      "lotte7.jpg",
+    ],
   },
   {
     bookingType: "Hotel",
     address: "130 Toegye-ro, Jung-gu",
     model: "Hotel Prince Seoul",
     price: "₩10,000",
-    accomodation: "",
-    facilities: "",
+    accomodation:
+      "Hotel Prince Seoul is conveniently situated opposite Myeongdong shopping street, 10 metres from Myeongdong Subway Station. Housed in a majestic building, it provides rooms with free internet access. Prince Seoul Hotel is 900 metres from popular Namdaemun Market and 1.4 km from the traditional arts and craft district of Insadong. Incheon International Airport is 60 km away.",
+    facilities:
+      "✔ Fitness Center ✔ Hotel Sauna ✔ Sulwhasoo Spa ✔ Swimming Pool ✔ Golf Driving Range ✔ Business Center ✔ Hotel Museum ✔ Shopping Arcade",
     reviews: "",
     location: "",
-    nearbyPlaces: "",
-    popularInArea: "",
+    nearbyPlaces: ["Citistar Mall", "Grevin Museum", "Seoul City Hall"],
+    popularInArea: ["Citistar Mall", "Grevin Museum", "Seoul City Hall"],
+    images: [
+      "lotte1.jpg",
+      "lotte2.jpg",
+      "lotte3.jpg",
+      "lotte4.jpg",
+      "lotte5.jpg",
+      "lotte6.jpg",
+      "lotte7.jpg",
+    ],
   },
   {
     bookingType: "Hotel",
     address: "26-10 Namdaemun-ro 1-gil, Jung-gu",
     model: "Hotel Irene City",
     price: "₩10,000",
-    accomodation: "",
-    facilities: "",
+    accomodation:
+      "Conveniently situated 350 metres from City Hall subway station, Hotel Irene City offers minimalist rooms with flat-screen cable TVs and free Wi-Fi. It has a 24-hour front desk and laundry facilities. Irene City Hotel is a 15-minute walk from the trendy shopping district of Myeongdong. It is an 8-minute drive from Insadong cultural district and an 8-minute walk from popular Namdaemun Market.",
+    facilities:
+      "✔ Fitness Center ✔ Hotel Sauna ✔ Sulwhasoo Spa ✔ Swimming Pool ✔ Golf Driving Range ✔ Business Center ✔ Hotel Museum ✔ Shopping Arcade",
     reviews: "",
     location: "",
-    nearbyPlaces: "",
-    popularInArea: "",
+    nearbyPlaces: ["Citistar Mall", "Grevin Museum", "Seoul City Hall"],
+    popularInArea: ["Citistar Mall", "Grevin Museum", "Seoul City Hall"],
+    images: [
+      "lotte1.jpg",
+      "lotte2.jpg",
+      "lotte3.jpg",
+      "lotte4.jpg",
+      "lotte5.jpg",
+      "lotte6.jpg",
+      "lotte7.jpg",
+    ],
   },
   {
     bookingType: "Hotel",
     address: "58 Sejong-daero, Jung-gu",
     model: "Fraser Place Namdaemun Seoul",
     price: "₩10,000",
-    accomodation: "",
-    facilities: "",
+    accomodation:
+      "Located right next to Namdaemun Square, Fraser Place Namdaemun Seoul provides easy access to Seoul’s popular attractions. WiFi is available for free throughout the property. The rooms at Fraser Place Namdaemun Seoul Seoul are beautifully decorated and fitted with fine-quality furnishings. Rooms come with an iPod docking station and a flat-screen TV.",
+    facilities:
+      "✔ Fitness Center ✔ Hotel Sauna ✔ Sulwhasoo Spa ✔ Swimming Pool ✔ Golf Driving Range ✔ Business Center ✔ Hotel Museum ✔ Shopping Arcade",
     reviews: "",
     location: "",
-    nearbyPlaces: "",
-    popularInArea: "",
+    nearbyPlaces: ["Citistar Mall", "Grevin Museum", "Seoul City Hall"],
+    popularInArea: ["Citistar Mall", "Grevin Museum", "Seoul City Hall"],
+    images: [
+      "lotte1.jpg",
+      "lotte2.jpg",
+      "lotte3.jpg",
+      "lotte4.jpg",
+      "lotte5.jpg",
+      "lotte6.jpg",
+      "lotte7.jpg",
+    ],
   },
 ];
 
@@ -145,7 +189,6 @@ function Hotel() {
   const filteredHotels = dummyHotels.filter((hotel) =>
     hotel.model.toLowerCase().startsWith(searchQuery.toLowerCase())
   );
-
   return (
     <div
       style={{
@@ -157,7 +200,10 @@ function Hotel() {
       <div className="hotel-search">
         <Search setSearchQuery={setSearchQuery} />
         <HotelHead />
-        <HotelList hotels={filteredHotels} />
+        {filteredHotels.map((hotel) => (
+          <HotelList hotel={hotel} />
+        ))}
+        {/* <HotelList hotels={filteredHotels} /> */}
       </div>
     </div>
   );
@@ -265,17 +311,30 @@ function HotelHead() {
   );
 }
 
-function HotelList({ hotels }) {
+function HotelList({ hotel }) {
+  const images = hotel.images;
   return (
     <div className="list-container container-fluid my-2 rounded">
-      {hotels.map((hotel, index) => (
-        <div key={index} className="row p-2 rounded d-flex flex-wrap">
-          <div className="col-md col-12">
-            <div className="row px-2 d-flex flex-wrap">
-              <div className="list-lg-img col-md-8 rounded">
+      <div className="row p-2 rounded d-flex flex-wrap">
+        <div className="col-md col-12">
+          <div className="row px-2 d-flex flex-wrap">
+            <div className="list-lg-img col-md-8 rounded">
+              <img
+                src={require(`./images/${hotel.images[0]}`)}
+                alt={`Hotel ${hotel.model} Image 1`}
+                className="img-fluid rounded mb-2"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                }}
+              />
+            </div>
+            <div className="col-md-4">
+              <div className="col-12 list-sm-img rounded mb-2">
                 <img
-                  src={require(`./images/${hotel.images[0]}`)}
-                  alt={`Hotel ${hotel.model} Image 1`}
+                  src={require(`./images/${hotel.images[1]}`)}
+                  alt={`Hotel ${hotel.model} Image 3`}
                   className="img-fluid rounded mb-2"
                   style={{
                     width: "100%",
@@ -284,52 +343,46 @@ function HotelList({ hotels }) {
                   }}
                 />
               </div>
-              <div className="col-md-4">
-                <div className="col-12 list-sm-img rounded mb-2">
-                  {/* <img
-                    src={hotel.photoUrls[0]}
-                    alt={`Hotel Photo 2`}
-                    className="img-fluid"
-                    style={{ maxHeight: "100%", maxWidth: "100%" }}
-                  /> */}
-                </div>
-                <div className="col-12 list-sm-img rounded">
-                  {/* <img
-                    src={hotel.photoUrls[0]}
-                    alt={`Hotel Photo 3`}
-                    className="img-fluid"
-                    style={{ maxHeight: "100%", maxWidth: "100%" }}
-                  /> */}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col list-all-details">
-            <div className="col-12 row list-detail d-flex justify-content-center align-items-center">
-              <div className="col-md-9 list-name">{hotel.model}</div>
-              <div className="col-md-3 h6">({hotel.rating} stars)</div>
-            </div>
-            <div className="col-12 list-detail">
-              <div className="col-12 py-3 list-loc">
-                <FaLocationDot /> {hotel.address}
-              </div>
-              <div className="col-12">
-                <Link
-                  to={{
-                    pathname: "/bookingpage",
-                    state: { booking: hotel },
+              <div className="col-12 list-sm-img rounded">
+                <img
+                  src={require(`./images/${hotel.images[2]}`)}
+                  alt={`Hotel ${hotel.model} Image 3`}
+                  className="img-fluid rounded mb-2"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
                   }}
-                  style={{ textDecoration: "none" }}
-                >
-                  <div className="btn-book px-4 py-2 text-white text-center rounded">
-                    CHECK DETAILS
-                  </div>
-                </Link>
+                />
               </div>
             </div>
           </div>
         </div>
-      ))}
+        <div className="col list-all-details">
+          <div className="col-12 row list-detail d-flex justify-content-center align-items-center">
+            <div className="col-md-9 list-name">{hotel.model}</div>
+            <div className="col-md-3 h6">({hotel.rating} stars)</div>
+          </div>
+          <div className="col-12 list-detail">
+            <div className="col-12 py-3 list-loc">
+              <FaLocationDot /> {hotel.address}
+            </div>
+            <div className="col-12">
+              <Link
+                to={{
+                  pathname: "/bookingpage",
+                  state: { booking: hotel },
+                }}
+                style={{ textDecoration: "none" }}
+              >
+                <div className="btn-book px-4 py-2 text-white text-center rounded">
+                  CHECK DETAILS
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
