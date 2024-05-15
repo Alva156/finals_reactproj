@@ -1,0 +1,64 @@
+.faq-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align to the left */
+  justify-content: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+  font-family: Arial, sans-serif;
+  background: url("https://www.pixel4k.com/wp-content/uploads/2018/09/panorama-skyscraper-seoul-south-korea-4k_1538066265.jpg.webp");
+  background-size: cover; /* Cover the entire background */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent repeating */
+  padding: 20px 30px; /* Add padding for offset to the left */
+  overflow: auto; /* Allow scrolling if content exceeds viewport height */
+}
+
+.faq-heading {
+  background-color: #9699b6; /* Background color */
+  padding: 5px; /* Padding around the heading */
+  border-radius: 10px; /* Rounded corners */
+  color: white; /* Text color */
+  text-align: left; /* Align text to the left */
+  width: 80%; /* Same width as FAQ container */
+  font-size: 28px;
+}
+
+.faq-container {
+  display: flex;
+  flex-direction: column; /* Vertical stacking */
+  gap: 20px; /* Space between FAQ items */
+  padding: 20px; /* Padding around the container */
+  width: 80%; /* Maintain consistent width with the heading */
+}
+
+.faq-item {
+  background-color: rgba(84, 88, 114, 0.45); /* Background with transparency */
+  padding: 15px; /* Padding for FAQ item */
+  border-radius: 10px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+.faq-item:hover {
+  background-color: rgba(84, 88, 114, 0.6); /* Darker on hover */
+}
+
+.faq-question {
+  display: flex; /* Flex layout for alignment */
+  justify-content: space-between; /* Space between question and arrow */
+  align-items: center; /* Align vertically in the center */
+  color: white; /* White text for questions */
+  font-family: "Courier New", monospace; /* Custom font for questions */
+  text-align: left; /* Align text to the left */
+}
+
+.faq-arrow {
+  font-size: 1.5em;
+  color: white;
+}
+
+.faq-answer {
+  padding-top: 10px; /* Space above the answer */
+  color: white;
+  transition: height 0.3s; /* Smooth transition for expanding answers */
+}
