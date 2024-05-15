@@ -109,12 +109,16 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
           </div>
           <div className="details-container">
             <div className="activity2">
-              <h1>{booking.model}</h1>
+              <h1>
+                {booking.model} ({booking.bookingType})
+              </h1>
               <div className="additional-details">
                 <p className="date">
                   Date: {booking.startDate} - {booking.endDate}
                 </p>
-                <p className="pax">Total Pax: {booking.seats}</p>
+                {booking.seats !== null && (
+                  <p className="pax">Total Pax: {booking.seats}</p>
+                )}
               </div>
             </div>
             <div className="shortdetails2">
@@ -146,7 +150,8 @@ function Dropdown({ onChange, selectedType }) {
         <option value="">All</option>
         <option value="Hotel">Hotel</option>
         <option value="Activity">Activity</option>
-        <option value="Car">Car</option>
+        <option value="Car Rental">Car Rental</option>
+        <option value="Airport Transfer">Airport Transfer</option>
       </select>
     </div>
   );
