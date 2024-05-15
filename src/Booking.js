@@ -188,10 +188,10 @@ function Search() {
                   &nbsp;CAR RENTAL
                 </span>
               </Link>
-              {/* <span style={{ marginRight: "28px" }}>
+              <span style={{ marginRight: "28px" }}>
                 <FaBus style={{ fontSize: "25px" }} />
                 &nbsp;AIRPORT TRANSFER
-              </span> */}
+              </span>
               <Link
                 to="/activities"
                 style={{ textDecoration: "none", color: "black" }}
