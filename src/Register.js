@@ -123,7 +123,7 @@ function Register({ registeredUsers, setRegisteredUsers }) {
               <div className="d-flex justify-content-center col mt-3">
                 <div className="signin-text text-white text-center py-2 rounded">
                   Already have an account{" "}
-                  <Link to="/" className="font-underline text-white">
+                  <Link to="/login" className="font-underline text-white">
                     Login here.
                   </Link>
                 </div>

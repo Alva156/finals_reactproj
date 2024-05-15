@@ -17,7 +17,7 @@ function NavbarNew({ isActive, isLoggedIn, setIsLoggedIn }) {
     <Navbar collapseOnSelect expand="lg" className="navbar-fix">
       <Container>
         <Navbar.Brand>
-          <Link to="/seoulseeker" style={{ textDecoration: "none" }}>
+          <Link to="/" style={{ textDecoration: "none" }}>
             <div
               className="seoul-seeker-logo d-flex align-items-center text-white"
               style={{ fontWeight: "800" }}
@@ -74,7 +74,7 @@ function NavbarNew({ isActive, isLoggedIn, setIsLoggedIn }) {
           </Nav>
           <Nav>
             <Nav.Item>
-              <Link to="/" style={{ textDecoration: "none" }}>
+              <Link to="/login" style={{ textDecoration: "none" }}>
                 <div
                   className="btn-nav-login rounded px-4 py-2 text-white d-flex align-items-center h6"
                   onClick={isLoggedIn ? handleLogout : null}

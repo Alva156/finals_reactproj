@@ -34,7 +34,7 @@ export default function App() {
       <div>
         <NavbarNew isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Switch>
-          <Route path="/" exact>
+          <Route path="/login">
             <Login
               registeredUsers={registeredUsers}
               setRegisteredUsers={setRegisteredUsers}
@@ -51,7 +51,9 @@ export default function App() {
               />
             )}
           />
-          <Route path="/home" component={Home} />
+          <Route path="/home">
+            <Home isLoggedIn={isLoggedIn} />
+          </Route>
           <Route path="/booking" component={Booking} />
           <Route
             path="/history"
@@ -67,7 +69,7 @@ export default function App() {
             )}
           />
           <Route path="/hotels" component={Hotel} />
-          <Route path="/seoulseeker" component={SeoulSeeker} />
+          <Route path="/" exact component={SeoulSeeker} />
         </Switch>
       </div>
     </Router>
