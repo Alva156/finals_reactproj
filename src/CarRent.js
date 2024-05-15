@@ -15,7 +15,7 @@ const dummyCars = [
     bookingType: "Car Rental",
     model: "Ford Everest 2024",
     price: "₩ 107,018.00",
-    luggageCapacity: "5 Bagages",
+    luggageCapacity: "5 Baggages",
     seats: "7",
     service: "Premium Service",
     withDriver: true,

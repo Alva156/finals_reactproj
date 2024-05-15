@@ -129,7 +129,7 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
               </p>
             </div>
             <div className="buttons">
-              <AddReview onAddReviewClick={onAddReviewClick} />
+              {/* <AddReview onAddReviewClick={onAddReviewClick} /> */}
               <ViewDetails onEditClick={onEditClick} booking={booking} />
             </div>
           </div>
@@ -166,6 +166,7 @@ function AddReview({ onAddReviewClick }) {
     </center>
   );
 }
+
 function ViewDetails({ onEditClick, booking }) {
   return (
     <center>
