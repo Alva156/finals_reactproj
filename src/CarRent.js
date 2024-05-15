@@ -291,8 +291,8 @@ function CarList({ car }) {
               </div>
             </div>
             <div className="col-md-4 col-12">
-              <div className="row px-2">
-                <div className="col-12 list-sm-img rounded mb-2">
+              <div className="row px-3">
+                <div className="col-9 list-sm-img rounded mb-2">
                   <img
                     src={require(`./images/${car.images[1]}`)}
                     alt={`Hotel ${car.model} Image 2`}
