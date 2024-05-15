@@ -6,7 +6,7 @@ import { IoIosArrowDropright } from "react-icons/io";
 import NavbarNew from "./NavBarNew";
 import { Link } from "react-router-dom";
 
-function Home() {
+function Home({ isLoggedIn }) {
   const contentProps = {
     title1: "EXPLORE",
     title2: "SEOUL",
@@ -51,7 +51,7 @@ function Home() {
         <Row className="d-flex flex-wrap justify-content-center">
           {/* Left side (Col 7) */}
           <Col sm={12} md={12} lg={6} className="home-col-container">
-            <HomeContent {...contentProps} />
+            <HomeContent {...contentProps} isLoggedIn={isLoggedIn} />
           </Col>
 
           {/* Right side (Col 5) */}
@@ -64,13 +64,16 @@ function Home() {
   );
 }
 
-function HomeContent({ title1, title2, description, buttonText }) {
+function HomeContent({ title1, title2, description, buttonText, isLoggedIn }) {
   return (
     <div className="home-content">
       <p className="home-title1 text-white">{title1}</p>
       <p className="home-title2">{title2}</p>
       <p className="home-description">{description}</p>
-      <Link to="/booking" style={{ textDecoration: "none" }}>
+      <Link
+        to={isLoggedIn ? "/booking" : "/login"}
+        style={{ textDecoration: "none" }}
+      >
         <div className="btn home-button d-flex justify-content-center align-items-center px-2 gap-4">
           {buttonText} <IoIosArrowDropright style={{ fontSize: "25px" }} />
         </div>

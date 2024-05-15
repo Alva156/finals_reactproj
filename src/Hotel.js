@@ -6,9 +6,11 @@ import { FaLocationDot } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import NavbarNew from "./NavBarNew";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Hotel() {
   const [hotels, setHotels] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
     const fetchHotels = async () => {
       try {
@@ -66,6 +68,10 @@ function Hotel() {
     fetchHotels();
   }, []); // Empty dependency array to run effect only once on mount
 
+  const filteredHotels = hotels.filter((hotel) =>
+    hotel.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+  );
+
   return (
     <div
       style={{
@@ -75,15 +81,19 @@ function Hotel() {
       }}
     >
       <div className="hotel-search">
-        <Search />
+        <Search setSearchQuery={setSearchQuery} />
         <HotelHead />
-        <HotelList hotels={hotels} />
+        <HotelList hotels={filteredHotels} />
       </div>
     </div>
   );
 }
 
-function Search() {
+function Search({ setSearchQuery }) {
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
     <div>
       <Card className="mb-2">
@@ -108,7 +118,8 @@ function Search() {
                       <input
                         className="input-text form-control-plaintext"
                         type="text"
-                        placeholder="email@example.com"
+                        placeholder="Enter hotel name"
+                        onChange={handleSearchChange}
                       />
                     </div>
                   </div>
@@ -225,9 +236,16 @@ function HotelList({ hotels }) {
                 <FaLocationDot /> {hotel.vicinity}
               </div>
               <div className="col-12">
-                <div className="d-flex justify-content-start flex-wrap gap-2 text-white">
-                  {/* Render hotel amenities here */}
-                </div>
+                <Link
+                  to={{
+                    pathname: "/checkout",
+                  }}
+                  style={{ textDecoration: "none" }}
+                >
+                  <div className="btn-book px-4 py-2 text-white text-center rounded">
+                    BOOK NOW
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
