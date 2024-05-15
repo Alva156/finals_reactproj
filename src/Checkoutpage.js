@@ -4,18 +4,22 @@ import wallpaper from "./materials/wallpaper.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import NavbarNew from "./NavBarNew";
+import { useLocation } from "react-router-dom";
 
 function Checkoutpage() {
+  const location = useLocation();
+  const booking = location.state && location.state.booking;
+
   return (
     <div>
       <div className="container">
         <div className="left-side">
           <ContactDetailsForm />
-          <Location />
-          <Summary />
+          <Location booking={booking} />
+          <Summary booking={booking} />
         </div>
         <div className="right-side">
-          <BookingSummary />
+          <BookingSummary booking={booking} />
         </div>
       </div>
       <div className="payment-button-container">
@@ -87,7 +91,7 @@ function ContactDetailsForm() {
   );
 }
 
-function Location() {
+function Location({ booking }) {
   const containerStyle = {
     width: "100%",
     height: "400px",
@@ -105,50 +109,57 @@ function Location() {
       <h1>Location Details</h1>
       <div className="location-container">
         <p>Location</p>
-        <LoadScript googleMapsApiKey={apiKey}>
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={10}
-          >
-            {/* Map content */}
-          </GoogleMap>
-        </LoadScript>
+        {booking && (
+          <LoadScript googleMapsApiKey={apiKey}>
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={center}
+              zoom={10}
+            >
+              {/* Map content */}
+            </GoogleMap>
+          </LoadScript>
+        )}
       </div>
     </div>
   );
 }
-function Summary() {
+
+function Summary({ booking }) {
   return (
     <div className="summaryform">
       <h1>Summary</h1>
       <div className="summary-container">
         <div className="breakdown">
           <p>Breakdown: </p>
-          <h2>₩100,000 x 1</h2>
+          <h2>{booking.price} x 1</h2>
         </div>
         <div className="totalprice">
           <p>Total Price: </p>
-          <h2>₩100,000 </h2>
+          <h2>{booking.price} </h2>
         </div>
       </div>
     </div>
   );
 }
-function BookingSummary() {
+
+function BookingSummary({ booking }) {
+  const details = `${booking.luggageCapacity}, ${booking.seats}, ${
+    booking.service
+  }, ${booking.withDriver ? "With Driver" : "Without Driver"}`;
   return (
     <div className="bookingsummaryform">
       <div className="bookingsummary-container">
         <h1>Booking Summary</h1>
         <div className="activity">
-          <p>Activity Name/Event/Car, etc.</p>
+          <p>{booking.model}</p>
         </div>
         <div className="top-section">
           <div className="image">
-            <img src={wallpaper} alt="Event" />
+            <img src={require(`./images/${booking.images[0]}`)} alt="Event" />
           </div>
           <div className="shortdetails">
-            <p>This is the details of the transaction</p>
+            <p>{details}</p>
           </div>
         </div>
         <div className="date-and-details">

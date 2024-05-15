@@ -11,6 +11,7 @@ import { TbChecklist } from "react-icons/tb";
 import NavbarNew from "./NavBarNew";
 import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Booking() {
   const carouselImages = [
@@ -171,10 +172,15 @@ function Search() {
                 <BiSolidBuildingHouse style={{ fontSize: "25px" }} />
                 &nbsp;HOTELS
               </span>
-              <span style={{ marginRight: "28px" }}>
-                <FaCar style={{ fontSize: "25px" }} />
-                &nbsp;CAR RENTAL
-              </span>
+              <Link
+                to="/carrent"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <span style={{ marginRight: "28px" }}>
+                  <FaCar style={{ fontSize: "25px" }} />
+                  &nbsp;CAR RENTAL
+                </span>
+              </Link>
               <span style={{ marginRight: "28px" }}>
                 <FaBus style={{ fontSize: "25px" }} />
                 &nbsp;AIRPORT TRANSFER
