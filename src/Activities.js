@@ -9,68 +9,48 @@ import NavbarNew from "./NavBarNew";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const dummyCars = [
+const dummyActivities = [
   {
     id: 1,
-    bookingType: "Car",
-    model: "Toyota Corolla",
+    bookingType: "Activity",
+    model: "Hanbok Rental with Gyeongbokgung Palace Visit",
+    address: "161 Sajik-ro, Jongno District, Seoul, South Korea",
     price: "₩100,000",
-    luggageCapacity: "2 Baggages",
-    seats: "4",
-    service: "Basic Service",
-    withDriver: true,
     images: ["corolla1.png", "corolla2.png", "corolla3.png"],
-    type: "Sedan",
+    wycs: "Head to the Hanbok rental store and choose between a traditional and premium Hanbock. Get dressed with help from Hanbock specialists and upgrade to include hairstyling suitable for the Hanbok and accessories. Once you're ready, decide where you want to go. Entry to Gyeongbokgung Palace, Changdeokgung Palace, Gyeonghuigung Palace, Deoksugung Palace, and Changgyeonggung Palace entry is free to visitors wearing a Hanbok. Admire the stunning architecture or walk around the gardens.",
   },
   {
     id: 2,
-    bookingType: "Car",
-    model: "Honda Civic",
-    price: "₩120,000",
-    luggageCapacity: "3 Baggages",
-    seats: "5",
-    service: "Premium Service",
-    withDriver: false,
-    images: ["civic1.png", "civic2.png", "civic3.png"],
-    type: "Sedan",
+    bookingType: "Activity",
+    model: "Hangang Park Picnic",
+    address: "387 Apgujeong-dong, Gangnam-gu, Seoul, South Korea",
+    price: "₩100,000",
+    images: ["corolla1.png", "corolla2.png", "corolla3.png"],
+    wycs: "The Hangang River, a piece of nature within the city, is a popular recreational area for Seoulites. There are many parks along the river, making it an ideal place for a picnic, as well as other activities such as watching the fountain show. Why not spend a day like a local and enjoy everything by the river?",
   },
   {
     id: 3,
-    bookingType: "Car",
-    model: "Hyundai Sonata",
-    price: "₩110,000",
-    luggageCapacity: "2 Baggages",
-    seats: "5",
-    service: "Standard Service",
-    withDriver: true,
-    images: ["sonata1.png", "sonata2.png", "sonata3.jpg"],
-    type: "Sedan",
+    bookingType: "Activity",
+    model: "Suwon Hwaseong Fortress and Folk Village Day Tour",
+    address:
+      "90 Minsokchon-ro, Giheung-gu, Yongin-si, Gyeonggi-do, South Korea",
+    price: "₩100,000",
+    images: ["corolla1.png", "corolla2.png", "corolla3.png"],
+    wycs: "Spend a fun-filled day away from the city on 7- to 8-hour tour to Korean Folk Village and Suwon Hwaseong Fortress. Perfect for families or friend groups who can’t seem to agree on what to do, both destinations offer a wide range of activities to appeal to all interests. In addition to poking around the traditional houses, you can watch horseback martial arts and a traditional wedding ceremony. Later reach Suwon Hwaseong Fortress and walk along the fortress walls and visit the gates and watchtowers.",
   },
 ];
 
 function Activities() {
-  const [passengerCapacity, setPassengerCapacity] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [carType, setCarType] = useState("");
-
-  const handlePassengerCapacityChange = (capacity) => {
-    setPassengerCapacity(capacity);
-  };
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
-  const handleCarTypeChange = (type) => {
-    setCarType(type);
-  };
-
-  const filteredCars = dummyCars.filter((car) => {
+  const filteredActivities = dummyActivities.filter((act) => {
     return (
-      (!searchQuery ||
-        car.model.toLowerCase().startsWith(searchQuery.toLowerCase())) &&
-      (!passengerCapacity || parseInt(car.seats) >= passengerCapacity) &&
-      (!carType || car.type === carType)
+      !searchQuery ||
+      act.model.toLowerCase().startsWith(searchQuery.toLowerCase())
     );
   });
 
@@ -83,31 +63,23 @@ function Activities() {
       }}
     >
       <div className="hotel-search">
-        <Search
-          handleSearchChange={handleSearchChange}
-          handleCarTypeChange={handleCarTypeChange}
-        />
-        <Filter
-          passengerCapacity={passengerCapacity}
-          handlePassengerCapacityChange={handlePassengerCapacityChange}
-          handleCarTypeChange={handleCarTypeChange}
-        />
-        {filteredCars.map((car) => (
-          <CarList key={car.id} car={car} />
+        <Search handleSearchChange={handleSearchChange} />
+        {filteredActivities.map((act) => (
+          <ActList key={act.id} act={act} />
         ))}
       </div>
     </div>
   );
 }
 
-function Search({ handleSearchChange, handleCarTypeChange }) {
+function Search({ handleSearchChange }) {
   return (
     <div>
       <Card className="mb-2">
         <Card.Body>
           <Card.Title className="px-3">
             <IoCarSport style={{ fontSize: "25px", marginRight: "5px" }} />
-            CAR RENTAL
+            ACTIVITIES
           </Card.Title>
           <hr className="m-0 mx-3"></hr>
           <Card.Body className="col">
@@ -115,12 +87,12 @@ function Search({ handleSearchChange, handleCarTypeChange }) {
               <div className="container-fluid m-0">
                 <div className="row gap-4">
                   <div className="inputs px-4 py-1 col-md-3">
-                    <div>Car Model</div>
+                    <div>Activities</div>
                     <div>
                       <input
                         className="input-text form-control-plaintext"
                         type="text"
-                        placeholder="Enter car model"
+                        placeholder="Enter activity"
                         onChange={handleSearchChange}
                       />
                     </div>
@@ -180,65 +152,57 @@ function Search({ handleSearchChange, handleCarTypeChange }) {
   );
 }
 
-function Filter({
-  passengerCapacity,
-  handlePassengerCapacityChange,
-  handleCarTypeChange,
-}) {
-  return (
-    <div>
-      <div className="filter-head d-flex flex-wrap p-2 my-4 px-4 justify-content-start align-items-center gap-2">
-        <div className=" h6 d-flex align-items-center">Filter :</div>
-        <div className="">
-          <Dropdown>
-            <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
-              Passenger Capacity
-            </Dropdown.Toggle>
+// function Filter() {
+//   return (
+//     <div>
+//       <div className="filter-head d-flex flex-wrap p-2 my-4 px-4 justify-content-start align-items-center gap-2">
+//         <div className=" h6 d-flex align-items-center">Filter :</div>
+//         <div className="">
+//           <Dropdown>
+//             <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
+//               Passenger Capacity
+//             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              {[1, 2, 3, 4, 5, 6].map((capacity) => (
-                <Dropdown.Item
-                  key={capacity}
-                  onClick={() => handlePassengerCapacityChange(capacity)}
-                >
-                  {capacity} pax
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
-        <div className="">
-          <Dropdown>
-            <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
-              Car Type
-            </Dropdown.Toggle>
+//             <Dropdown.Menu>
+//               {[1, 2, 3, 4, 5, 6].map((capacity) => (
+//                 <Dropdown.Item
+//                   key={capacity}
+//                   onClick={() => handlePassengerCapacityChange(capacity)}
+//                 >
+//                   {capacity} pax
+//                 </Dropdown.Item>
+//               ))}
+//             </Dropdown.Menu>
+//           </Dropdown>
+//         </div>
+//         <div className="">
+//           <Dropdown>
+//             <Dropdown.Toggle variant="secondary" id="dropdown-basic" size="sm">
+//               Car Type
+//             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item onClick={() => handleCarTypeChange("")}>
-                All
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => handleCarTypeChange("Sedan")}>
-                Sedan
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => handleCarTypeChange("Van")}>
-                Van
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => handleCarTypeChange("Motorcycle")}>
-                Motorcycle
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
-      </div>
-    </div>
-  );
-}
+//             <Dropdown.Menu>
+//               <Dropdown.Item onClick={() => handleCarTypeChange("")}>
+//                 All
+//               </Dropdown.Item>
+//               <Dropdown.Item onClick={() => handleCarTypeChange("Sedan")}>
+//                 Sedan
+//               </Dropdown.Item>
+//               <Dropdown.Item onClick={() => handleCarTypeChange("Van")}>
+//                 Van
+//               </Dropdown.Item>
+//               <Dropdown.Item onClick={() => handleCarTypeChange("Motorcycle")}>
+//                 Motorcycle
+//               </Dropdown.Item>
+//             </Dropdown.Menu>
+//           </Dropdown>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
-function CarList({ car }) {
-  const details = `${car.luggageCapacity}, ${car.seats} Seats, ${
-    car.service
-  }, ${car.withDriver ? "With Driver" : "Without Driver"}`;
-
+function ActList({ act }) {
   return (
     <div className="list-container container-fluid my-2 rounded">
       <div className="row p-2 rounded d-flex flex-wrap">
@@ -246,8 +210,8 @@ function CarList({ car }) {
           <div className="row px-2 d-flex flex-wrap">
             <div className="list-lg-img col-md-8 rounded">
               <img
-                src={require(`./images/${car.images[0]}`)}
-                alt={`Car ${car.model} Image 1`}
+                src={require(`./images/${act.images[0]}`)}
+                alt={`Car ${act.model} Image 1`}
                 className="img-fluid rounded mb-2"
                 style={{ width: "100%", height: "100%", objectFit: "contain" }}
               />
@@ -258,8 +222,8 @@ function CarList({ car }) {
                 style={{ marginBottom: "10px" }}
               >
                 <img
-                  src={require(`./images/${car.images[1]}`)}
-                  alt={`Car ${car.model} Image 1`}
+                  src={require(`./images/${act.images[1]}`)}
+                  alt={`Car ${act.model} Image 1`}
                   className="img-fluid rounded mb-2"
                   style={{
                     width: "100%",
@@ -270,8 +234,8 @@ function CarList({ car }) {
               </div>
               <div className="col-12 list-sm-img rounded">
                 <img
-                  src={require(`./images/${car.images[2]}`)}
-                  alt={`Car ${car.model} Image 1`}
+                  src={require(`./images/${act.images[2]}`)}
+                  alt={`Car ${act.model} Image 1`}
                   className="img-fluid rounded mb-2"
                   style={{
                     width: "100%",
@@ -285,27 +249,27 @@ function CarList({ car }) {
         </div>
         <div className="col list-all-details">
           <div className="col-12 row car-detail d-flex justify-content-between align-items-center">
-            <div className="col-md-8 car-list-name">{car.model}</div>
+            <div className="col-md-8 car-list-name">{act.model}</div>
             <div className="col-md-4 car-list-name text-md-center">
-              {car.price}
+              {act.price}
             </div>
           </div>
           <div className="col-12 row list-car-detail d-flex justify-content-start align-items-center gap-2">
-            <div className="col-md-5 col text-dark">{car.luggageCapacity}</div>
-            <div className="col-md-5 col text-dark">{car.seats} Seats</div>
+            {/* <div className="col-md-5 col text-dark">{car.luggageCapacity}</div>
+            <div className="col-md-5 col text-dark">{car.seats} Seats</div> */}
           </div>
           <div className="col-12 car-list-detail row d-flex justify-content-between align-items-center">
             <div className="col-md-8 py-2">
-              <div className="col-md-12 list-service">{car.service}</div>
+              {/* <div className="col-md-12 list-service">{car.service}</div>
               <div className=" col-md-12">
                 {car.withDriver ? "With Driver" : "Without Driver"}
-              </div>
+              </div> */}
             </div>
             <div className="col-md-4 col-12">
               <Link
                 to={{
                   pathname: "/activitybooking",
-                  // state: { booking: car, details: details },
+                  state: { booking: act },
                 }}
                 style={{ textDecoration: "none" }}
               >

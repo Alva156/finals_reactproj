@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./activitybookingpage.css";
 import Card from "react-bootstrap/Card";
 import { FaSearch } from "react-icons/fa";
 import { BiSolidBuildingHouse } from "react-icons/bi";
 import { IoPerson } from "react-icons/io5";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { height } from "@fortawesome/free-regular-svg-icons/faAddressBook";
 
 function Search() {
   return (
@@ -222,7 +226,51 @@ const AvailableDatesSection = () => {
 };
 
 const ActivityBookingPage = () => {
+  const location = useLocation();
+  const booking = location.state && location.state.booking;
+  const [coordinates, setCoordinates] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(null);
+  const [error, setError] = useState(null);
+  const mapRef = useRef(null);
+
+  const handleGeocode = async () => {
+    try {
+      const response = await axios.get(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+          booking.address
+        )}&key=AIzaSyA9bEl5wGZ3rTxi_4clyA4l1-724wpNmY4`
+      );
+      const { results } = response.data;
+      if (results && results.length > 0) {
+        const { lat, lng } = results[0].geometry.location;
+        setCoordinates({ lat, lng });
+        setError(null);
+        console.log(results[0].geometry.location);
+      } else {
+        setError("No results found");
+      }
+    } catch (error) {
+      setError("Error fetching geocoding data");
+    }
+  };
+
+  useEffect(() => {
+    handleGeocode();
+  }, [booking]);
+
+  useEffect(() => {
+    if (coordinates) {
+      const map = new window.google.maps.Map(mapRef.current, {
+        center: coordinates,
+        zoom: 14,
+      });
+
+      new window.google.maps.Marker({
+        position: coordinates,
+        map,
+      });
+    }
+  }, [coordinates]);
 
   const openLightbox = (index) => {
     setCurrentImageIndex(index);
@@ -230,14 +278,14 @@ const ActivityBookingPage = () => {
 
   return (
     <div className="hotel-booking-page">
-      <Search />
+      {/* <Search /> */}
       <header className="header">
         <div className="hotel-info">
-          <div className="hotel-name">Activity Name</div>
-          <div className="hotel-location">Location Address</div>
+          <div className="hotel-name">{booking.model}</div>
+          <div className="hotel-location">{booking.address}</div>
         </div>
         <div className="price-and-book">
-          <span className="price">₱1,961</span>
+          <span className="price">{booking.price}</span>
         </div>
       </header>
 
@@ -273,18 +321,15 @@ const ActivityBookingPage = () => {
       <div className="hotel-details">
         <div className="flex-row full-width">
           <div className="available-dates-container">
-            <h2>Available Dates</h2>
-            <AvailableDatesSection />
+            {/* <h2>Available Dates</h2>
+            <AvailableDatesSection /> */}
           </div>
         </div>
 
         <div className="flex-row full-width">
           <div className="section">
             <h2>What You Can See</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            <p>{booking.wycs}</p>
           </div>
           <div className="section">
             <h2>Reviews</h2>
@@ -293,18 +338,11 @@ const ActivityBookingPage = () => {
         </div>
 
         <div className="location-wrapper">
-          <div className="map-container">
-            <h2>Location</h2>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3162.919514482132!2d126.97725900000002!3d37.55696!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca25f93a51a53%3A0xbfd0440f0842fd34!2sK-POP%20HOTEL%20Seoul%20Tower!5e0!3m2!1sen!2sus!4v1684459468881!5m2!1sen!2sus"
-              width="1365"
-              height="300"
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Hotel Location"
-            ></iframe>
-          </div>
+          <div
+            className="map-container"
+            ref={mapRef}
+            style={{ height: "500px" }}
+          ></div>
         </div>
       </div>
     </div>
