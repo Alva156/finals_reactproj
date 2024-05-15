@@ -32,6 +32,7 @@ const dummyHotels = [
       "lotte7.jpg",
     ],
     seats: "5",
+    rating: "5",
   },
   {
     bookingType: "Hotel",
@@ -56,6 +57,7 @@ const dummyHotels = [
       "lotte7.jpg",
     ],
     seats: "5",
+    rating: "5",
   },
   {
     bookingType: "Hotel",
@@ -80,6 +82,7 @@ const dummyHotels = [
       "lotte7.jpg",
     ],
     seats: "5",
+    rating: "5",
   },
   {
     bookingType: "Hotel",
@@ -104,6 +107,7 @@ const dummyHotels = [
       "lotte7.jpg",
     ],
     seats: "5",
+    rating: "5",
   },
   {
     bookingType: "Hotel",
@@ -128,6 +132,7 @@ const dummyHotels = [
       "lotte7.jpg",
     ],
     seats: "5",
+    rating: "5",
   },
 ];
 

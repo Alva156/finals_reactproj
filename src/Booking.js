@@ -139,7 +139,9 @@ function ExploreSeoul({ carouselImages }) {
             worries. We are also giving a special offer on a round-trip for some
             destination, so you can earn points from it!
           </p>
-          <button className="btn booking-button">More Details</button>
+          <Link to="/destinations">
+            <button className="btn booking-button">More Details</button>
+          </Link>
         </div>
       </div>
 
