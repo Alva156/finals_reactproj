@@ -110,25 +110,25 @@ function Checkoutpage({ handleBooking }) {
                         name="countryCode"
                         className="custom-dropdown"
                       >
-                        <option value="+1">+1 USA</option>
-                        <option value="+44">+44 UK</option>
-                        <option value="+62">+62 Indonesia</option>
-                        <option value="+91">+91 India</option>
-                        <option value="+81">+81 Japan</option>
-                        <option value="+49">+49 Germany</option>
-                        <option value="+33">+33 France</option>
-                        <option value="+55">+55 Brazil</option>
-                        <option value="+61">+61 Australia</option>
-                        <option value="+7">+7 Russia</option>
-                        <option value="+86">+86 China</option>
-                        <option value="+27">+27 South Africa</option>
-                        <option value="+63">+63 Philippines</option>
+                        <option value="+1">US +1</option>
+                        <option value="+44">UK +44</option>
+                        <option value="+62">ID +62</option>
+                        <option value="+91">IN +91</option>
+                        <option value="+81">JP +81</option>
+                        <option value="+49">DE +49</option>
+                        <option value="+33">FR +33</option>
+                        <option value="+55">BR +55</option>
+                        <option value="+61">AU +61</option>
+                        <option value="+7">RU +7</option>
+                        <option value="+86">CN +86</option>
+                        <option value="+27">ZA +27</option>
+                        <option value="+63">PH +63</option>
                       </select>
                       <input
                         type="number"
                         id="number"
                         name="number"
-                        placeholder="e.g.(+62) 0812345678"
+                        placeholder="ex. 0812345678"
                         value={contact}
                         onChange={(e) => setContact(e.target.value)}
                       />

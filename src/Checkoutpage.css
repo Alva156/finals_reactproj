@@ -12,8 +12,9 @@ body {
   overflow-x: hidden;
 }
 .custom-dropdown {
-  height: 6vh;
-  font-size: medium;
+  height: 4.5vh;
+  width: 7.5vw;
+  font-size: x-small;
 }
 
 h1 {
@@ -92,7 +93,7 @@ input[type="number"] {
   font-family: "Livvic", sans-serif;
   background-color: transparent;
   padding: 5px;
-  font-size: 2vh;
+  font-size: 1.8vh;
   border: none;
   width: 100%;
   color: #545872;
@@ -105,6 +106,11 @@ input:focus {
 .bookingsummary-container input[type="number"],
 .bookingsummary-container input[type="date"] {
   font-size: 1.8vw; /* Increase font size for smaller screens */
+}
+.namefield label,
+.emailfield label,
+.numberfield label {
+  color: #545872;
 }
 
 /* Media Queries */
@@ -486,8 +492,9 @@ select:focus {
     font-size: 1.8vw;
   }
   .custom-dropdown {
-    height: 7vh;
-    font-size: sml;
+    height: 4vh;
+    width: 11.5vw;
+    font-size: x-small;
   }
 }
 
@@ -517,8 +524,9 @@ select:focus {
     height: auto;
   }
   .custom-dropdown {
-    height: 6vh;
-    font-size: small;
+    height: 4vh;
+    width: 17.5vw;
+    font-size: x-small;
   }
 }
 
