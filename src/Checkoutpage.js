@@ -63,7 +63,6 @@ function Checkoutpage({ handleBooking }) {
       details: details,
       contactDetails: { name: name, email: email, contact: contact },
     };
-    console.log(bookingData);
     handleBooking(bookingData);
     setReceiptNumber(generateReceiptNumber());
     setShowModal(true);

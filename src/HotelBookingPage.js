@@ -206,7 +206,6 @@ const HotelBookingPage = () => {
       if (results && results.length > 0) {
         const { lat, lng } = results[0].geometry.location;
         setCoordinates({ lat, lng });
-        console.log(results[0].geometry.location);
         setError(null);
       } else {
         setError("No results found");

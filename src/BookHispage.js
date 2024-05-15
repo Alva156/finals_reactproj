@@ -13,7 +13,7 @@ import NavbarNew from "./NavBarNew";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { PiAirplaneTiltFill } from "react-icons/pi";
 
-function BookHispage({ bookingDetails }) {
+function BookHispage({ bookingDetails, hotels }) {
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [selectedType, setSelectedType] = useState("");
@@ -43,16 +43,22 @@ function BookHispage({ bookingDetails }) {
             <p>No bookings found.</p>
           ) : (
             filteredBookings.map((booking) => (
-              <BookingHistory
-                onAddReviewClick={handleAddReviewClick}
-                onEditClick={handleEditClick}
-                booking={booking}
-              />
+              <div>
+                <BookingHistory
+                  onAddReviewClick={handleAddReviewClick}
+                  onEditClick={handleEditClick}
+                  booking={booking}
+                />
+                <Modal
+                  showModal={showModal}
+                  setShowModal={setShowModal}
+                  booking={booking}
+                />
+                <Modal2 showModal2={showModal2} setShowModal2={setShowModal2} />
+              </div>
             ))
           )}
         </div>
-        <Modal showModal={showModal} setShowModal={setShowModal} />
-        <Modal2 showModal2={showModal2} setShowModal2={setShowModal2} />
       </div>
     </div>
   );
@@ -153,13 +159,13 @@ function ViewDetails({ onEditClick }) {
   return (
     <center>
       <button className="viewdetails-btn" onClick={onEditClick}>
-        <h2>View Details</h2>
+        <h2>Edit Transaction</h2>
       </button>
     </center>
   );
 }
 
-const Modal = ({ showModal, setShowModal }) => {
+const Modal = ({ showModal, setShowModal, booking }) => {
   const [rating, setRating] = useState(0);
 
   if (!showModal) return null;
@@ -172,7 +178,7 @@ const Modal = ({ showModal, setShowModal }) => {
         </button>
         <div className="popup-container">
           <h1>Write a Review</h1>
-          <h2>Activity Name/Event/Car, etc.</h2>
+          <h2>{booking.model}</h2>
           <div className="rating">
             {[1, 2, 3, 4, 5].map((index) => (
               <FontAwesomeIcon
