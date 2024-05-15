@@ -47,6 +47,7 @@ body {
   box-sizing: border-box;
   border: 1px solid #ccc;
   overflow: hidden;
+  margin-bottom: 3vh;
 }
 
 .top-section2 {
