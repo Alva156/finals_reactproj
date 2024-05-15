@@ -202,9 +202,8 @@
 }
 
 .location-wrapper {
-  display: flex;
-  flex-direction: row; /* Side-by-side layout */
-  gap: 10px; /* Gap between map and other sections */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping of children */
   padding: 20px; /* Padding for inner content */
   background: white; /* White background for container */
   border-radius: 10px; /* Rounded corners */
@@ -212,7 +211,9 @@
 }
 
 .map-container {
-  flex: 2; /* Occupy more space for the map */
+  flex: none; /* Don't allow flex resizing */
+  width: auto; /* Allow map to expand horizontally */
+  display: inline-block; /* Display as inline block */
 }
 
 .map-container h2 {
@@ -358,46 +359,16 @@
   width: 100%;
 }
 
-.price-details {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.left-section {
-  display: flex;
-  flex-direction: column;
-}
-
-.right-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.price-info {
-  margin-bottom: 10px;
-}
-
-.price-heading {
-  font-weight: bold;
-}
-
-.price {
-  font-size: 24px;
-  color: #545872;
-}
-
 .quantity-adjuster {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
 }
 
-.quantity-adjuster label {
-  margin-right: 10px;
+.quantity-adjuster button {
+  padding: 5px 10px;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
 }
 
 .quantity-adjuster input {
@@ -408,7 +379,43 @@
   text-align: center;
 }
 
-.total-price {
+.book-now {
+  padding: 10px;
+  background-color: #545872;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.book-now:hover {
+  background-color: #717699;
+}
+
+.price-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.left-section,
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.price-info {
+  margin-right: 10px;
+}
+
+.price-heading {
   font-weight: bold;
-  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 24px;
+  color: #545872;
 }
