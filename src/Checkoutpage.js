@@ -1,11 +1,11 @@
 import "./Checkoutpage.css";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import wallpaper from "./materials/wallpaper.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import NavbarNew from "./NavBarNew";
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import Location from "./Location";
 
 function Checkoutpage({ handleBooking }) {
   const location = useLocation();
@@ -19,21 +19,6 @@ function Checkoutpage({ handleBooking }) {
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [receiptNumber, setReceiptNumber] = useState(null);
-
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-    setError("");
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    setError("");
-  };
-
-  const handleContactChange = (e) => {
-    setContact(e.target.value);
-    setError("");
-  };
 
   const handleStartDateChange = (e) => {
     setSelectedStartDate(e.target.value);
@@ -89,12 +74,70 @@ function Checkoutpage({ handleBooking }) {
     <div>
       <div className="container">
         <div className="left-side">
-          <ContactDetailsForm
-            handleNameChange={handleNameChange}
-            handleEmailChange={handleEmailChange}
-            handleContactChange={handleContactChange}
-          />
-          {/* <Location booking={booking} /> */}
+          <div className="contactdetailsform">
+            <h1>Contact Details</h1>
+            <div className="form-container">
+              <form>
+                <div className="namefield">
+                  <label htmlFor="fullName">Full Name</label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="First Name MI. Last Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+                <div className="contactfields">
+                  <div className="emailfield">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      type="text"
+                      id="email"
+                      name="email"
+                      placeholder="example@gmail.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="numberfield">
+                    <label htmlFor="number">Mobile Number</label>
+                    <div style={{ display: "flex" }}>
+                      <select
+                        id="countryCode"
+                        name="countryCode"
+                        className="custom-dropdown"
+                      >
+                        <option value="+1">+1 USA</option>
+                        <option value="+44">+44 UK</option>
+                        <option value="+62">+62 Indonesia</option>
+                        <option value="+91">+91 India</option>
+                        <option value="+81">+81 Japan</option>
+                        <option value="+49">+49 Germany</option>
+                        <option value="+33">+33 France</option>
+                        <option value="+55">+55 Brazil</option>
+                        <option value="+61">+61 Australia</option>
+                        <option value="+7">+7 Russia</option>
+                        <option value="+86">+86 China</option>
+                        <option value="+27">+27 South Africa</option>
+                        <option value="+63">+63 Philippines</option>
+                      </select>
+                      <input
+                        type="number"
+                        id="number"
+                        name="number"
+                        placeholder="e.g.(+62) 0812345678"
+                        value={contact}
+                        onChange={(e) => setContact(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <Location booking={booking} />
           <Summary booking={booking} />
         </div>
         <div className="right-side">
@@ -115,11 +158,7 @@ function Checkoutpage({ handleBooking }) {
     </div>
   );
 
-  function ContactDetailsForm({
-    handleNameChange,
-    handleEmailChange,
-    handleContactChange,
-  }) {
+  function ContactDetailsForm({ setName, setContact, setEmail }) {
     return (
       <div className="contactdetailsform">
         <h1>Contact Details</h1>
@@ -133,7 +172,7 @@ function Checkoutpage({ handleBooking }) {
                 name="fullName"
                 placeholder="First Name MI. Last Name"
                 value={name}
-                onChange={handleNameChange}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="contactfields">
@@ -144,8 +183,6 @@ function Checkoutpage({ handleBooking }) {
                   id="email"
                   name="email"
                   placeholder="example@gmail.com"
-                  value={email}
-                  onChange={handleEmailChange}
                 />
               </div>
               <div className="numberfield">
@@ -175,45 +212,11 @@ function Checkoutpage({ handleBooking }) {
                     id="number"
                     name="number"
                     placeholder="e.g.(+62) 0812345678"
-                    value={contact}
-                    onChange={handleContactChange}
                   />
                 </div>
               </div>
             </div>
           </form>
-        </div>
-      </div>
-    );
-  }
-
-  function Location({ booking }) {
-    const containerStyle = {
-      width: "100%",
-      height: "400px",
-    };
-
-    const center = {
-      lat: -3.745,
-      lng: -38.523,
-    };
-
-    const apiKey = "AIzaSyA9bEl5wGZ3rTxi_4clyA4l1-724wpNmY4";
-
-    return (
-      <div className="location">
-        <h1>Location Details</h1>
-        <div className="location-container">
-          <p>Location</p>
-          <LoadScript googleMapsApiKey={apiKey}>
-            <GoogleMap
-              mapContainerStyle={containerStyle}
-              center={center}
-              zoom={10}
-            >
-              {/* Map content */}
-            </GoogleMap>
-          </LoadScript>
         </div>
       </div>
     );
