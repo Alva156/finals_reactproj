@@ -238,12 +238,12 @@ function HotelList({ hotels }) {
               <div className="col-12">
                 <Link
                   to={{
-                    pathname: "/checkout",
+                    pathname: "/bookingpage",
                   }}
                   style={{ textDecoration: "none" }}
                 >
                   <div className="btn-book px-4 py-2 text-white text-center rounded">
-                    BOOK NOW
+                    CHECK DETAILS
                   </div>
                 </Link>
               </div>
