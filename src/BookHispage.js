@@ -109,12 +109,16 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
           </div>
           <div className="details-container">
             <div className="activity2">
-              <h1>{booking.model}</h1>
+              <h1>
+                {booking.model} ({booking.bookingType})
+              </h1>
               <div className="additional-details">
                 <p className="date">
                   Date: {booking.startDate} - {booking.endDate}
                 </p>
-                <p className="pax">Total Pax: {booking.seats}</p>
+                {booking.seats !== null && (
+                  <p className="pax">Total Pax: {booking.seats}</p>
+                )}
               </div>
             </div>
             <div className="shortdetails2">
