@@ -138,7 +138,7 @@ function Checkoutpage({ handleBooking }) {
               </form>
             </div>
           </div>
-          <Location booking={booking} />
+          {/* <Location booking={booking} /> */}
           <Summary booking={booking} />
         </div>
         <div className="right-side">
