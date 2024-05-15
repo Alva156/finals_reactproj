@@ -48,16 +48,6 @@ function Search() {
   );
 }
 
-const images = [
-  "https://pix8.agoda.net/hotelImages/746/746733/746733_16042214550041717344.jpg?ca=6&ce=1&s=1024x",
-  "https://pix8.agoda.net/property/10588136/294917290/097747606fb5e864b5073c5701eee1c4.jpg?ca=17&ce=1&s=1024x",
-  "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/39057852.jpg?k=b0525125e79ac22908d1f6f3e4da80029d35f7b759373b59d6fcc090570fcac6&o=&s=1024x",
-  "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/36960759.jpg?k=6701d8a9e530765ec7a5982dd0231bddd0fd326d5a99b2a30a1a9ed57a740a87&o=&s=1024x",
-  "https://pix8.agoda.net/hotelImages/746/746733/746733_15071417380032291911.jpg?ca=4&ce=1&s=1024x",
-  "https://pix8.agoda.net/hotelImages/746/746733/746733_15071417380032291878.jpg?ca=4&ce=1&s=1024x",
-  "https://pix8.agoda.net/property/10588136/755373681/08cac4e8d06254072d7076ff1ad2e57d.jpeg?ce=0&s=1024x",
-];
-
 const Lightbox = ({ isOpen, onClose, currentImageIndex, images }) => {
   if (!isOpen) return null;
 
@@ -228,6 +218,7 @@ const AvailableDatesSection = () => {
 const ActivityBookingPage = () => {
   const location = useLocation();
   const booking = location.state && location.state.booking;
+  const images = booking.images;
   const [coordinates, setCoordinates] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(null);
   const [error, setError] = useState(null);
@@ -301,7 +292,7 @@ const ActivityBookingPage = () => {
         <div className="hotel-images-container">
           <div className="main-image">
             <img
-              src={images[0]}
+              src={require(`./images/${images[0]}`)}
               alt="Main Hotel Image"
               onClick={() => openLightbox(0)}
             />
@@ -310,7 +301,7 @@ const ActivityBookingPage = () => {
             {images.slice(1).map((img, index) => (
               <img
                 key={index}
-                src={img}
+                src={require(`./images/${images[index + 1]}`)}
                 alt={`Thumbnail ${index + 1}`}
                 onClick={() => openLightbox(index + 1)}
               />
