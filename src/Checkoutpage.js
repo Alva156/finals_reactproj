@@ -7,13 +7,76 @@ import NavbarNew from "./NavBarNew";
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
-function Checkoutpage() {
+function Checkoutpage({ handleBooking }) {
   const location = useLocation();
   const booking = location.state && location.state.booking;
+  const details = location.state && location.state.details;
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [contact, setContact] = useState("");
+  const [selectedStartDate, setSelectedStartDate] = useState("");
+  const [selectedEndDate, setSelectedEndDate] = useState("");
+  const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [receiptNumber, setReceiptNumber] = useState(null);
 
-  const handleCheckoutClick = () => {
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+    setError("");
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    setError("");
+  };
+
+  const handleContactChange = (e) => {
+    setContact(e.target.value);
+    setError("");
+  };
+
+  const handleStartDateChange = (e) => {
+    setSelectedStartDate(e.target.value);
+    setError("");
+  };
+
+  const handleEndDateChange = (e) => {
+    setSelectedEndDate(e.target.value);
+    setError("");
+  };
+
+  const handleCheckoutClick = (e) => {
+    e.preventDefault();
+    const startDate = new Date(selectedStartDate);
+    const endDate = new Date(selectedEndDate);
+
+    if (!name.trim() || !email.trim() || !contact.trim()) {
+      setError("Please fill out all contact details.");
+      return;
+    }
+
+    if (contact.trim().length !== 10 || isNaN(contact.trim())) {
+      setError("Contact number must be a 10-digit number.");
+      return;
+    }
+
+    if (!selectedStartDate || !selectedEndDate) {
+      setError("Please select a date.");
+      return;
+    }
+
+    if (startDate.getTime() > endDate.getTime()) {
+      setError("Start date cannot be greater than end date.");
+      return;
+    }
+
+    const bookingData = {
+      ...booking,
+      startDate: selectedStartDate,
+      endDate: selectedEndDate,
+      details: details,
+    };
+    handleBooking(bookingData);
     setReceiptNumber(generateReceiptNumber());
     setShowModal(true);
   };
@@ -26,15 +89,22 @@ function Checkoutpage() {
     <div>
       <div className="container">
         <div className="left-side">
-          <ContactDetailsForm />
-          <Location booking={booking} />
+          <ContactDetailsForm
+            handleNameChange={handleNameChange}
+            handleEmailChange={handleEmailChange}
+            handleContactChange={handleContactChange}
+          />
+          {/* <Location booking={booking} /> */}
           <Summary booking={booking} />
         </div>
         <div className="right-side">
           <BookingSummary
             booking={booking}
             onCheckoutClick={handleCheckoutClick}
+            handleEndDateChange={handleEndDateChange}
+            handleStartDateChange={handleStartDateChange}
           />
+          {error && <p className="error-container">{error}</p>}
         </div>
         <Modal
           showModal={showModal}
@@ -45,7 +115,11 @@ function Checkoutpage() {
     </div>
   );
 
-  function ContactDetailsForm() {
+  function ContactDetailsForm({
+    handleNameChange,
+    handleEmailChange,
+    handleContactChange,
+  }) {
     return (
       <div className="contactdetailsform">
         <h1>Contact Details</h1>
@@ -58,6 +132,8 @@ function Checkoutpage() {
                 id="fullName"
                 name="fullName"
                 placeholder="First Name MI. Last Name"
+                value={name}
+                onChange={handleNameChange}
               />
             </div>
             <div className="contactfields">
@@ -68,6 +144,8 @@ function Checkoutpage() {
                   id="email"
                   name="email"
                   placeholder="example@gmail.com"
+                  value={email}
+                  onChange={handleEmailChange}
                 />
               </div>
               <div className="numberfield">
@@ -97,6 +175,8 @@ function Checkoutpage() {
                     id="number"
                     name="number"
                     placeholder="e.g.(+62) 0812345678"
+                    value={contact}
+                    onChange={handleContactChange}
                   />
                 </div>
               </div>
@@ -125,17 +205,15 @@ function Checkoutpage() {
         <h1>Location Details</h1>
         <div className="location-container">
           <p>Location</p>
-          {booking && (
-            <LoadScript googleMapsApiKey={apiKey}>
-              <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={center}
-                zoom={10}
-              >
-                {/* Map content */}
-              </GoogleMap>
-            </LoadScript>
-          )}
+          <LoadScript googleMapsApiKey={apiKey}>
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={center}
+              zoom={10}
+            >
+              {/* Map content */}
+            </GoogleMap>
+          </LoadScript>
         </div>
       </div>
     );
@@ -159,7 +237,12 @@ function Checkoutpage() {
     );
   }
 
-  function BookingSummary({ booking, onCheckoutClick }) {
+  function BookingSummary({
+    booking,
+    onCheckoutClick,
+    handleStartDateChange,
+    handleEndDateChange,
+  }) {
     const details = `${booking.luggageCapacity}, ${booking.seats}, ${
       booking.service
     }, ${booking.withDriver ? "With Driver" : "Without Driver"}`;
@@ -188,13 +271,23 @@ function Checkoutpage() {
                 name="date"
                 className="datefield"
                 placeholder="Date-in"
+                value={selectedStartDate}
+                onChange={handleStartDateChange}
               />
             </div>
             <p>End Date:</p>
             <div className="selecteddate">
-              <input type="date" id="date" name="date" className="datefield" />
+              <input
+                type="date"
+                id="date"
+                name="date"
+                className="datefield"
+                placeholder="Date-out"
+                value={selectedEndDate}
+                onChange={handleEndDateChange}
+              />
             </div>
-            <div className="totalpax">
+            {/* <div className="totalpax">
               <input
                 type="number"
                 id="totalpax"
@@ -209,7 +302,7 @@ function Checkoutpage() {
                 name="totalpay"
                 placeholder="Total Payment"
               />
-            </div>
+            </div> */}
           </div>
           <div className="payment-button-container">
             <ContinueToPaymentButton onCheckoutClick={onCheckoutClick} />
