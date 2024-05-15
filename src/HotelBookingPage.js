@@ -219,11 +219,8 @@ const HotelBookingPage = ({ reviews, setReviews }) => {
       setReviews([...reviews, newReview]);
       setNewReview({ rating: 0, text: "" });
       setShowModal(false);
-      console.log("Hello");
     }
   };
-
-  console.log(reviews);
 
   const handleGeocode = async () => {
     try {

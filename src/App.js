@@ -325,6 +325,49 @@ const dummyHotels = [
   },
 ];
 
+const dummyReviews = [
+  {
+    id: "1",
+    rating: 5,
+    text: "Very clean!",
+  },
+  {
+    id: "2",
+    rating: 5,
+    text: "Very clean!",
+  },
+  {
+    id: "3",
+    rating: 5,
+    text: "Very clean!",
+  },
+  {
+    id: "4",
+    rating: 5,
+    text: "Very clean!",
+  },
+  {
+    id: "5",
+    rating: 5,
+    text: "Very clean!",
+  },
+  {
+    id: "6",
+    rating: 5,
+    text: "Very clean!",
+  },
+  {
+    id: "7",
+    rating: 5,
+    text: "Very clean!",
+  },
+  {
+    id: "8",
+    rating: 5,
+    text: "Very clean!",
+  },
+];
+
 export default function App() {
   const [registeredUsers, setRegisteredUsers] = useState([
     {
@@ -336,7 +379,8 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [bookingDetails, setBookingDetails] = useState([]);
   const [hotels, setHotels] = useState(dummyHotels);
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState(dummyReviews);
+  console.log(reviews);
 
   const handleBooking = (booking) => {
     setBookingDetails((prev) => [...prev, booking]);
