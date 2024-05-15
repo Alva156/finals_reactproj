@@ -16,11 +16,21 @@ const dummyHotels = [
     price: "₩10,000",
     accomodation:
       "LOTTE HOTEL SEOUL is one of Korea’s finest 5-star luxury hotels and is conveniently located in the heart of Seoul’s central business district near Myeongdong. The Main Tower and Executive Tower has a total of 1,015 guest rooms that were designed by four world-class interior design firms.",
-    facilities: "accomodation",
+    facilities:
+      "✔ Fitness Center ✔ Hotel Sauna ✔ Sulwhasoo Spa ✔ Swimming Pool ✔ Golf Driving Range ✔ Business Center ✔ Hotel Museum ✔ Shopping Arcade",
     reviews: "",
     location: "",
-    nearbyPlaces: "",
-    popularInArea: "",
+    nearbyPlaces: ["Citistar Mall", "Grevin Museum", "Seoul City Hall"],
+    popularInArea: ["Citistar Mall", "Grevin Museum", "Seoul City Hall"],
+    images: [
+      "lotte1.jpg",
+      "lotte2.jpg",
+      "lotte3.jpg",
+      "lotte4.jpg",
+      "lotte5.jpg",
+      "lotte6.jpg",
+      "lotte7.jpg",
+    ],
   },
   {
     bookingType: "Hotel",
@@ -263,12 +273,16 @@ function HotelList({ hotels }) {
           <div className="col-md col-12">
             <div className="row px-2 d-flex flex-wrap">
               <div className="list-lg-img col-md-8 rounded">
-                {/* <img
-                  src={hotel.photoUrls[0]}
-                  alt={`Hotel Photo 1`}
-                  className="img-fluid"
-                  style={{ maxHeight: "100%", maxWidth: "100%" }}
-                /> */}
+                <img
+                  src={require(`./images/${hotel.images[0]}`)}
+                  alt={`Hotel ${hotel.model} Image 1`}
+                  className="img-fluid rounded mb-2"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                />
               </div>
               <div className="col-md-4">
                 <div className="col-12 list-sm-img rounded mb-2">

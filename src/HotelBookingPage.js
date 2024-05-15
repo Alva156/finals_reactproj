@@ -6,6 +6,7 @@ import { BiSolidBuildingHouse } from "react-icons/bi";
 import { IoPerson } from "react-icons/io5";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Search() {
   return (
@@ -238,7 +239,7 @@ const HotelBookingPage = () => {
 
   return (
     <div className="hotel-booking-page">
-      <Search />
+      {/* <Search /> */}
       <header className="header">
         <div className="hotel-info">
           <div className="hotel-name">{booking.model}</div>
@@ -246,7 +247,14 @@ const HotelBookingPage = () => {
         </div>
         <div className="price-and-book">
           <span className="price">{booking.price}</span>
-          <button className="book-now">BOOK NOW</button>
+          <Link
+            to={{
+              pathname: "/checkout",
+              state: { booking: booking, details: booking.accomodation },
+            }}
+          >
+            <button className="book-now">BOOK NOW</button>
+          </Link>
         </div>
       </header>
 
@@ -283,31 +291,18 @@ const HotelBookingPage = () => {
         <div className="flex-row full-width">
           <div className="section">
             <h2>About Accommodation</h2>
-            <p>
-              Get your trip off to a great start with a stay at this property,
-              which offers free Wi-Fi in all rooms. Strategically situated in
-              Myeong-dong, allowing you access and proximity to local
-              attractions and sights. Don't leave before paying a visit to the
-              famous Gyeongbokgung Palace.
-            </p>
+            {booking.accomodation}
           </div>
           <div className="section">
             <h2>Main Facilities</h2>
-            <p>
-              ✔ Free Wi-Fi in all rooms! ✔ Check-in/out ✔ Luggage storage ✔
-              Shared kitchen ✔ Kitchen ✔ Laundry service ✔Concierge ✔Wi-Fi in
-              public areas
-            </p>
+            <p>{booking.facilities}</p>
           </div>
         </div>
 
         <div className="flex-row full-width">
           <div className="section">
             <h2>All Facilities</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            <p>{booking.facilities}</p>
           </div>
           <div className="section">
             <h2>Reviews</h2>
@@ -321,17 +316,17 @@ const HotelBookingPage = () => {
             <div className="section">
               <h2>Nearby Places</h2>
               <ul>
-                <li>Place 1</li>
-                <li>Place 2</li>
-                <li>Place 3</li>
+                {booking.nearbyPlaces.map((nearby, index) => (
+                  <li key={index}>{nearby}</li>
+                ))}
               </ul>
             </div>
             <div className="section">
               <h2>Popular in the Area</h2>
               <ul>
-                <li>Popular Spot 1</li>
-                <li>Popular Spot 2</li>
-                <li>Popular Spot 3</li>
+                {booking.popularInArea.map((pop, index) => (
+                  <li key={index}>{pop}</li>
+                ))}
               </ul>
             </div>
           </div>
