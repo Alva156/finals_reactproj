@@ -130,8 +130,10 @@ function ExploreSeoul({ carouselImages }) {
     <div className="row d-flex justify-content-between booking-container2 flex-wrap">
       <div className="col-md-6 col-lg-7">
         <div className="bookingoverlay-text">
-          <p className="bookingtitle-overlap">Explore Seoul with Ease</p>
-          <p className="bookingparagraph-overlap">
+          <p className="bookingtitle-overlap text-white">
+            Explore Seoul with Ease
+          </p>
+          <p className="bookingparagraph-overlap text-white">
             Get the affordable ticket for you in every season without any
             worries. We are also giving a special offer on a round-trip for some
             destination, so you can earn points from it!
@@ -333,15 +335,15 @@ function Bookingtitle({ title }) {
 
 function Specialdeal() {
   return (
-    <div className="specialdeal-container">
-      <Bookingtitle title="SPECIAL DEAL" />
-      <div className="specialdeal-content">
-        <p>DISCOUNT UP TO ₩10,000!</p>
-        <p>
+    <div className="specialdeal-container ">
+      <Bookingtitle className="text-white" title="SPECIAL DEAL" />
+      <div className="specialdeal-content text-white">
+        <p className="text-white">DISCOUNT UP TO ₩10,000!</p>
+        <p className="text-white">
           Avail 5% discount up to ₩10,000 for Hotels, Car Rentals, Airport
           Transfer, and Activities.
         </p>
-        <p>
+        <p className="text-white">
           CODE: <strong>SEOULSEEKER5OFF</strong>
         </p>
       </div>
