@@ -21,69 +21,69 @@ function Booking() {
   ];
 
   const bookingPhotosSet1 = [
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
+    "museumtour1.jpg",
+    "bridge.jpg",
+    "gyeong1.jpg",
+    "bukchon1.jpg",
+    "suwon.jpg",
+    "gwangjang1.jpg",
+    "hanriver2.jpg",
+    "picnic.jpg",
   ];
 
   const overlayTextsSet1 = [
-    "Text 1",
-    "Text 2",
-    "Text 3",
-    "Text 4",
-    "Text 5",
-    "Text 6",
-    "Text 7",
-    "Text 8",
+    "N Seoul Tower",
+    "Gyeongbokgung Palace",
+    "Bukchon Hanok Village",
+    "Seoul Forest Park",
+    "National Museum of Korea",
+    "Dongdaemun Design Plaza",
+    "Lotte World",
+    "Namdaemun Market",
   ];
 
   const bookingPhotosSet2 = [
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
+    "museumtour1.jpg",
+    "bridge.jpg",
+    "gyeong1.jpg",
+    "bukchon1.jpg",
+    "suwon.jpg",
+    "gwangjang1.jpg",
+    "hanriver2.jpg",
+    "picnic.jpg",
   ];
 
   const overlayTextsSet2 = [
-    "Text 1",
-    "Text 2",
-    "Text 3",
-    "Text 4",
-    "Text 5",
-    "Text 6",
-    "Text 7",
-    "Text 8",
+    "Four Points by Sheraton in Seoul, Guro",
+    "Hotel Skypark Myeongdong 3",
+    "Lotte Hotel in Seoul",
+    "Four Seasons Hotel in Seoul",
+    "Crown Park Hotel in Seoul",
+    "Nine Tree Premier Hotel in Insadong",
+    "Hotel 28 in Myeongdong",
+    "Golden Seoul Hotel",
   ];
 
   const bookingPhotosSet3 = [
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
-    "images/Home2.png",
+    "museumtour1.jpg",
+    "bridge.jpg",
+    "gyeong1.jpg",
+    "bukchon1.jpg",
+    "suwon.jpg",
+    "gwangjang1.jpg",
+    "hanriver2.jpg",
+    "picnic.jpg",
   ];
 
   const overlayTextsSet3 = [
-    "Text 1",
-    "Text 2",
-    "Text 3",
-    "Text 4",
-    "Text 5",
-    "Text 6",
-    "Text 7",
-    "Text 8",
+    "Guided Tour - National Museum of Korea",
+    "DMZ, 3rd Tunnel, and Suspension Bridge Guided Tour",
+    "Hanbok Rental with Gyeongbokgung Palace Visit",
+    "Bukchon Village Tour",
+    "Suwon Hwaseong Fortress and Folk Village Day Tour",
+    "Gwangjang Market Tour",
+    "Han River Guided Night Cruise",
+    "Hangang Park Picnic",
   ];
 
   return (
@@ -201,7 +201,7 @@ function Search() {
               </Link>
             </Card.Title>
 
-            <hr className="m-0 mx-3"></hr>
+            {/* <hr className="m-0 mx-3"></hr>
             <Card.Body className="col">
               <div>
                 <div className="d-flex flex-col flex-wrap gap-2 h6 text-white">
@@ -274,7 +274,7 @@ function Search() {
                   </div>
                 </div>
               </div>
-            </Card.Body>
+            </Card.Body> */}
           </Card.Body>
         </Card>
       </div>
@@ -313,7 +313,11 @@ function Bookingphotos({ photos, overlayTexts }) {
           .map((photo, index) => (
             <div key={index} className="col-md-3">
               <div className="booking-photos-img-container">
-                <img src={photo} alt={`Photo ${index}`} className="img-fluid" />
+                <img
+                  src={require(`./images/${photo}`)}
+                  alt={`Photo ${index}`}
+                  className="img-fluid"
+                />
                 <div className="booking-photos-overlay-text">
                   {overlayTexts[currentIndex + index]}{" "}
                 </div>
