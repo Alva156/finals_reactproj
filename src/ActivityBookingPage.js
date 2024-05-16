@@ -329,10 +329,10 @@ const ActivityBookingPage = () => {
             <h2>What You Can See</h2>
             <p>{booking.wycs}</p>
           </div>
-          <div className="section">
+          {/* <div className="section">
             <h2>Reviews</h2>
             <ReviewsSection />
-          </div>
+          </div> */}
         </div>
 
         <div className="location-wrapper">

@@ -51,7 +51,7 @@ function Checkoutedit({ handleUpdateBooking, handleDeleteBooking }) {
   };
 
   const handleDelete = () => {
-    handleDeleteBooking(booking.model);
+    handleDeleteBooking(booking.model, booking.type);
   };
 
   return (

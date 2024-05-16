@@ -397,9 +397,9 @@ export default function App() {
     }
   };
 
-  const handleDeleteBooking = (id) => {
+  const handleDeleteBooking = (id, type) => {
     const updatedBookingDetails = bookingDetails.filter(
-      (booking) => booking.model !== id
+      (booking) => booking.model !== id && booking.type !== type
     );
     setBookingDetails(updatedBookingDetails);
   };
