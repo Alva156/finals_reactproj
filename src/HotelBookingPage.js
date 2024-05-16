@@ -147,19 +147,25 @@ const Lightbox = ({ isOpen, onClose, currentImageIndex, images }) => {
 const ReviewsSection = ({ reviews, booking }) => {
   const filteredReviews = reviews.filter((review) => review.id === booking.id);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+
   const handleNext = () => {
-    setCurrentReviewIndex((currentReviewIndex + 1) % reviews.length);
+    if (filteredReviews.length > 1) {
+      setCurrentReviewIndex((currentReviewIndex + 1) % filteredReviews.length);
+    }
   };
 
   const handlePrev = () => {
-    setCurrentReviewIndex(
-      (currentReviewIndex - 1 + reviews.length) % reviews.length
-    );
+    if (filteredReviews.length > 1) {
+      setCurrentReviewIndex(
+        (currentReviewIndex - 1 + filteredReviews.length) %
+          filteredReviews.length
+      );
+    }
   };
 
   return (
     <div className="section reviews-section">
-      {filteredReviews.length > 0 ? ( // Conditionally render review-content section
+      {filteredReviews.length > 0 ? (
         <div>
           <div className="review-summary">
             <div className="average-rating">
@@ -172,7 +178,8 @@ const ReviewsSection = ({ reviews, booking }) => {
               ).toFixed(1)}
             </div>
             <div className="review-count">
-              {reviews.length} {reviews.length === 1 ? "review" : "reviews"}
+              {filteredReviews.length}{" "}
+              {filteredReviews.length === 1 ? "review" : "reviews"}
             </div>
           </div>
 
@@ -181,12 +188,16 @@ const ReviewsSection = ({ reviews, booking }) => {
               ‹
             </button>
             <div className="review-content">
-              <p className="review-text">
-                "{filteredReviews[currentReviewIndex].text}"
-              </p>
-              <p className="review-rating">
-                Rating: ⭐ {filteredReviews[currentReviewIndex].rating}
-              </p>
+              {filteredReviews[currentReviewIndex] && ( // Check if the review exists before rendering
+                <>
+                  <p className="review-text">
+                    "{filteredReviews[currentReviewIndex].text}"
+                  </p>
+                  <p className="review-rating">
+                    Rating: ⭐ {filteredReviews[currentReviewIndex].rating}
+                  </p>
+                </>
+              )}
             </div>
             <button className="carousel-next" onClick={handleNext}>
               ›
