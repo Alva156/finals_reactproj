@@ -293,7 +293,6 @@ const ActivityBookingPage = () => {
             <img
               src={require(`./images/${images[0]}`)}
               alt="Main Hotel Image"
-              onClick={() => openLightbox(0)}
             />
           </div>
           <div className="thumbnail-images">
@@ -302,7 +301,6 @@ const ActivityBookingPage = () => {
                 key={index}
                 src={require(`./images/${images[index + 1]}`)}
                 alt={`Thumbnail ${index + 1}`}
-                onClick={() => openLightbox(index + 1)}
               />
             ))}
           </div>
