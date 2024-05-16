@@ -397,6 +397,13 @@ export default function App() {
     }
   };
 
+  const handleDeleteBooking = (id) => {
+    const updatedBookingDetails = bookingDetails.filter(
+      (booking) => booking.id !== id
+    );
+    setBookingDetails(updatedBookingDetails);
+  };
+
   return (
     <Router>
       <div>
@@ -463,6 +470,7 @@ export default function App() {
               <Checkoutedit
                 {...props}
                 handleUpdateBooking={handleUpdateBooking}
+                handleDeleteBooking={handleDeleteBooking}
               />
             )}
           />

@@ -4,10 +4,10 @@ import wallpaper from "./materials/wallpaper.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import NavbarNew from "./NavBarNew";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { useState } from "react";
 
-function Checkoutedit({ handleUpdateBooking }) {
+function Checkoutedit({ handleUpdateBooking, handleDeleteBooking }) {
   const location = useLocation();
   const booking = location.state && location.state.booking;
 
@@ -49,6 +49,11 @@ function Checkoutedit({ handleUpdateBooking }) {
     handleUpdateBooking(updatedBooking);
     setShowModal(true);
   };
+
+  const handleDelete = () => {
+    handleDeleteBooking(booking.id);
+  };
+
   return (
     <div>
       <div className="container">
@@ -123,7 +128,7 @@ function Checkoutedit({ handleUpdateBooking }) {
           </div>
           {error && <p className="error-container">{error}</p>}
           <EditBooking handleSaveChanges={handleSaveChanges} />
-          <CancelBooking />
+          <CancelBooking handleDelete={handleDelete} />
         </div>
         <Modal showModal={showModal} setShowModal={setShowModal} />
       </div>
@@ -267,17 +272,42 @@ function EditBooking({ handleSaveChanges }) {
     </center>
   );
 }
-function CancelBooking() {
+function CancelBooking({ handleDelete }) {
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const history = useHistory();
+  const handleCancel = () => {
+    setShowConfirmation(true);
+  };
+
+  const handleConfirmDelete = () => {
+    handleDelete();
+    history.push("/history");
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirmation(false);
+  };
+
   return (
     <center>
-      <button className="cancelbooking-btn">
-        <h2>Cancel Booking</h2>
-        <FontAwesomeIcon icon={faArrowCircleRight} className="payment-icon" />
-      </button>
+      <div className="cancelbooking-container">
+        <button className="cancelbooking-btn" onClick={handleCancel}>
+          <h2>Cancel Booking</h2>
+          <FontAwesomeIcon icon={faArrowCircleRight} className="payment-icon" />
+        </button>
+        {showConfirmation && (
+          <div className="confirmation-overlay">
+            <div className="confirmation-dialog">
+              <p>Are you sure you want to cancel this booking?</p>
+              <button onClick={handleConfirmDelete}>Yes</button>
+              <button onClick={handleCancelDelete}>No</button>
+            </div>
+          </div>
+        )}
+      </div>
     </center>
   );
 }
-
 function Modal({ showModal, setShowModal }) {
   if (!showModal) return null;
 
