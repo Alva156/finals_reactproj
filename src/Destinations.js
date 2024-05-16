@@ -404,10 +404,7 @@ function DestinationList() {
                               {destination.description}
                             </div>
                             <div className="col-12 col list-dest-detail d-flex align-items-center">
-                              <div
-                                className="col-12 py-3 list-loc "
-                                onClick={() => setModalShow(true)}
-                              >
+                              <div className="col-12 py-3 list-loc ">
                                 <FaLocationDot /> {destination.address}
                               </div>
                             </div>
