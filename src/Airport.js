@@ -288,7 +288,7 @@ function CarList({ car }) {
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "contain",
+                    objectFit: "cover",
                   }}
                 />
               </div>
@@ -303,7 +303,7 @@ function CarList({ car }) {
                     style={{
                       width: "100%",
                       height: "100%",
-                      objectFit: "contain",
+                      objectFit: "cover",
                     }}
                   />
                 </div>
@@ -315,7 +315,7 @@ function CarList({ car }) {
                     style={{
                       width: "100%",
                       height: "100%",
-                      objectFit: "contain",
+                      objectFit: "cover",
                     }}
                   />
                 </div>

@@ -319,11 +319,12 @@ function Bookingphotos({ photos, overlayTexts }) {
           .slice(currentIndex, currentIndex + photosPerPage)
           .map((photo, index) => (
             <div key={index} className="col-md-3">
-              <div className="booking-photos-img-container">
+              <div className="booking-photos-img-container rounded">
                 <img
                   src={require(`./images/${photo}`)}
                   alt={`Photo ${index}`}
                   className="img-fluid"
+                  style={{ width: "65rem", height: "10rem", objectFit: "fill" }}
                 />
                 <div className="booking-photos-overlay-text">
                   {overlayTexts[currentIndex + index]}{" "}

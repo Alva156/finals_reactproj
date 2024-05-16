@@ -80,7 +80,7 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
               <img
                 src={require(`./images/${booking.images[0]}`)}
                 className="img-fluid rounded mb-2"
-                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                style={{ width: "100%", height: "10rem", objectFit: "cover" }}
               />
             </div>
             <div className="side-images">
@@ -91,7 +91,7 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "contain",
+                    objectFit: "cover",
                   }}
                 />
               </div>
@@ -102,7 +102,7 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "contain",
+                    objectFit: "cover",
                   }}
                 />
               </div>

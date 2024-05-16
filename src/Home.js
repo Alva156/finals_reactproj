@@ -19,21 +19,18 @@ function Home({ isLoggedIn }) {
     slides: [
       {
         imageUrl: "carousel 1.jpeg",
-        captionTitle: "Place 1",
-        captionDescription:
-          "Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
+        captionTitle: "",
+        captionDescription: "",
       },
       {
         imageUrl: "carousel 2.jpg",
-        captionTitle: "Place 2",
-        captionDescription:
-          "Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
+        captionTitle: "",
+        captionDescription: "",
       },
       {
         imageUrl: "carousel 3.jpeg",
-        captionTitle: "Place 3",
-        captionDescription:
-          "Lorem ipsum praesent ac massa at ligula reet est iaculis. Vivamus est mist aliquet elit ac nisl.",
+        captionTitle: "",
+        captionDescription: "",
       },
     ],
   };

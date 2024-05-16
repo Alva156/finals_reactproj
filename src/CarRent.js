@@ -288,7 +288,7 @@ function CarList({ car }) {
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "contain",
+                    objectFit: "cover",
                   }}
                 />
               </div>
@@ -299,11 +299,11 @@ function CarList({ car }) {
                   <img
                     src={require(`./images/${car.images[1]}`)}
                     alt={`Hotel ${car.model} Image 2`}
-                    className="img-fluid rounded"
+                    className="img-fluid rounded "
                     style={{
                       width: "100%",
                       height: "100%",
-                      objectFit: "contain",
+                      objectFit: "cover",
                     }}
                   />
                 </div>
@@ -315,7 +315,7 @@ function CarList({ car }) {
                     style={{
                       width: "100%",
                       height: "100%",
-                      objectFit: "contain",
+                      objectFit: "fill",
                     }}
                   />
                 </div>
