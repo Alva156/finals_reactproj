@@ -74,38 +74,14 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
   return (
     <div className="bookinghistory">
       <div className="bookingsummary-container2">
-        <div className="top-section2 d-flex align-items-center justify-content-center">
-          <div className="images-container">
+        <div className="top-section2">
+          <div className="images-container " style={{ height: "12rem" }}>
             <div className="main-image">
               <img
                 src={require(`./images/${booking.images[0]}`)}
                 className="img-fluid rounded mb-2"
                 style={{ width: "100%", height: "10rem", objectFit: "cover" }}
               />
-            </div>
-            <div className="side-images">
-              {/* <div className="image2">
-                <img
-                  src={require(`./images/${booking.images[1]}`)}
-                  className="img-fluid rounded mb-2"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-              </div>
-              <div className="image2">
-                <img
-                  src={require(`./images/${booking.images[2]}`)}
-                  className="img-fluid rounded mb-2"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-              </div> */}
             </div>
           </div>
           <div className="details-container ">

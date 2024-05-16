@@ -260,8 +260,8 @@ function HotelList({ hotel }) {
             <div className="col-md-9 list-name">{hotel.model}</div>
             <div className="col-md-3 h6"></div>
           </div>
-          <div className="col-12 list-detail">
-            <div className="col-12 py-3 list-loc">
+          <div className="col-12 list-detail d-flex flex-wrap">
+            <div className="col-12 py-3 list-loc ">
               <FaLocationDot /> {hotel.address}
             </div>
             <div className="col-12">
@@ -272,7 +272,7 @@ function HotelList({ hotel }) {
                 }}
                 style={{ textDecoration: "none" }}
               >
-                <div className="btn-book px-4 py-2 text-white text-center rounded">
+                <div className="btn-book px-4 py-2 text-white text-center rounded mt-4">
                   CHECK DETAILS
                 </div>
               </Link>

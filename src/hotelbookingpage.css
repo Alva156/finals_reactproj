@@ -345,7 +345,7 @@
 }
 
 .list-detail {
-  height: 85px;
+  height: auto;
   width: 100%;
 }
 
