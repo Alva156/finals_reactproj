@@ -178,7 +178,8 @@ const ReviewsSection = ({ reviews, booking }) => {
               ).toFixed(1)}
             </div>
             <div className="review-count">
-              {reviews.length} {reviews.length === 1 ? "review" : "reviews"}
+              {filteredReviews.length}{" "}
+              {filteredReviews.length === 1 ? "review" : "reviews"}
             </div>
           </div>
 
