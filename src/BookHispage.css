@@ -258,6 +258,12 @@ body {
     }
   }
 
+  @media (max-width: 750px) {
+    .main-image img {
+      width: 50px;
+    }
+  }
+
   .bookingsummary-container2 {
     max-width: 85vw;
     padding: 1vw;
@@ -267,9 +273,9 @@ body {
   .details-container {
     width: 100%;
   }
-  .side-images {
+  /* .side-images {
     display: none;
-  }
+  } */
 
   .main-image img,
   .side-images .image2 img {
