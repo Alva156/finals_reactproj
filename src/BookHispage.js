@@ -74,7 +74,7 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
   return (
     <div className="bookinghistory">
       <div className="bookingsummary-container2">
-        <div className="top-section2">
+        <div className="top-section2 d-flex align-items-center justify-content-center">
           <div className="images-container">
             <div className="main-image">
               <img
@@ -84,7 +84,7 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
               />
             </div>
             <div className="side-images">
-              <div className="image2">
+              {/* <div className="image2">
                 <img
                   src={require(`./images/${booking.images[1]}`)}
                   className="img-fluid rounded mb-2"
@@ -105,10 +105,10 @@ function BookingHistory({ booking, onAddReviewClick, onEditClick }) {
                     objectFit: "cover",
                   }}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
-          <div className="details-container">
+          <div className="details-container ">
             <div className="activity2">
               <h1>
                 {booking.model} ({booking.bookingType})

@@ -39,7 +39,7 @@ body {
 
 .bookingsummary-container2 {
   max-width: 60vw;
-  width: 98%;
+  width: auto;
   padding: 0.5vw;
   background-color: white;
   border-radius: 0.8vw;
